@@ -1,0 +1,162 @@
+﻿@model WeiXin.BO.FansContract
+@{
+    ViewBag.Title = "完善信息";
+    Layout = "~/Views/Shared/_EnterpriseWap.cshtml";
+}
+@section script
+{
+    <script src="@Url.Content("~/Scripts/PlugIn/My97DatePicker/WdatePicker.js")" type="text/javascript"></script>
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/Shared.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+}
+<!--头部-->
+<header class="ts1">
+    <ul class="topbar fl">
+        @{ 
+            List<WeiXin.Model.normal_channel> lists = ViewData["Top4Channel"] as List<WeiXin.Model.normal_channel>;
+            foreach (var item in lists)
+            {
+            <li><a class="icon_user" 
+                href="@Url.Action("" + item.Type + "classList", new { ccid = item.Id, sessionid = ViewData["SessionID"] })">
+                <i></i>
+                @item.Title
+            </a></li>
+            }
+        }
+    </ul>
+</header>
+<section class="i_list">
+    <ul class="i_shop_list" id="i_shop_list">
+        @using (Html.BeginForm())
+        {
+            <li>信息完善，可以参与更多活动 </li> <li>姓名：@Html.TextBoxFor(Model => Model.TrueName)
+            </li>
+            <li>QQ：@Html.TextBoxFor(Model => Model.Temp1)
+            </li> <li>电话：@Html.TextBoxFor(Model => Model.UserPhone)
+            </li> 
+            
+            <li>
+                <div id="test">
+                    生日：</div>
+                <br />
+                你以前选择的是：<span id="br" name="br"></span> 你现在选择的是：<span id="data"></span>
+                @Html.HiddenFor(model => model.UserBr)
+                <script type="text/javascript">
+//<![CDATA[
+                    (function ($) {
+                        function isRN(y) {//计算闺年
+                            return y % 4 == 0 || (y % 100 == 0 && y % 400 == 0);
+                        }
+                        function getDays(y, m) {//计算每月天数
+                            if (m == 2) {
+                                return isRN(y) ? 29 : 28;
+                            } else if (m < 8) {
+                                return m % 2 == 0 ? 30 : 31
+                            } else {
+                                return m % 2 == 0 ? 31 : 30
+                            }
+                        }
+                        function updateDays(sel, b) {
+                            sel.length = 0;
+                            for (var a = 1; a < b + 1; a++) {
+                                sel.options.add(new Option(a + '日', a));
+                            }
+                        }
+                        function createSelect(a, b, c) {
+                            var sel = document.createElement('select');
+                            var c = c || '';
+                            sel.options.add(new Option('请选择', -1));
+                            if (a > b) {
+                                for (; a > b; a--) {
+                                    sel.options.add(new Option(a + c, a));
+                                }
+                            } else {
+                                for (; a < b; a++) {
+                                    sel.options.add(new Option(a + c, a));
+                                }
+                            }
+                            return sel;
+                        }
+                        $.fn.birthdaySelect = function (fn) {
+                            var box = this.eq(0);
+                            var year, mon, day, hidden;
+                            fn = fn || function () { };
+                            if (box.size()) {
+                                year = createSelect(2008, 1940, '年', -1);
+                                box.append(year);
+                                mon = createSelect(1, 13, '月');
+                                box.append(mon);
+                                day = createSelect(1, 32, '日');
+                                box.append(day);
+                                hidden = box.append('<input type="hidden" name="birthday" />');
+                                $(year).change(upRN);
+                                $(mon).change(upRN);
+                                $(day).change(function () {
+                                    update();
+                                });
+                            }
+                            function upRN() {
+                                var y = year.value;
+                                var m = mon.value;
+                                if (this.options[0].value == -1) {
+                                    this.removeChild(this.options[0]);
+                                }
+                                if (y != -1 && m != -1) {
+                                    var d = getDays(y, m);
+                                    var idx = day.options.selectedIndex;
+                                    updateDays(day, d);
+                                    day.options.selectedIndex = Math.min(idx, d);
+                                }
+                                update();
+                            }
+                            function update() {
+                                var data = [year.value, mon.value, day.value].join('/');
+                                hidden.value = data.indexOf('-1') > -1 ? -1 : data; //如果值不正确返回-1
+                                fn(hidden.value);
+                            }
+                        };
+                        /*
+                        向一个容器中插入三个下拉列表输入生日。
+                        支持闺年判断。
+                        $(容器).birthdaySelect(改变事件);
+                        */
+                        $('#test').birthdaySelect(function (val) {
+                            $('#data').html(val);
+                        });
+                    })(jQuery)
+                    //]]> 
+                    $(function () {
+                        $("#br").html($("#UserBr").val());
+
+
+                    });
+
+                    function check() {
+                        $("#UserBr").val($("#data").html())
+                        var tel = $("#Temp1").val();
+                        var UserPhone = $("#UserPhone").val();
+                        if (tel.length < 6) {
+                            $("#Temp1").css("border", "1px solid red");
+                            return false;
+                        }
+                        if (UserPhone.length != 11) {
+                            $("#UserPhone").css("border", "1px solid red")
+                            return false;
+                        }
+                    }
+                </script>
+            </li>
+            <li>
+                <div class="divFormCtrl">
+                    <!--页面按钮 如：提交、取消、下一步、关闭-->
+                    <input class="divBtn" type="submit" onclick="javascript:return check()" value="提 交" />
+                    <a class="divBtn pageLWeiXinding" href="/Enterprise/Web?sessionid=@ViewData["sessionid"]">
+                        返 回</a>
+                </div>
+            </li>
+        }
+    </ul>
+</section>

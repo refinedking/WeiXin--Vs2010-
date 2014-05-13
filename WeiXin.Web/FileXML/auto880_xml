@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<zuxia_OA>
+  <moduleType id="moduleType_2" name="公众平台系统" ename="Weixin" icon="pingtai" sysId="2">
+    <tree id="6" name="公众平台管理" areas="WeiXin" controller="" action="" parentID="0" icon="" typeID="2">
+      <action id="1" name="浏览" tag="GN_BROWSE" />
+      <tree id="11" name="关键字管理" areas="WeiXin_Public" controller="WeiXin" action="GuanJianZiMain" parentID="6" icon="" typeID="2">
+        <action id="1" name="浏览" tag="GN_BROWSE" />
+        <action id="2" name="新增" tag="GN_ADD" />
+        <action id="3" name="编辑" tag="GN_EDIT" />
+        <action id="4" name="删除" tag="GN_DELETE" />
+      </tree>
+      <tree id="12" name="回复管理" areas="WeiXin_Public" controller="WeiXin" action="GuanJianZiHuiFuMain" parentID="6" icon="" typeID="2">
+        <action id="1" name="浏览" tag="GN_BROWSE" />
+        <action id="2" name="新增" tag="GN_ADD" />
+        <action id="3" name="编辑" tag="GN_EDIT" />
+        <action id="4" name="删除" tag="GN_DELETE" />
+      </tree>
+    </tree>
+  </moduleType>
+</zuxia_OA>

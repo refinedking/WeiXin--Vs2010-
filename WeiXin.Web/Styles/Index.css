@@ -1,0 +1,262 @@
+﻿/*-------------------------------------------------------
+// Copyright (C) 2011 重庆足下科技有限公司 版权所有。
+// 文件名：  Top.css
+// 功能描述：顶部框架样式
+// 创建标识：刘新奇  2012-05-06
+// 修改标识：
+// 修改描述：
+//------------------------------------------------------*/
+html
+{
+    overflow-y:hidden;
+    overflow-x:hidden;
+}
+html,iframe
+{
+    overflow-y:hidden;
+    overflow-x:auto;
+}
+body
+{
+    background: transparent url(../Images/Shared/top_bg.jpg) repeat-x;
+}
+#divPage
+{
+    margin: 0px auto;
+    min-width: 1000px;
+    width: auto !important;
+    _width: 1000px;
+    *width: 1000px;
+}
+/*主操作区 tab(选项卡) 样式*/
+#divTab
+{
+    height: 22px;
+    padding: 1px 1px 0px 1px;
+    border-bottom: 1px solid #BCC7C3;
+}
+#divTab .divTabCtrl
+{
+    height: 22px;
+    margin-right: 1px;
+    margin-bottom: 0px;
+    float: left;
+    cursor: pointer;
+    border: 1px solid #BCC7C3; /*边框*/
+}
+#divTab .divTabCtrl span
+{
+    float: left;
+    margin-left: 5px;
+    margin-right:10px;
+    color: Blue;
+    font-weight: 900;
+    line-height: 22px;
+    font-size: 12px;
+}
+#divTab .cur span
+{
+    color:White;
+}
+#divTab .cur
+{
+    border-bottom: 0px;
+    background: url(../../Images/Shared/tab_cur_bg.gif) repeat-x;
+}
+#divTab .divTabCtrl:hover
+{
+    background: url(../../Images/Shared/tab_hover_bg.gif) repeat-x;
+}
+/*tab 选项卡关闭样式*/
+#divTab .CloseTab
+{
+    float: right;
+    cursor: pointer;
+    width: 11px;
+    height: 11px;
+    background: url(../../Images/Shared/tab_close.gif) no-repeat;
+}
+/*主操作页面框架样式*/
+#divTabItem iframe
+{
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
+    background: transparent; /*兼容google浏览器*/
+}
+
+#divTop
+{
+    cursor: default;
+    height: 60px; /*菜单完成后改为60*/
+}
+#divLog
+{
+    /*说明：   1、当CSS中出现两个同样的属性，无论是否有!important，IE6只识别最后一个属性。（IE6是识别!important的，后面的background-image起干扰作用，呵呵~）   2、在Firefox下，!important被优先执行，FILTER滤镜不起作用。 */
+    background: url(../../Images/index_log.png) no-repeat;
+    height: 50px;
+    width: 134px;
+    margin-left: 10px;
+    margin-top: 10px;
+    float: left;
+}
+* html #divLog
+{
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='../../Images/index_log.png', sizingMethod='scale');
+    background: none;
+}
+/*系统名称样式*/
+#divSysName
+{
+    margin-top: 10px;
+    float: left;
+    padding-left: 5px;
+    font-size: 18px;
+    font-family: 黑体;
+    font-weight: 600;
+    color: rgb(0, 50, 152);
+}
+/*切换系统样式*/
+#divChangeSystem
+{
+    margin-left: 5px;
+    margin-top: 5px;
+    float: left;
+    color: rgb(0, 50, 152);
+    cursor: pointer;
+}
+/*可用系统列表*/
+#divSystemList
+{
+    position: absolute;
+    left: 250px;
+    top: 25px;
+    border: 1px solid rgb(0, 50, 152);
+    display: none;
+    background: White url(../Images/Shared/top_bg.jpg) repeat-x;
+    padding-right: 5px;
+    z-index: 99; /*显示在最顶层*/
+}
+#divSystemList li
+{
+    color: rgb(0, 50, 152);
+    cursor: pointer;
+    margin-left: 5px;
+    background-repeat: no-repeat;
+    background-position: 25px 10px;
+    width: 100px;
+    line-height: 30px;
+    float: left;
+    text-align: center;
+    padding-top: 60px;
+}
+#divSystemList .curSys
+{
+    display: none;
+}
+#divSystemList li:hover
+{
+    color: Blue;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#divCtrl
+{
+    position:fixed;
+    right:5px;
+    margin-top: 3px;
+    margin-right: 10px;
+}
+a
+{
+    color: rgb(0, 50, 152);
+    cursor: pointer;
+    font-size: 12px;
+}
+/*一级菜单样式*/
+#divMenu
+{
+    position:absolute;
+    z-index: 90;
+    left:260px;
+    top: 30px;
+}
+/*子级菜单样式*/
+#ulMenu ul
+{
+    position:absolute; /*固定子级菜单布局方式，此项的更改会严重影响整体布局*/
+    display: none; /*此属性必须存在，不能更改，如果撤掉该属性将会引起不能完全隐藏*/
+    text-align: center;
+    clear: both;
+    border: 1px solid rgb(0, 94, 172);
+}
+/*一级菜单项样式*/
+#ulMenu li
+{
+    white-space: nowrap; /*阻止文字换行*/
+    float: left;
+    color: rgb(0, 50, 152);
+    cursor: pointer;
+    line-height: 30px; /*在高度不适中的情况下会引发IE兼容性视图*/
+    background: transparent url(../../Images/Shared/nav_txtbg.gif) -10px 0px no-repeat;
+}
+/*子级菜单项样式*/
+#ulMenu ul li
+{
+    /*     border-left: 1px solid rgb(0, 94, 172);     border-right: 1px solid rgb(0, 94, 172);*/
+    margin-top: 0px;
+    background-color: White;
+    background-image: none;
+    clear: both;
+}
+/*此模式在IE6中不兼容，已在JS中实现替代*/
+#ulMenu ul li:hover
+{
+    color: White;
+    background-color: rgb(0, 94, 172);
+}
+/**/
+/*一级菜单项字幕样式*/
+#ulMenu li div
+{
+    font-weight: bold;
+    margin-left: 10px;
+    padding-right: 10px;
+}
+/*子菜单项字幕样式*/
+#ulMenu ul li div
+{
+    font-weight: 100;
+    padding-right: 8px;
+}
+
+#ulMenu .liBegin
+{
+    background: transparent url(../../Images/Shared/nav_txtbg.gif) 0px 0px no-repeat;
+}
+#ulMenu .liItem
+{
+    background: transparent url(../../Images/Shared/nav_txtbg.gif) -10px 0px no-repeat;
+}
+#ulMenu .divEnd, #ulMenu .liEnd
+{
+    background: transparent url(../../Images/Shared/nav_txtbg.gif) right top no-repeat;
+}
+/*选中项样式*/
+#ulMenu .currentDiv
+{
+    background: transparent url(../../Images/Shared/nav_txtbg_hover.gif) right 0px no-repeat;
+}
+#ulMenu .currentLi
+{
+    color: White;
+    background: transparent url(../../Images/Shared/nav_txtbg_hoverLeft.gif) 0px 0px no-repeat;
+}
+/*分割线*/
+#divPartingLine
+{
+    overflow: hidden;
+    height: 5px;
+    background-color: rgb(0, 94, 172);
+}

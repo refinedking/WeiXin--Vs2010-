@@ -1,0 +1,263 @@
+﻿@model WeiXin.BO.GuanJianZiHuiFuContract
+@{
+    ViewBag.Title = "关键字回复信息操作";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BackUrl = Url.Action("GuanJianZiHuiFuMain");
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Scripts/PlugIn/kindeditor/kindeditor-4.1.3/themes/simple/simple.css")" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .hide
+        {
+            display: none;
+        }
+        .show
+        {
+            display: block;
+        }
+    </style>
+    <link href="@Url.Content("~/Scripts/PlugIn/jquery.uploadify-v2.1.0/example/css/default.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Scripts/PlugIn/jquery.uploadify-v2.1.0/uploadify.css")" rel="stylesheet" type="text/css" />
+}
+@section script
+{
+    <script src="@Url.Content("~/Scripts/Shared/jquery.validate.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Shared/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/_Layout_NoFrame_Edit.js")" type="text/javascript"></script>
+    <script charset="utf-8" src="@Url.Content("~/Scripts/PlugIn/kindeditor/kindeditor-4.1.3/kindeditor-min.js")"
+        type="text/javascript"></script>
+    <script charset="utf-8" src="@Url.Content("~/Scripts/PlugIn/kindeditor/kindeditor-4.1.3/lang/zh_CN.js")"
+        type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/PlugIn/jquery.uploadify-v2.1.0/swfobject.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/PlugIn/jquery.uploadify-v2.1.0/jquery.uploadify.v2.1.0.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            if ($("#nowTypeId").val() == 3) {   //修改回复内容时，如果回复类型为图片，则显示被隐藏的文本框
+                $("#title").attr("disabled", "");
+                $("#uploadify").attr("disabled", "");
+            }
+
+            $("#gjzId").html('');
+            $("<option value='-1' selected='selected'>--请选择--</option>").appendTo("#gjzId");
+            //企业ajax操作
+            $("#AllEmp").change(function () {
+                $("#gjzId>option:gt(0)").remove();
+                var bId = $("#AllEmp").val();
+                $("#gjzId").val("").text("");
+                $.ajax({
+                    type: "POST",
+                    url: "/WeiXin/AjaxGetGJZ",
+                    data: { "empId": bId },
+                    success: function (rd) {
+                        $("#gjzId").html('');
+                        $("<option value='-1' selected='selected'>--请选择--</option>").appendTo("#gjzId");
+                        $.each(eval(rd), function (i, val) {
+                            if (val.gjzId == $("#nowGJZId").val()) {
+                                $("<option  selected='selected'></option>").val(val.gjzId).text(val.name).appendTo("#gjzId");
+                            } else {
+                                $("<option></option>").val(val.gjzId).text(val.name).appendTo("#gjzId");
+                            }
+                        })
+                    }
+                });
+            });
+            $("#AllEmp").trigger("change");
+
+            if ($("#nowTypeId").val() == "") {
+                $("#title").attr("disabled", "disabled");
+                $("#uploadify").attr("disabled", "disabled");
+            }
+
+            $("#typeId").change(function () {
+                $("#title").attr("disabled", "disabled");
+                $("#uploadify").attr("disabled", "disabled");
+
+                if ($("#typeId").val() != "3") {
+                    $("#title").attr("disabled", "disabled");
+                    $("#uploadify").attr("disabled", "disabled");
+                } else {
+                    $("#title").attr("disabled", "");
+                    $("#uploadify").attr("disabled", "");
+                }
+
+            });
+        });
+
+
+       
+    </script>
+    <script type="text/javascript">
+        var editor;
+        KindEditor.ready(function (K) {
+            editor = K.create('#content',
+        {
+            themeType: 'simple',
+            uploadJson: '/WeiXin/UploadImage', // 相对于当前页面的路径
+            allowFileManager: true,
+            allowUpload: true
+        });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //修改回复信息时，如果已经存在图片，则显示
+            if ($("#oldImg").val() != "") {
+                $("#willUploadImg").val($("#oldImg").val());
+                $("#Simg").attr("src", "/FileUpload/" + $("#oldImg").val() + "");
+            }
+
+            $("#uploadify").uploadify({
+                'uploader': '../../../../Scripts/PlugIn/jquery.uploadify-v2.1.0/uploadify.swf',  //uploadify.swf 文件的相对路径，该swf文件是一个带有文字BROWSE的按钮，点击后淡出打开文件对话框，默认值：uploadify.swf。  
+                'script': '/WeiXin/Import', //后台处理程序的相对路径  
+
+                'cancelImg': '../../../../Scripts/PlugIn/jquery.uploadify-v2.1.0/cancel.png',  //取消按钮图标
+                'folder': 'FileUpload',   //上传文件存放的目录 。 
+
+                'queueID': 'fileQueue',   //文件队列的ID，该ID与存放文件队列的div的ID一致。 
+
+                'auto': false,  // 设置为true当选择文件后就直接上传了，为false需要点击上传按钮才上传 。 
+
+                'multi': false,   //设置为true时可以上传多个文件。 
+                'fileExt': '*.jpg;*.png;*.jpeg',
+                'fileDesc': '请选择JPG，PNG，JPEG为后缀的图片',
+                'sizeLimit': 1024 * 1024 * 2, //2M
+                'onComplete': function (event, queueId, fileObj, response, data) {
+                    $("#Simg").attr("src", "/FileUpload/" + response + "");
+                    $("#willUploadImg").val(response);
+                },
+                'onError': function (event, queueID, fileObj) {
+                    Zuxia.Alert("文件:" + fileObj.name + " 上传失败");
+                }
+            });
+        });
+
+        function ValidData() {
+            if ($("#Simg").attr("src") == "FileUpload/no.png") {
+                Zuxia.Alert("请先上传图片附件!");
+                return false;
+            }  
+            if ($("#gjzId").val() == -1) {
+                Zuxia.Alert("请选择关键字哦，如果没有关键字，请先添加");
+                return false;
+            }
+            if ($("#typeId").val() == "3") {
+                if ($("#title").val() == "" || $("#img").val() == "") {
+                    Zuxia.Alert("请输入标题和图片！");
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+}
+<div id="divMain">
+    <div id="divRightPage">
+        <!--列表标题部分-->
+        <div class="tblTitle" onselectstart='return false;'>
+            <div>@(Model.hfId == 0 ? "新增回复信息" : "修改回复信息")</div>
+        </div>
+        <div class="divReminders">
+            ★<label style="color: Red;">“关键字回复信息”</label>不能重复哦<br />
+            ★<label style="color: Red;">“图文标题”和“图文图片”</label>只有当回复类型为“图文”时，才可输入<br />
+        </div>
+        <div class="divReminders">
+        </div>
+        @using (Html.BeginForm())
+        { 
+            @Html.Hidden("nowGJZId", ViewData["nowGJZId"])
+            @Html.Hidden("nowTypeId", ViewData["nowTypeId"])
+            @Html.HiddenFor(model => model.hfId) 
+            @Html.Hidden("oldImg",  ViewData["oldImg"]);
+            @Html.Hidden("willUploadImg")
+            
+            <table class="tblForm">
+                <tr>
+                    <td class="tdTitle">
+                        企业：
+                    </td>
+                    <td>
+                        @Html.DropDownList("AllEmp", (ViewData["emp"] as SelectList), new { style = "width:177px;" })
+                       
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        关键字：
+                    </td>
+                    <td>
+                        <select id="gjzId" name="gjzId" style="width: 177px;">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        回复类型：
+                    </td>
+                    <td>
+                        @Html.DropDownList("typeId", (ViewData["gjz"] as SelectList), new { style = "width:177px;" })<br />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        信息状态:
+                    </td>
+                    <td>
+                        @Html.RadioButton("isDisplay", 1, Model.isDisplay == 1 ? true : false, new { id = "rdEnable" })
+                        <label for="rdEnable">
+                            启用</label>
+                        @Html.RadioButton("isDisplay", 0, Model.isDisplay == 0 ? true : false, new { id = "rdDisable" })
+                        <label for="rdDisable">
+                            禁用</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        图文标题：
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.title, new { maxlength = 125, style = "width:370px;" })
+                        @Html.ValidationMessageFor(model => model.title)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        图文图片：
+                    </td>
+                    <td>
+                        <img id="Simg" src="/FileUpload/no.png" width="160" height="160" style="margin: 5px;" /><br />
+                        <div id="fileQueue">
+                        </div>
+                        <input type="file" name="uploadify" id="uploadify" disabled="disabled" />
+                        <a href="javascript:$('#uploadify').uploadifyUpload()" class="divBtn2">开始上传</a>
+                    </td>
+                </tr>
+                 <tr>
+                    <td class="tdTitle">
+                        内容连接地址：
+                    </td>
+                    <td>
+                     @Html.TextBoxFor(model => model.temp1, new { maxlength = 125, style = "width:370px;" })
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        回复内容：
+                    </td>
+                </tr>
+            </table>
+            <div style="margin-left: 50px;">
+                <textarea id="content" name="content" style="width: 800px; height: 200px; visibility: hidden;
+                    margin-left: 50px">@ViewData["content"]</textarea>
+            </div>
+           
+            
+            <div class="divFormCtrl">
+                <!--页面按钮 如：提交、取消、下一步、关闭-->
+                <input class="divBtn" type="submit" value="提 交" onclick="javascript:return ValidData();" />
+                <a class="divBtn pageLWeiXinding" href="@ViewBag.BackUrl">关 闭</a>
+            </div>
+        }
+    </div>
+</div>

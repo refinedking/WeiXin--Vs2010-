@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "HomePage";
+}
+@section script{
+    <script src="@Url.Content("~/Scripts/FusionChartsFree/JSClass/FusionCharts.js")" type="text/javascript"></script>
+}
+@section css{
+    <link href="@Url.Content("~/Styles/indexCommon.css")" rel="stylesheet" type="text/css" />
+}
+@Html.Hidden("wxOldUser", (Session["user"] as WeiXin.BO.UsersContract).wxOldUser)
+<div class="container-wrapper">
+    <div id="main" class="container">
+        <div class="containerBox boxIndex">
+            <!--part 1-->
+            <div>
+                <div class="mainPanel">
+                    <h2 class="h2">
+                        欢迎你，@((Session["user"] as WeiXin.BO.UsersContract).wxName)</h2>
+                    <div id="index-permission-tip" class="index-tip-wrapper">
+                    </div>
+                  @*  <div class="todoList">
+                        <h3>
+                            你有以下2个待办事项:</h3>
+                        <ul>
+                            <li><span class="left">新增1位朋友</span><a class="right" href="#">查看</a></li>
+                            <li class="no-extra"><span class="left">收到1条新消息</span><a class="right" href="#">查看</a></li>
+                        </ul>
+                    </div>*@
+                    <div class="wxChartsWrapper">
+                        <h3>
+                            每日新增订阅人数</h3>
+                        <div id="wxChartsFans" class="wxChart" data-highcharts-chart="0">
+                            <div style='width: 660px; height: 350px; text-align: left; line-height: normal; overflow: hidden;
+                                font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+                                font-size: 12px; position: relative; z-index: 0;' id="highcharts-0" class="highcharts-container">
+                                <div id="chartdiv1">
+                                    每日新增订阅人数
+                                    <script type="text/javascript">
+
+                                        var url = "/DataXml/" + $("#wxOldUser").val() + ".xml";
+                                        var mychart = new FusionCharts("../../Scripts/FusionChartsFree/Charts/FCF_Line.swf", "myChartId", "660", "350");
+                                        mychart.setDataURL(url);
+                                        mychart.render("chartdiv1");
+ 
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wxChartsWrapper">
+                        <h3>
+                            每日接收消息数</h3>
+                        <div id="wxChartsMsgNum" class="wxChart" data-highcharts-chart="1">
+                            <div style='text-align: left; line-height: normal; overflow: hidden; font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+                                font-size: 12px; position: relative; z-index: 0;' id="highcharts-4" class="highcharts-container">
+                                <div id="chartdiv2">
+                                    每日接收消息数
+                                    <script type="text/javascript">
+
+                                        var url2 = "/DataXml/" + $("#wxOldUser").val() + "_2.xml";
+                                        //        FCF_Line
+                                        var mychart = new FusionCharts("../../Scripts/FusionChartsFree/Charts/FCF_Line.swf", "myChartId", "660", "350");
+                                        mychart.setDataURL(url2);
+                                        mychart.render("chartdiv2");
+ 
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="extendPanel">
+                    <div class="extInfo">
+                        <h3>
+                            系统公告</h3>
+                        <p>
+                            使用时有任何疑问或建议，请添加官方公众号以咨询反馈：zhainanyulu<br>
+                            或联系邮箱：<a href="mailto:474196974@qq.com">474196974@qq.com</a></p>
+                    </div>
+                   @* <div class="extNotice">
+                        <a href="#">系统升级造成群发延迟的说明 </a><b class="badage_new"></b>
+                    </div>
+                    <div class="extNotice">
+                        <a href="#">公众平台接口更新通知 </a><b class="badage_new"></b>
+                    </div>
+                    <!--个人 申请成功后，首页显示跳转到文档的快速入口-->
+                    <p style="text-align: center;" class="dev_access">
+                        <a style="margin: 0px auto; width: 174px;" class="btnGreen" href="#" target="_blank">
+                            查看公众平台API文档</a>
+                    </p>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

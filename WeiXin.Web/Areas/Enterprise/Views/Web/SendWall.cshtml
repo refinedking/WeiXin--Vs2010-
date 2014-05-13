@@ -1,0 +1,48 @@
+﻿@model WeiXin.Model.WallInfo
+@{
+    ViewBag.Title = "发布留言";
+    Layout = "~/Views/Shared/_EnterpriseWap.cshtml";
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/Shared.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+}
+<div data-role="page" id="page1">
+    <div data-role="content">
+        <form method="post" data-ajax="false">
+        <section class="i_list">
+            <ul class="i_shop_list" id="i_shop_list">
+                <li>你的建议是我们最大的动力! </li>
+                <li>姓名：@Model.Temp1
+                </li>
+                <li>
+                    <label for="Content">
+                        输入内容：<br />
+                    </label>
+                    @Html.TextAreaFor(model => model.Content, new
+                    {
+                        placeholder = "输入回复的内容"
+                    })
+                </li>
+                <li>
+                    <input id="but" name="but" onclick="javascript:return check();" type="submit" value="发送" />
+                </li>
+            </ul>
+        </section>
+        <script type="text/javascript">
+            function check() {
+                var content = $("#Content").val();
+                if (content.length > 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        </script>
+        </form>
+    </div>
+</div>

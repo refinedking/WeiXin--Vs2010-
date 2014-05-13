@@ -1,0 +1,187 @@
+﻿@*@model module_product
+@using WeiXin.Model;
+@{
+   
+    ViewBag.Title = Model.Title + "_" + Model.normal_class.Title + "-愉生活";
+    Layout = "~/Views/Shared/_EnterpriseWap.cshtml";
+}
+<!--头部-->
+<header class="ts1">
+    <ul class="topbar fl">
+        <li><a  class="icon_user"  href="@Url.Action("index", new { sessionid = ViewData["SessionID"] })">
+            <i></i>首页 </a></li>
+        @{ 
+            List<WeiXin.Model.normal_class> lists = ViewData["Top3Class"] as List<WeiXin.Model.normal_class>;
+            foreach (var item in lists)
+            {
+            <li><a class="icon_user" href="@Url.Action("ProductList", new { sessionid = ViewData["SessionID"], id = item.Id, ccid = item.ChannelId })">
+                <i></i>
+                @item.Title
+            </a></li>
+            }
+        }
+    </ul>
+</header>
+<!--主体-->
+<div class="main">
+    <div class="banner" id="banner">
+        @if (Model.IsImg == 0)
+        {
+            <img alt="@Model.Title"  style=" width:100%" src="/FileUpload/no.png" />
+        }
+        else
+        { 
+            <img style=" width:100%;"  src="/FileUpload/@Model.Img" alt="@Model.Title" />
+        }
+        <h1 class="p_title">
+            @Model.Title</h1>
+    </div>
+    <div class="p_buy clearfix" id="p_buy">
+        <span class="p_price">会员@(decimal.Parse(Model.Points.ToString()).ToString("C"))
+            <font class="p_price_pass">@(decimal.Parse(Model.Price0.ToString()).ToString("C"))
+            </font></span>
+        <!--检查库存-->
+        <a href="#" class="p_btn_buy"><span class="ts1">抢购</span> </a>
+    </div>
+    <div class="p_tn clearfix">
+        <p>
+            <!--span class="p_time">大于3天</span-->
+            <span class="p_num">0人已购买</span>
+        </p>
+        <p class="p_show_com clearfix">
+            <a href="#"><font>商品评论（0）</font><span class="p_comment clearfix">评分 <font class="p_com_num">
+                0.0</font><span class="p_com_b"><span class="p_com_t" style="width: 00%;"></span>
+                </span></span><span class="gt"></span></a>
+        </p>
+    </div>
+    <div class="p_mod p_short_desc">
+        <h2 class="p_mod_title">
+            商品描述</h2>
+        <div class="p_con">
+            <p>
+                <strong>@Model.Title</strong>
+                <br />
+                <span>@Model.Content</span>
+            </p>
+        </div>
+       <!--  <a href="#" class="p_to_desc">
+            查看图文详情 <span class="gt"></span></a>-->
+    </div>
+    <div class="p_mod p_seller_info">
+        <a href="#">查看商家信息 <font>共N家分店</font><span class="gt"></span></a>
+    </div>
+    @{
+        PagerList<module_product> listOther = ViewData["OtherPro"] as PagerList<module_product>;
+        if (listOther.Count > 0)
+        {
+        <section class="i_list">
+            <ul id="i_list_other">
+                @foreach (var item in listOther)
+                {
+                    <li><a href="#">
+                        @if (item.IsImg == 0)
+                        {
+                            <img alt="@item.Title"   src="/FileUpload/no.png" />
+                        }
+                        else
+                        { 
+                            <img   src="/FileUpload/@item.Img" alt="@item.Title" />
+                        }
+                        <h3>@item.Title</h3>
+                        <p class="tui_price ts2">
+                            <strong>@(decimal.Parse(item.Points.ToString()).ToString("C"))</strong> <del>@(decimal.Parse(item.Price0.ToString()).ToString("C"))</del>
+                            <span><cite>0</cite> 人购买 </span>
+                        </p>
+                        <div class="hot">
+                            <strong>热卖</strong>
+                        </div>
+                    </a></li>
+                }
+            </ul>
+        </section>
+        }
+    }
+    <div class="p_mod p_seller_info p_tips ts2">
+        <a href="javascript:void(0);" id="show_more">更多精彩抢购<span class="gt"></span></a></div>
+    <div class="p_mod p_tips clearfix">
+        <font class="p_ren">官方认证商铺</font><font class="p_tui">支持七天退换</font>
+    </div>
+</div>
+<script type="text/javascript">
+    window.onload = function () {
+        //价格与抢购按钮浮动
+        var f_obj = document.getElementById('p_buy');
+        var f_y = f_obj.offsetTop;
+        var f_class = f_obj.className;
+        document.onscroll = function () {
+            if (document.body.scrollTop > f_y) {
+                f_obj.className += " fixed_t";
+            } else {
+                f_obj.className = f_class;
+            }
+        }
+        img_size();
+    }
+
+    function img_size() {
+        var banner_box = document.getElementById("banner");
+        var _img = banner_box.getElementsByTagName('img');
+        _img[0].style.maxWidth = document.body.clientWidth + "px";
+        _img[0].style.maxHeight = (document.body.clientWidth) / 2 + "px";
+    }
+</script>
+@Html.Hidden("sid", ViewData["SessionID"].ToString())当前页码
+@Html.Hidden("page", ViewData["PageIndex"].ToString())当前页码
+@Html.Hidden("classid", ViewData["classid"].ToString()) 栏目ID
+@Html.Hidden("ccid", ViewData["ccid"].ToString())//频道
+@Html.HiddenFor(s => s.Id)//ID
+<script type="text/javascript">
+
+    $(function () {
+        $("#show_more").click(function () {
+            var ccid = $("#ccid").val();
+            var sid = $("#sid").val();
+            var _page = $("#page").val();
+            var classid = $("#classid").val();
+            var id = $("#Id").val();
+            $(this).html('加载中...');
+            $.ajax({
+                type: "POST",
+                data: { 'page': _page, 'id': id, 'classid': classid, "ccid": ccid },
+                url: "/Web/AjaxLoadProductMore",
+                dataType: "json",
+                success: function (info) {
+                    if (info.length > 0) {
+                        _page = _page * 1 + 1;
+                        $("#page").val(_page);
+                        var _tmp_html = '';
+                        $.each(info, function (x, y) {
+
+                            _tmp_html += '<li><a href="#">';
+                            if (y.IsImg == 0) {
+                                _tmp_html += '<img alt="' + y.Title + '"   src="/FileUpload/no.png" />';
+                            }
+                            else {
+                                _tmp_html += ' <img src="/FileUpload/' + y.Img + '" alt="' + y.Title + '" />';
+                            }
+
+                            _tmp_html += '<h3>' + y.Title + '</h3><p class="tui_price ts2"><strong>¥' + y.Points.toFixed(2) + '</strong><del>¥' + y.Price0.toFixed(2) + '</del>';
+                            _tmp_html += '<span><cite>0</cite>人购买</span></p><div class="hot"><strong>热卖</strong></div></a></li>';
+
+                        });
+
+                        $('#i_list_other').append(_tmp_html);
+                        $("#show_more").html("加载更多");
+                    } else {
+                        $("#show_more").html("已经加载完了...");
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        });
+    });
+</script>
+*@
+@Html.Raw(ViewData["content"].ToString()) 

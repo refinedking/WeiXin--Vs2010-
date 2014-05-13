@@ -1,0 +1,61 @@
+﻿@model WeiXin.BO.normal_EmpExtendsContract
+@{
+    ViewBag.Title = "插件配置";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+    ViewBag.backUrl = Url.Action("Extends");
+  
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+}
+ 
+<div id="divMain">
+    <div id="divRightPage">
+        <!--列表标题部分-->
+        <div class="tblTitle" onselectstart='return false;'>
+            <div>
+              @ViewData["title"].ToString() </div>
+        </div>
+        <div class="divReminders">
+            ★<label style="color: Red;">暂无说明</label><br />
+        </div>
+        <div class="divReminders">
+        </div>
+        @using (Html.BeginForm())
+        {    
+            <table class="formtable">
+               
+                 <tr>
+                    <th>
+                        自定义帮助信息
+                    </th>
+                    <td> @Html.TextAreaFor(model => model.Info
+                    , new {   style = "width:300px; height:80px" })   
+                      @Html.HiddenFor(model=>model.Id)
+                      @Html.HiddenFor(model => model.extendID)
+                        <span id="tipInfo" style="width: 200px;"></span>
+                    </td>
+                </tr>   <tr>
+                    <th>
+                        是否启用
+                    </th>
+                    <td>
+                          @Html.RadioButton("Enabled", 1, Model.Enabled == 1 ? true : false, new { id = "rdEnable" })
+                        <label for="rdEnable">
+                            启用</label>
+                        @Html.RadioButton("Enabled", 0, Model.Enabled == 0 ? true : false, new { id = "rdDisable" })
+                        <label for="rdDisable">
+                            禁用</label>
+                    </td>
+                </tr>
+            </table>
+           
+            <div class="divFormCtrl">
+                <!--页面按钮 如：提交、取消、下一步、关闭-->
+                 <input class="divBtn" type="submit" value="提 交" />
+                <a class="divBtn pageLoading" href="@ViewBag.BackUrl">关 闭</a>
+            </div>
+        }
+    </div>
+</div>

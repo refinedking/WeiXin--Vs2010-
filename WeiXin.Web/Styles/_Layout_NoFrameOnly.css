@@ -1,0 +1,351 @@
+﻿body
+{
+    background-color: #F8F8F8; /* background-color:Red;*/
+}
+/*总边框样式*/
+#divMain
+{
+    background-color: White;
+    padding: 1px;
+}
+/********************页面【左边】区域样式开始*****************/
+/*页面左边区域样式*/
+#divLeftPage
+{
+    overflow: auto;
+    cursor: default;
+    margin: 1px 0px 0px 1px;
+    width: 220px;
+    float: left;
+}
+#divLeftPage span
+{
+    white-space: nowrap;
+}
+#ulModule
+{
+    /* background-color: #F6F5F4;*/
+    height: 100%;
+    background-color: White;
+}
+#ulModule li
+{
+    /*background-color:White;*/
+    background-color: #F6F5F4;
+    padding: 10px 5px;
+    margin-bottom: 2px; /*模块分割*/
+    font-weight: 900;
+    color: #0095B7;
+}
+/*模拟树样式开始*/
+#ulModule .tree li
+{
+    background: url(../../Images/Shared/treeItem.gif) no-repeat 0px 2px;
+    padding: 0px; /*覆盖父级li内边距样式*/
+    line-height: 20px; /*li高度*/
+    cursor: pointer;
+}
+#ulModule .tree ul
+{
+    margin-top: 5px;
+    padding-left: 15px;
+}
+#ulModule .tree span:hover
+{
+    font-weight: 900;
+}
+#ulModule li li span
+{
+    padding-left: 18px;
+    font-weight: 100;
+    color: Black;
+}
+/*模拟树样式结束*/
+
+/*查询模块样式开始*/
+#tblQuery
+{
+    margin: 5px;
+    line-height: 25px;
+    color: Black;
+    font-weight: 100;
+}
+/*查询按钮样式*/
+#tblQuery .divBtn
+{
+    float: left;
+}
+#tblQuery .txtQuery
+{
+    width: 100px;
+}
+#tblQuery select
+{
+    cursor: pointer;
+    width: 106px;
+}
+
+/*查询模块样式结束*/
+
+/********************页面【左边】区域样式结束*****************/
+
+/********************页面【右边】区域样式开始*****************/
+#divRightPage
+{
+    margin: 1px 1px 3px;
+    overflow: hidden;
+    border: 1px solid #F8F8F8;
+}
+/********************页面【右边】区域样式开始*****************/
+
+/*页面子标题样式开始
+.divPageChildTitle
+{
+    cursor: default;
+    height: 40px;
+    background-color: #EFEEEC;
+}
+.divPageChildTitle .divTitleItem
+{
+    background: url(../../Images/Shared/edit_title_bg.gif) no-repeat;
+    margin-top: 8px;
+    float: left;
+    margin-left: 10px;
+    width: 90px;
+    height: 29px;
+    text-align: center;
+    color: White;
+    line-height: 25px;
+}*/
+/*页面子标题样式结束*/
+.divTitleCtrl
+{
+    width: 500px; /*防止IE6中，遮住列表标题*/
+    float: right;
+    margin: 8px 10px;
+}
+.divTitleCtrl .divBtn
+{
+    padding-left: 1px;
+    letter-spacing: 5px;
+}
+.divTitleCtrl .divBtn2
+{
+    padding-left: 1px;
+    letter-spacing: 3px;
+}
+
+/*分页部分样式开始*/
+.divPager
+{
+    font-size: 12px;
+    clear: both;
+    height: 27px;
+    line-height: 25px;
+    padding: 2px 0px;
+    cursor: default;
+    background-image: url("../../Images/Shared/page-bg.gif");
+    width: 100%;
+}
+.divPager .left
+{
+    margin-left: 5px;
+}
+.divPager span
+{
+    padding: 3px 5px;
+    color: #4194CC;
+}
+.divPager .right
+{
+    margin-right: 50px;
+}
+.divPager .right span
+{
+    border: 1px solid #BCC7C3;
+    cursor: pointer;
+}
+.divPager .right span:hover
+{
+    color: rgb(35, 61, 109);
+    background: url(../../Images/Shared/pager_a_bg.gif) 0px -1px repeat-x;
+}
+/*跳转到文本框样式*/
+.divPager .right input
+{
+    border: 1px solid gray;
+    width: 40px;
+    height: 19px;
+    line-height: 15px;
+    font-size: 14px;
+}
+/*分页部分样式结束*/
+
+
+/*table数据列表样式开始*/
+.divDataList
+{
+    overflow:auto;
+}
+#tblList
+{
+    width: 100%;
+    cursor: default;
+    position: relative;
+    border-collapse: collapse; /*边框宽度统一*/
+}
+#tblList th, #tblList td
+{
+    white-space: nowrap;
+    border: 1px solid #BBD3EB;
+}
+/*表头行样式*/
+#tblList th
+{
+    line-height: 25px;
+    text-align: center;
+    background: url(../../Images/Shared/tbg.gif) repeat-x;
+}
+/*数据列样式*/
+#tblList td
+{
+    padding-left: 5px;
+}
+/*复选框列样式*/
+#tblList .divCtrlList
+{
+    text-align: center;
+    width: 25px;
+    padding-left: 0px;
+}
+/*列表体行样式*/
+#tblList .tblItem
+{
+    background-color: White;
+    line-height: 32px;
+}
+/*列表体行光棒效果*/
+#tblList .tblItem:hover
+{
+    background-color: #D3DBE0;
+}
+/*table数据列表样式结束*/
+
+.tblTitle
+{
+    cursor: default;
+    height: 40px;
+    background-color: #EFEEEC;
+}
+
+.tblTitle div
+{
+    background: url(../../Images/Shared/edit_title_bg.gif) no-repeat;
+    margin-top: 8px;
+    position: absolute;
+    margin-left: 10px;
+    width: 90px;
+    height: 29px;
+    text-align: center;
+    color: White;
+    line-height: 25px;
+}
+
+
+/*操作提醒样式*/
+.divReminders
+{
+    padding-left: 20px;
+    line-height: 25px;
+    background-color: #FFF8D9;
+    margin-top: 3px;
+}
+
+/*编辑部分表单*/
+.tblForm
+{
+    padding: 15px;
+}
+.tblForm td
+{
+    vertical-align: middle;
+}
+.tblForm td select
+{
+    padding-left: 3px;
+    height: 26px;
+    line-height: 26px;
+    vertical-align:middle;
+    cursor: pointer;
+    border: 1px solid #D3D2D1;
+}
+.tblForm td select option
+{
+    vertical-align:middle;
+}
+.tblForm td input[type='text']
+{
+    padding-left: 3px;
+    height: 22px;
+    font-size: 12px;
+    border: 1px solid #D3D2D1;
+}
+/*编辑页面文本框，选择框获得焦点的时候改变样式*/
+.tblForm td input[type='text']:hover, .tblForm td select:hover, .tblForm td input[type='text']:focus, .tblForm td select:focus
+{
+    border: 1px solid #A3A2A1;
+}
+/*表单项内容样式（如：只读不可更改）*/
+/*.tblForm div
+{
+    background-color: #F3F2F1;
+    padding-left: 5px;
+    height: 25px;
+    line-height: 25px;
+    width: 132px;
+}*/
+/*表单项标题样式*/
+.tblForm .tdTitle
+{
+    white-space:nowrap;
+    vertical-align: top;
+    padding-top: 4px;
+    text-align: right;
+    padding-right: 5px;
+    color: #00AEAE;
+    font-weight: 500;
+}
+/*只读文本框样式*/
+.tblForm .iptReadOnly
+{
+    border: 0px;
+    background-color: #F8F8F7;
+}
+
+/*编辑部分提交按钮样式开始*/
+.divFormCtrl
+{
+    margin-top: 10px;
+    padding-left: 60px;
+    text-align: center;
+    height: 30px;
+}
+.divFormCtrl .divBtn
+{
+    float: left;
+}
+.divFormCtrl .divBtn2
+{
+    float: left;
+}
+
+
+/*验证错误样式*/
+.field-validation-error
+{
+    color: Red;
+}
+.input-validation-error
+{
+    border: 1px solid Red;
+}

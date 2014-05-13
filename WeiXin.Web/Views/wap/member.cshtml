@@ -1,0 +1,47 @@
+﻿@model WeiXin.BO.FansContract
+@{
+    ViewBag.Title = "我的信息-愉生活";
+    Layout = "~/Views/Shared/_wap.cshtml";
+}
+@section script
+{
+    <script src="@Url.Content("~/Scripts/PlugIn/My97DatePicker/WdatePicker.js")" type="text/javascript"></script>
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/Shared.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+}
+@using (Html.BeginForm())
+{
+        <table class="tblForm">
+        <tr>
+          <td class="tdTitle">
+                微信码：
+            </td>
+            <td>
+               @Model.FromUserName
+            </td>
+        </tr>
+        <tr>
+              <td class="tdTitle">     姓名：
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.TrueName, new { style="length:23",maxlength="10"})
+            </td>
+        </tr> 
+        <tr>
+              <td class="tdTitle">
+                生日：
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.UserBr, new { Class = "Wdate", Readonly = "readonly", onfocus = "WdatePicker({maxDate:'%y-%M-%d'})", style = "width:126.95px;" })
+            </td>
+        </tr>
+    </table>  
+    <div class="divFormCtrl">
+        <!--页面按钮 如：提交、取消、下一步、关闭-->
+        <input class="divBtn" type="submit" value="提 交" />
+        <a class="divBtn pageLWeiXinding" href="/wap/index?sessionid=@ViewData["sessionid"]">关 闭</a>
+    </div>
+}

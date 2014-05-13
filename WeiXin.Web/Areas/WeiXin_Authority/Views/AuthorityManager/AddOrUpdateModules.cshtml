@@ -1,0 +1,253 @@
+﻿@model WeiXin.BO.ModulesContract
+@using WeiXin.BO;
+@{
+    ViewBag.Title = "添加编辑模块";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BackUrl = Url.Action("ModuleList");
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+}
+@section script
+{
+    <script src="@Url.Content("~/Scripts/Shared/jquery.validate.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Shared/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/_Layout_NoFrame_Edit.js")" type="text/javascript"></script>
+    <script src="../../../../Scripts/Shared/jquery-1.4.1.js" type="text/javascript"></script>
+    <script defer="defer" type="text/javascript">
+        $(document).ready(function () {
+            $("#ModuleTypeID").change(function () {
+                var moduleType = $("#ModuleTypeID").select().val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetMenu")',
+                    data: { moduleTypeId: moduleType },
+                    dataType: "JSON",
+                    success: function (data) {
+                        $("#OneModuleID option").remove();
+                        $("#TwoModuleID option").remove();
+                        $("#OneModuleID").append('<option value="0">--请选择--</option>');
+                        $("#TwoModuleID").append('<option value="0">--请选择--</option>');
+                        $.each(eval(data), function (index, item) {
+                            $("#OneModuleID").append("<option value=" + item.ModuleID + ">" + item.ModuleName + "</option>");
+                        });
+                    }
+                });
+            });
+            $("#OneModuleID").change(function () {
+                var moduleType = $("#ModuleTypeID").select().val();
+                var parentId = $("#OneModuleID").select().val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetMenu")',
+                    data: { moduleTypeId: moduleType, parentId: parentId },
+                    dataType: "JSON",
+                    success: function (data) {
+                        $("#TwoModuleID option").remove();
+                        $("#TwoModuleID").append('<option value="0">--请选择--</option>');
+                        $.each(eval(data), function (index, item) {
+                            $("#TwoModuleID").append("<option  value=" + item.ModuleID + ">" + item.ModuleName + "</option>");
+                        });
+                    }
+                });
+            });
+            //显示图片
+            showImage();
+            //设置默认值
+            $("#ModuleIcon").change(function () {
+                var file = "";
+                //获取上传控件的值
+                var fileVal = $(this).val();
+                if (fileVal == "") {
+                    file = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../../../Images/ModuleImage/Default.jpg',sizingMethod='scale')";
+                } else {
+                    file = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + fileVal + "',sizingMethod='scale')";
+                }
+                document.getElementById("showImageDiv").style.filter = file;
+            });
+        })
+        function showImage() {
+            var file = "";
+            if ("@Model.ModuleIcon" == "") {
+                file = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../../../Images/ModuleImage/Default.jpg',sizingMethod='scale')";
+            } else {
+                file = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../../../../Images/ModuleImage/@Model.ModuleIcon',sizingMethod='scale')";
+            }
+            document.getElementById("showImageDiv").style.filter = file;
+        }
+    </script>
+}
+<div id="divMain">
+    <div id="divRightPage">
+        <!--列表标题部分-->
+        <div class="tblTitle" onselectstart='return false;'>
+            <div>
+                @(Model.ModuleID == 0 ? "新增模块" : "修改模块")</div>
+        </div>
+        <div class="divReminders">
+            <label style="color: Red;">
+                “模块域”：</label>即为项目结构中右键Areas文件夹然后添加区域所得的文件结构,如:OA_Authority、OA_Hrms,请以OA_系统名称的英文名称或者简写命名<br />
+            <label style="color: Red;">
+                “模块控制器”：</label>即为您添加的系统中的Controller名称<br />
+            <label style="color: Red;">
+                “模块方法”：</label>即为系统中该模块的数据列表页面的action方法名称
+        </div>
+        @using (Html.BeginForm("AddOrUpdateModules", "AuthorityManager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <table class="tblForm" cellspacing="10">
+                <tr>
+                    <td class="tdTitle">
+                        模块编号:
+                    </td>
+                    <td>
+                        @if (Model.ModuleID == 0)
+                        {
+                            <font color="red">自动添加</font>
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(model => model.ModuleID, new { Style = "border:0px; ", @readonly = "readonly" })
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        系统名称:
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(model => model.ModuleTypeID, ViewData["ModulesType"] as SelectList, "--请选择--", new { style = "width:135px;" })
+                        @Html.ValidationMessageFor(model => model.ModuleTypeID)
+                    </td>
+                    <td class="tdTitle">
+                        一级菜单:
+                    </td>
+                    <td>
+                        <select name="ModuleMenuID" id="OneModuleID" style="width: 130px;">
+                            @if (Model.ModuleID != 0)
+                            {
+                                @Html.Raw(ViewData["OneMenu"].ToString())
+                            }
+                            else
+                            {
+                                <option value="0">--请选择--</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        模块名称:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.ModuleName, new { style = "width:130px;" })
+                        @Html.ValidationMessageFor(model => model.ModuleName)
+                    </td>
+                    <td class="tdTitle">
+                        二级菜单:
+                    </td>
+                    <td>
+                        <select name="ModuleMenuID" id="TwoModuleID" style="width: 130px;">
+                            @if (Model.ModuleID != 0 && ViewData["TwoMenu"] != null)
+                            {
+                                @Html.Raw(ViewData["TwoMenu"].ToString())
+                            }
+                            else
+                            {
+                                <option value="0">--请选择--</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        模块域:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.ModuleAreas, new { style = "width:130px;" })
+                        @Html.ValidationMessageFor(model => model.ModuleAreas)
+                    </td>
+                    <td class="tdTitle">
+                        模块排序:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.ModuleOrder, new { style = "width:130px;" })
+                        @Html.ValidationMessageFor(model => model.ModuleOrder)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        模块控制器:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.ModuleController, new { style = "width:130px;" })
+                        @Html.ValidationMessageFor(model => model.ModuleController)
+                    </td>
+                    <td class="tdTitle">
+                        显示菜单:
+                    </td>
+                    <td>
+                        @Html.RadioButton("IsMenu", 0, Model.IsMenu == 0 ? true : false, new { id = "rdEnable" })
+                        <label for="rdEnable">
+                            显示</label>
+                        @Html.RadioButton("IsMenu", 1, Model.IsMenu == 1 ? true : false, new { id = "rdDisable" })
+                        <label for="rdDisable">
+                            不显示</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        模块方法:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.ModuleAction, new { style = "width:130px;" })
+                        @Html.ValidationMessageFor(model => model.ModuleAction)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        模块功能点:
+                    </td>
+                    <td>
+                        @{
+                            List<AuthorityContract> list = ViewData["Authority"] as List<AuthorityContract>;
+                            List<ModuleAuthorityListContract> m_List = ViewData["Module_Authority"] as List<ModuleAuthorityListContract>;
+                            for (int i = 0; i < list.Count; i++)
+                            {
+                                if (i % 3 == 0 && i != 0)
+                                { <br /> }
+
+@*判断是否选中*@
+                                string chked = m_List.Where(m => m.AuthorityID == list[i].AuthorityID).SingleOrDefault() != null ? "checked" : "";
+                                string chkId = "chkitem" + i;
+                            <input  id="@chkId" name="ModuleAuthority" type="checkbox" @chked value="@Html.Encode(list[i].AuthorityID)" />
+                            <label for="@chkId" style="margin-right: 10px;">@list[i].AuthorityName</label>
+                            }
+                        }
+                    </td>
+                    <td class="tdTitle">
+                        模块图标:
+                    </td>
+                    <td>
+                        <div id="showImageDiv" style="width: 100px; height: 100px;">
+                        </div>
+                        <input  id="ModuleIcon" name="ModuleIcon" style="width:200px;" type="file" value="@Model.ModuleIcon"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        模块说明:
+                    </td>
+                    <td>
+                        @Html.TextAreaFor(model => model.ModuleDescription, new { style = "width:385px;height:60px;" })
+                    </td>
+                </tr>
+            </table>
+            <div class="divFormCtrl">
+                <!--页面按钮 如：提交、取消、下一步、关闭-->
+                <input class="divBtn" type="submit" value="提 交" />
+                <a class="divBtn pageLoading" href="@ViewBag.BackUrl">关 闭</a>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿body
+{
+    font-size:10px;
+}
+th
+{
+    white-space:normal;
+    border:1px solid;
+}
+td
+{
+    border:1px solid;
+    white-space:normal;
+    text-align:right;
+    padding:0px 3px;
+}
+table
+{
+    border-collapse:collapse;
+}
+.thItem
+{
+    width:26px;
+}
+.thSum
+{
+    width:30px;
+}

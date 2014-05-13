@@ -1,0 +1,192 @@
+﻿/*-------------------------------------------------------
+// Copyright (C) 2011 重庆足下科技有限公司 版权所有。 
+// 文件名：  Shared.css
+// 功能描述：公共样式
+// 创建标识：刘新奇  2012-05-06
+// 修改标识：
+// 修改描述：
+//------------------------------------------------------*/
+/*所有页面公共样式*/
+body
+{
+    margin: 0px auto;
+    font-size: 14px;
+    font-family: 微软雅黑;
+    background-color: White; /*公共背景颜色样式*/
+}
+a
+{
+    color: Blue;
+    text-decoration: none;
+}
+.new
+{
+    background: url(../Images/Shared/new.gif) left center no-repeat;
+    padding-left: 20px;
+}
+.Wdate
+{
+    cursor: pointer;
+}
+ul, li
+{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+.left
+{
+    float: left;
+}
+.right
+{
+    float: right;
+}
+.keyPoint
+{
+    color: Red;
+}
+/*模拟按钮样式*/
+.divBtn
+{
+    background: transparent url(../../Images/Shared/edit_btn_bg.gif) no-repeat;
+    border: 0px;
+    color: White;
+    height: 24px;
+    width: 54px;
+    text-align: center;
+    line-height: 22px;
+    cursor: pointer;
+    margin-left: 10px;
+    display: block;
+    float: right;
+}
+.divBtn2
+{
+    background: transparent url(../../Images/Shared/edit_btn_bg2.gif) no-repeat;
+    border: 0px;
+    color: White;
+    height: 24px;
+    width: 81px;
+    text-align: center;
+    line-height: 22px;
+    cursor: pointer;
+    margin-left: 10px;
+    display: block;
+    float: right;
+}
+/*无数据提示样式*/
+.nodata
+{
+    margin: 0px auto;
+    width: 318px;
+    height: 73px;
+    background: url(../../Images/Shared/data_error.gif) no-repeat;
+}
+
+/*页面子标题样式开始*/
+.divPageChildTitle
+{
+    cursor: default;
+    height: 40px;
+    background-color: #EFEEEC;
+}
+.divPageChildTitle .divTitleItem
+{
+    background: url(../../Images/Shared/edit_title_bg.gif) no-repeat;
+    margin-top: 8px;
+    float: left;
+    margin-left: 10px;
+    min-width: 90px;
+    height: 29px;
+    text-align: center;
+    color: White;
+    line-height: 25px;
+}
+.divPageChildTitle .divTitleItem a
+{
+    color: White;
+}
+
+.divPageChildTitle .divTitleItem2
+{
+    background: url(../../Images/Shared/edit_title_bg.png) no-repeat;
+    margin-top: 8px;
+    float: left;
+    margin-left: 10px;
+    min-width: 40px;
+    height: 29px;
+    text-align: center;
+    color: White;
+    line-height: 25px;
+}
+.divPageChildTitle .divTitleItem2 a
+{
+    color: White;
+}
+.divPageChildTitle .Other
+{
+    height: 24px;
+}
+/*批量操作按钮区样式*/
+.divTitleCtrl
+{
+    float: right;
+    margin: 8px 10px;
+}
+/*页面子标题样式结束*/
+
+
+
+
+/*操作提醒样式*/
+.divReminders
+{
+    padding-left: 20px;
+    line-height: 25px;
+    background-color: #FFF8D9;
+    margin: 3px 0px;
+}
+/*滚动条样式*/
+.scroll
+{
+    overflow: auto;
+}
+/*水印效果*/
+.water
+{
+    background: url(../Images/index_log_watermark.png) repeat;
+}
+
+/*查询模块样式开始*/
+#tblQuery
+{
+    margin: 5px;
+    line-height: 25px;
+    color: Black;
+    font-weight: 100;
+}
+/*查询按钮样式*/
+#tblQuery .divBtn
+{
+    float: left;
+}
+#tblQuery input[type='text']
+{
+    width: 100px;
+}
+#tblQuery select
+{
+    cursor: pointer;
+    width: 106px;
+}
+.disSelect
+{
+    cursor:default;
+}
+td, th
+{
+    white-space: nowrap;
+}
+
+/*查询模块样式结束*/

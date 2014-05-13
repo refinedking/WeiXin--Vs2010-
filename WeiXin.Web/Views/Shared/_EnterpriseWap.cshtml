@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@ViewBag.Title</title>
+ 
+    <link href="@Url.Content("~/Styles/Enterprise/style.css")" rel="stylesheet" type="text/css" />   @RenderSection("css", false)
+    <script src="@Url.Content("~/Scripts/Shared/jquery-1.4.1.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Shared/jquery.tools.pack.js")" type="text/javascript"></script> 
+    <script src="@Url.Content("~/Scripts/Shared/PlugIn/Zuxia2013.js")" type="text/javascript"></script> 
+  @RenderSection("script", false)
+</head>
+<body>
+    @RenderBody()
+    <!--底部-->
+    <footer>
+	<p>&copy; 2013 重庆足下科技有限公司</p>
+	<p><a href="#">关于我们</a><a href="#">联系我们</a></p>
+</footer>
+    <div class="bottom_margin">
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.BO\bin\Debug\WeiXin.BO.dll
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.BO\bin\Debug\WeiXin.BO.pdb
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.BO\bin\Debug\WeiXin.Core.dll
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.BO\bin\Debug\WeiXin.Core.pdb
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.BO\obj\Debug\WeiXin.BO.csprojResolveAssemblyReference.cache
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.BO\obj\Debug\WeiXin.BO.dll
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.BO\obj\Debug\WeiXin.BO.pdb
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.BO\bin\Debug\WeiXin.BO.dll
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.BO\bin\Debug\WeiXin.BO.pdb
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.BO\bin\Debug\WeiXin.Core.dll
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.BO\bin\Debug\WeiXin.Core.pdb
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.BO\obj\Debug\ResolveAssemblyReference.cache
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.BO\obj\Debug\WeiXin.BO.dll
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.BO\obj\Debug\WeiXin.BO.pdb

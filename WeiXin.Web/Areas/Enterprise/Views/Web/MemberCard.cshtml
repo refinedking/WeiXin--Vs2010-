@@ -1,0 +1,115 @@
+﻿@model WeiXin.Model.CardConfig
+@using WeiXin.Model
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "我的会员卡";
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/Enterprise/card.css")" rel="stylesheet" type="text/css" />
+}
+@section script
+{<script src="@Url.Content("~/Styles/Enterprise/mc.js")"  type="text/javascript"></script>
+    <script type="text/ecmascript">
+        $(function () {
+            $(".card").toggle(function () {
+                $(this).addClass("flip");
+            }, function () {
+                $(this).removeClass("flip");
+            });
+        });
+    </script>
+}
+@{
+    FansToCard ftc = ViewData["ftc"] as FansToCard;
+    
+}
+<div id="mappContainer">
+    <section class="cc_shop2" id="card_ctn">
+        <div class="bk1">
+        </div>
+        <div class="cont">
+            <div class="card">
+                <div class="front">
+                    <figure class="fg" style="  background-image:url(/FileUpload/@Model.CardImg)">
+                        <figcaption class="fc">
+                            <span class="cname" style="color: #957426;">@Model.CardName</span> <span class="t"
+                                style="color: #aaa; text-shadow: #000 0 -1px;">@Model.employeeInfo.Name</span>
+                            @if (ftc != null)
+                           
+                            {     <span class="n" style="color: rgb(170, 170, 170); text-shadow: rgb(0, 0, 0) 0px -1px;">No.@ftc.Cardid</span>}
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="back">
+                    <figure class="fg" style="background-image: url(/Styles/Enterprise/images/card_back.jpg);">
+                        <div class="backtag">
+                            <p style="color: #ffffff">
+                                 </p>
+                        </div>
+                        <div class="info">
+                            <p class="addr">
+                                @Model.CardAdd</p>
+                            <p class="tel">
+                                <a class="autotel" href="javascript:void(0)" data-telnum="tel:@Model.CardTel">@Model.CardTel</a></p>
+                        </div>
+                        <p class="keywords">
+                            @Model.employeeInfo.Name</p>
+                    </figure></div>
+            </div>
+        </div>
+    </section>
+    <div class="vs2" id="shop_lst" style="">
+      <article class="shoptype"  >
+            <h1>
+                企业信息</h1>
+            <div class="lst">
+                <ul id="lstname0">
+                    <li data-ajax-act="5"><a><em>企业地址：@Model.CardAdd</em></a></li>
+                    <li data-ajax-act="5" >   
+                
+                  <a  href="tel:@Model.CardTel">咨询电话: @Model.CardTel</a> </li> </ul>
+            </div>
+        </article>
+        @*    <article class="shoptype" id="type0">
+            <h1>
+                尊享会员，实惠多多</h1>
+            <div class="lst">
+            <ul id="lstname0">
+                    <li data-ajax-act="5"><a><em></em></a></li> </ul>
+            </div>
+        </article>*@
+        @if (ftc == null)
+        {
+            using (Html.BeginForm())
+            {
+            <div id="applyBtn" class="footFix">
+            <a href="javascript:void(0)">立即获取</a> </div>
+            }
+        }
+        else
+        { 
+            <h3 style="color: red; margin-top: 22px; margin-bottom: 0px;">
+                您已经成为【@Model.employeeInfo.Name】的尊享会员</h3>
+            <article class="shoptype" id="type1">
+                <h1>
+                    会员卡信息</h1>
+                <div class="lst">
+                    <ul id="lstname1">
+                        <li><a href="@Url.Action("Member", new { sessionid = ViewData["sessionid"].ToString(), UserID = ViewData["userid"].ToString() })"><em>个人资料</em></a></li></ul>
+                </div>
+            </article>
+        }
+       
+       
+        @Html.Hidden("userid", ViewData["userid"].ToString())
+        @Html.HiddenFor(a => a.id)
+        @Html.Hidden("sessionid", ViewData["sessionid"].ToString())
+     
+    </div>
+    <footer style="height: 20px;">
+    </footer></div>
+<article id="footer">
+    <p class="page-url" style="display: none;">
+        <a href="#" target="_blank" class="page-url-link">此功能由微盟平台提供</a></p>
+</article>

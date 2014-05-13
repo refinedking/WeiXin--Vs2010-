@@ -1,0 +1,50 @@
+﻿@*@model List<module_product>
+@using WeiXin.Model;
+@{
+    ViewBag.Title = "栏目列表";
+    Layout = "~/Views/Shared/_EnterpriseWap.cshtml";
+}
+<!--头部-->
+<header class="ts1">
+    <ul class="topbar fl">
+        <li><a  class="icon_user"  href="@Url.Action("index", new { sessionid = ViewData["SessionID"] })">
+            <i></i>首页 </a></li>
+        @{ 
+            List<WeiXin.Model.normal_class> lists = ViewData["Top3Class"] as List<WeiXin.Model.normal_class>;
+            foreach (var item in lists)
+            {
+            <li><a class="icon_user" href="@Url.Action("ProductList", new { sessionid = ViewData["SessionID"], id = item.Id, ccid = item.ChannelId })">
+                <i></i>
+                @item.Title
+            </a></li>
+            }
+        }
+    </ul>
+</header>   <section class="i_list">
+            <ul id="i_list_other">
+                @foreach (var item in Model)
+                {
+                    <li><a href="#">
+                        @if (item.IsImg == 0)
+                        {
+                            <img alt="@item.Title"   src="/FileUpload/no.png" />
+                        }
+                        else
+                        { 
+                            <img   src="/FileUpload/@item.Img" alt="@item.Title" />
+                        }
+                        <h3>@item.Title</h3>
+                        <p class="tui_price ts2">
+                            <strong>@(decimal.Parse(item.Points.ToString()).ToString("C"))</strong> <del>@(decimal.Parse(item.Price0.ToString()).ToString("C"))</del>
+                            <span><cite>0</cite> 人购买 </span>
+                        </p>
+                        <div class="hot">
+                            <strong>热卖</strong>
+                        </div>
+                    </a></li>
+                }
+            </ul>
+        </section>
+ <div class="clear">
+</div>*@
+ @Html.Raw(ViewData["content"].ToString()) 

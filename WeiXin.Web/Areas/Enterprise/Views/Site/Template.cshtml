@@ -1,0 +1,157 @@
+﻿@model  PagerList<normal_template>
+@using WeiXin.Model;
+@using WeiXin.BO;
+@{
+    ViewBag.Title = "模版列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section css
+{<link href="@Url.Content("~/Styles/Enterprise/common.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Styles/Shared.css")" rel="stylesheet" type="text/css" />
+}
+@using (Html.BeginForm())
+{ 
+    <div id="divMain">
+        <div id="divRightPage">
+            <!--列表标题部分-->
+            <div class="divPageChildTitle " onselectstart='return false;'>
+                <div class="topnav">
+                    <ul id="topnavbar">
+                        <li class="topmenu"><a href="javascript:void(0);" id="templateadd" class="top_link">
+                            <span class="down">增加模板</span></a>
+                            <ul class="sub">
+                                <li><a class="fly" href='javascript:void(0);'>系统类</a>
+                                    <ul>
+                                        <li><a href='@Url.Action("template_edit", new { type = "system", stype = "index", id = 0 })'>
+                                            系统首页</a></li>
+                                    </ul>
+                                </li>
+                                @{List<normal_modules> listM = ViewData["Model"] as List<normal_modules>;
+
+                                  foreach (var item in listM)
+                                  {
+                                    <li><a class="fly" href='javascript:void(0);'>@(item.Title)类</a>
+                                        <ul>
+                                            <li><a href='@Url.Action("template_edit", new { type = item.Type, stype = "channel", id = 0 })'>
+                                                频道页</a></li>
+                                            <li><a   href='@Url.Action("template_edit", new { type = item.Type, stype = "class", id = 0 })'>
+                                                栏目页</a></li>
+                                            <li><a href='@Url.Action("template_edit", new { type = item.Type, stype = "content", id = 0 })'>
+                                                内容页</a></li>
+                                        </ul>
+                                    </li>
+                                  }
+                                }
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+            @if (Model.Count == 0)
+            {
+                <div class="nodata" onselectstart='return false;'>
+                    <!--无数据提示层-->
+                </div>
+            }
+            else
+            {
+                <div class="divDataList">
+                    <!--数据列表-->
+                    <table id="tblList" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th class="SerialNumber">
+                            </th>
+                            <th style="min-width: 150px;">
+                                模版名称
+                            </th>
+                            <th style="min-width: 200px;">
+                                模版类型
+                            </th>
+                            <th style="min-width: 200px;">
+                                操作
+                            </th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            
+                            <tr class="tblItem" style="font-size: 14px;">
+                                <td>
+                                    @(Model.IndexOf(item) + 1)
+                                </td>
+                                <td>
+                                    @item.Title
+                                </td>
+                                <td>
+                                    @item.Type - @item.SType
+                                </td>
+                                <td>
+                                    @{  
+                           
+                            List<AuthorityContract> list_PageAuthority = ViewData["list_PageAuthority"] as List<AuthorityContract>;
+
+                            foreach (WeiXin.BO.AuthorityContract authority in list_PageAuthority)
+                            {
+                                switch (authority.AuthorityTag)
+                                {
+                                    case "GN_EDIT":
+                                        if (item.eid == null)
+                                        {
+                                        <font color='#cccccc'>在线编辑</font>
+                                        <font color='#cccccc'>设置默认</font>
+
+                                        }
+                                        else
+                                        {
+                                            //0?type=system&stype=index
+                                        <a  href='@Url.Action("template_edit", new { id = item.Id, type = item.Type, stype = item.SType })'>
+                                            在线编辑</a>
+                                            if (item.IsDefault == 0)
+                                            {
+                                        <a  href='@Url.Action("SetDef", new { id = item.Id, type = item.Type, stype = item.SType })'>
+                                            设置默认</a>
+                                            }
+                                            else
+                                            { 
+                                        <font color='#cccccc'>设置默认</font>
+                                            }
+                                        }
+                                        break;
+                                    case "GN_DELETE":
+                                        if (item.eid == null)
+                                        {
+                                        <font color='#cccccc'>删 除</font>
+
+                                        }
+                                        else
+                                        {
+                                            if (item.IsDefault == 0)
+                                            {  <a  href='@Url.Action("Delete", new { id = item.Id, operateType = "del" })'> 删 除</a>}
+                                            else
+                                            { <font color='#cccccc'>删 除</font>
+
+                                            }
+
+                                        }
+                                        break;
+
+                                }
+                            }
+                                    }
+                                </td>
+                            </tr>
+                           
+                        }
+                    </table>
+                </div>
+            }
+            <!--列表分页部分-->
+            <div class='divPager' onselectstart='return false;'>
+                <!--分页层-->
+                @Html.Raw(Model.PagerHtmlA)
+            </div>
+        </div>
+    </div>
+}

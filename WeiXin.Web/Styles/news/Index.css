@@ -1,0 +1,198 @@
+﻿/* File Created: 七月 14, 2012 */
+/***********************布局层样式***************************/
+.siteMapDiv
+{
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    line-height: 30px;
+}
+/*.Content_Top
+{
+    height: 300px;
+    margin-top: 5px;
+}*/
+.Content_left
+{
+    width: 720px;
+    height: auto;
+    float: left;
+}
+.Content_left .layout
+{
+   min-height:100px;   
+   height: 200px;
+   margin-bottom: 5px;
+}
+.Content_left .newTable
+{
+    width: 100%;
+    min-height:300px;
+    height: auto;
+    float: left;
+    margin:3px 3px 0px 0px;
+    padding:0px 0px 0px 5px;
+}
+.Content_left .newTable1
+{
+    width: 330px;
+    height: 280px;
+    float: left;
+    position:relative;
+    overflow:hidden;
+    margin: 5px 5px 0px 0px;
+    padding: 7px 7px;
+}
+.Content_right
+{
+    width: 252px;
+    height: auto;
+    padding: 0px 2px 0px 0px;
+    float: right;
+}
+.Content_right .NoticeDIV
+{
+    height: 28px;
+    line-height: 28px;
+    background-image: url('../../../../Images/newsImage/newImage/placardbg.gif');
+    position:relative;
+    overflow:hidden;
+}
+.Content_right .NoticeDIV ul
+{
+     margin:0px 0px 0px 55px;
+}
+.Content_right .newTable
+{
+    margin-top: 10px;
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+}
+.Content_right .newTable li
+{
+     width:100%;
+     height:25px;
+     line-height:25px;
+     overflow:hidden;
+     text-overflow:ellipsis;
+     white-space:nowrap;
+     border-bottom:1px dashed #ddd;
+}
+
+.Context_Middle
+{
+    margin-top: 5px;
+    width: 100%;
+}
+.Content_Buttom
+{
+    height: auto;
+}
+.Content_Buttom .showNews
+{
+    height: 300px;
+}
+/*****************显示新闻的DIV********************/
+.newTable
+{
+    border: 1px #B8CAD8 solid;
+}
+.title
+{
+    width: 100%;
+    height: 31px;
+    background-image: url('../../../../Images/newsImage/newImage/box_title_bg.gif');
+    background-repeat: repeat-x;
+}
+.imageSpan
+{
+    width: 65px;
+    height: 25px;
+    float: left;
+    display: block;
+    text-align: center;
+    margin-top: 1px;
+    margin-left: 20px;
+    line-height: 25px;
+    background-color: White;
+    background-repeat: no-repeat; /*background-image: url('../../../../Images/newsImage/newImage/index-3.gif');*/
+}
+.moreSpan
+{
+    width: 50px;
+    float: right;
+    line-height: 25px;
+}
+/**************UL 样式*********************/
+ul
+{
+    list-style: none;
+    padding: 0px;
+}
+ul li
+{
+    margin-left: 0px;
+}
+/**************截取图片*********************/
+.Content_right .imgPosition
+{
+    background-image: url('../../Images/newsImage/newImage/rank_bg.gif');
+    background-position: 0px 32px;
+    margin: 5px 6px 0px 5px;
+    text-align: center;
+    height: 16px;
+    line-height:16px;
+    width: 20px;
+    float: left;
+}
+.Content_right .imgPosition2
+{
+    background-image: url('../../Images/newsImage/newImage/rank_bg.gif');
+    background-position: 0px 0px;
+    margin: 5px 6px 0px 5px;
+    text-align: center;
+    height: 16px;
+    line-height:16px;
+    width: 20px;
+    float: left;
+}
+/**************分页部分*********************/
+.divPager
+{
+    clear: both;
+    height: 25px;
+    line-height: 25px;
+    cursor: default;
+    background-image: url("../../Images/Shared/page-bg.gif");
+    width: 100%;
+}
+.divPager .left
+{
+    margin-left: 5px;
+    float: left;
+}
+.divPager span
+{
+    line-height: 25px;
+    padding: 1px 3px;
+    color: #4194CC;
+}
+.divPager .right span
+{
+    border: 1px solid #BCC7C3;
+    cursor: pointer;
+}
+.divPager .right span:hover
+{
+    color: rgb(35, 61, 109);
+    background: url(../../Images/Shared/pager_a_bg.gif) repeat-x;
+}
+/*跳转到文本框样式*/
+.divPager .right input
+{
+    width: 20px;
+    height: 14px;
+    line-height: 14px;
+    font-size: 12px;
+}

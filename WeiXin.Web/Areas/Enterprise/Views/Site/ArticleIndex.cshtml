@@ -1,0 +1,27 @@
+﻿@model List<normal_channel>
+@using WeiXin.Model;
+@{
+    ViewBag.Title = "ArticleIndex";
+    Layout = "~/Views/Shared/_IndexLayout.cshtml";
+}
+<div id="divMain">
+    <div id="divLeftPage" style="width: 170px;">
+        <ul id="ulModule">
+            <li class="tree"><span>⊙ 内容管理</span>
+                <ul class="scroll">
+                    @foreach (var item in Model)
+                    {
+                   
+                        <li class="pageLoading" url="@(item.Type)List?ccid=@item.Id">
+                            <div>
+                                @item.Title</div>
+                        </li>  
+                    }
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="divRightPage">
+        <iframe id="RightPage" style="display: none;" frameborder="0" scrolling="no"></iframe>
+    </div>
+</div>

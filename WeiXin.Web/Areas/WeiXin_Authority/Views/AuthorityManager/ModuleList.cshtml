@@ -1,0 +1,233 @@
+﻿@model WeiXin.Core.PageHelper<WeiXin.BO.ModulesContract>
+@using WeiXin.BO
+@{
+    ViewBag.Title = "模块管理";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+}
+@section script
+{
+    <script src="@Url.Content("~/Scripts/_Layout_NoFrame.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            //查询菜单
+            $("#ModuleTypeID").change(function () {
+                var moduleType = $("#ModuleTypeID").select().val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetMenu")',
+                    data: { moduleTypeId: moduleType },
+                    dataType: "JSON",
+                    success: function (data) {
+                        $("#OneModuleID option").remove();
+                        $("#TwoModuleID option").remove();
+                        $("#OneModuleID").append('<option value="0">--请选择--</option>');
+                        $("#TwoModuleID").append('<option value="0">--请选择--</option>');
+                        $.each(eval(data), function (index, item) {
+                            $("#OneModuleID").append("<option value=" + item.ModuleID + ">" + item.ModuleName + "</option>");
+                        });
+                    }
+                });
+            });
+            $("#OneModuleID").change(function () {
+                var moduleType = $("#ModuleTypeID").select().val();
+                var parentId = $("#OneModuleID").select().val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetMenu")',
+                    data: { moduleTypeId: moduleType, parentId: parentId },
+                    dataType: "JSON",
+                    success: function (data) {
+                        $("#TwoModuleID option").remove();
+                        $("#TwoModuleID").append('<option value="0">--请选择--</option>');
+                        $.each(eval(data), function (index, item) {
+                            $("#TwoModuleID").append("<option  value=" + item.ModuleID + ">" + item.ModuleName + "</option>");
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
+@using (Html.BeginForm())
+{
+    <div id="divMain">
+        <div id="divLeftPage">
+            <ul id="ulModule">
+                <li><span>⊙ 模块信息查询</span>
+                    <table id="tblQuery">
+                        <tr>
+                            <td>
+                                菜单名称：
+                            </td>
+                            <td>
+                                @Html.TextBox("select_ModuleName", @ViewData["ModuleName"], new { @class = "txtQuery" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                系统名称：
+                            </td>
+                            <td>
+                                @Html.DropDownList("ModuleTypeID", ViewData["ModulesType"] as SelectList, "--请选择--")
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                模块名称：
+                            </td>
+                            <td>
+                                <select name="ModuleMenuID" id="OneModuleID">
+                                    <option value="0">--请选择--</option>
+                                    @Html.Raw(ViewData["OneMenu"] == null ? "" : ViewData["OneMenu"].ToString())
+                                </select>
+                                <br />
+                                <select name="ModuleMenuID" id="TwoModuleID">
+                                    <option value="0">--请选择--</option>
+                                    @Html.Raw(ViewData["TwoMenu"] == null ? "" : ViewData["TwoMenu"].ToString())
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td colspan="2">
+                                <input type="submit" class="divBtn" value="查 询" />
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+        </div>
+        <div id="divRightPage">
+            <!--列表标题部分-->
+            <div class="divPageChildTitle" onselectstart='return false;'>
+                <div class="divTitleItem">
+                    模块列表</div>
+                <div class="divTitleCtrl">
+                    @{
+                               List<AuthorityContract> list_PageAuthority = ViewData["list_PageAuthority"] as List<AuthorityContract>;
+
+                               foreach (AuthorityContract authority in list_PageAuthority)
+                               {
+                                   switch (authority.AuthorityTag)
+                                   {
+                                       case "GN_ADD":
+
+                        <a  eventtype="add" class="divBtn" href='@Url.Action("AddOrUpdateModules", "AuthorityManager", new { area = "WeiXin_Authority", actionTag = "add" })'>
+                            添 加</a>
+                                                            break;
+                                       case "GN_DELETE":
+                        <a eventtype="del" cfmMsg="您确定要删除这些模块吗？" class="divBtn" href='@Url.Action("DeleteModules", "AuthorityManager", new { area = "WeiXin_Authority" })'>
+                            删 除</a>
+                                                                                 break;
+                                   }
+                               }
+
+                    }
+                    <!--页面按钮 如：提交、取消、下一步、关闭-->
+                    <a eventtype="add"  class="divBtn" href='@Url.Action("ModuleList", "AuthorityManager", new { area = "WeiXin_Authority" })'>
+                        刷 新</a>
+                          
+                </div>
+            </div>
+            <div class="divReminders">
+                对模块的状态设置将在用户下次登录后生效
+            </div>
+            @if (Model.Count == 0)
+            {
+                <div class="nodata" onselectstart='return false;'>
+                    <!--无数据提示层-->
+                </div>
+            }
+            else
+            {
+                <div class="divDataList">
+                    <!--数据列表-->
+                    <table id="tblList" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th class="SerialNumber">
+                            </th>
+                            <!--复选框列(宽度固定为20px)-->
+                            <th>
+                                <input type="checkbox" class="chkAll" />
+                            </th>
+                            <th style="min-width: 120px;">
+                                模块名称
+                            </th>
+                            <th style="min-width: 90px;">
+                                模块域
+                            </th>
+                            <th style="min-width: 90px;">
+                                控制器
+                            </th>
+                            <th style="min-width: 90px;">
+                                方法名
+                            </th>
+                            <th style="min-width: 40px;">
+                                状态
+                            </th>
+                            <th style="min-width: 150px;">
+                                操作
+                            </th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="tblItem">
+                                <td>
+                                    @(Model.IndexOf(item) + 1)
+                                </td>
+                                <td class="divCtrlList">
+                                    <input type="checkbox" class="chkItem" value='@item.ModuleID'  />
+                                </td>
+                                <!--宽度根据情况用行内样式设置-->
+                                <td>
+                                    @Html.ActionLink(item.ModuleName, "ModulesDetails", new { area = "WeiXin_Authority", id = item.ModuleID })
+                                </td>
+                                <td>
+                                    @Html.Encode(item.ModuleAreas)
+                                </td>
+                                <td>
+                                    @Html.Encode(item.ModuleController)
+                                </td>
+                                <td>
+                                    @Html.Encode(item.ModuleAction)
+                                </td>
+                                <td>
+                                    @Html.Raw(item.IsMenu == 0 ? "显示" : "<font color='red'>不显示</font>")
+                                </td>
+                                <td>
+                                    <a  href='@Url.Action("UpdateModuleStatus", "AuthorityManager", new { area = "WeiXin_Authority", id = item.ModuleID })'>
+                                        启用/禁用</a>
+                                    @foreach (var authority in list_PageAuthority)
+                                    {
+                                        string isEnable = item.IsMenu == 0 ? "" : "disabled";
+                                        switch (authority.AuthorityTag)
+                                        {
+                                            case "GN_EDIT": <a @isEnable href='@Url.Action("AddOrUpdateModules", "AuthorityManager", new { area = "WeiXin_Authority", id = item.ModuleID })'>修
+                                                改</a>
+                                                                          break;
+                                            case "GN_DELETE":
+                                        <a @isEnable cfmMsg="您确定要删除模块【@item.ModuleName】吗？" href='@Url.Action("DeleteModules", "AuthorityManager", new { area = "WeiXin_Authority", id = item.ModuleID })'>
+                                            删 除</a>
+                                                                                            break;
+                                        }
+                                    }
+                                  
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            }
+            <!--列表分页部分-->
+            <div class='divPager' onselectstart='return false;'>
+                <!--分页层-->
+                @Html.Raw(Model.PagerHtmlA)
+            </div>
+        </div>
+    </div>
+}

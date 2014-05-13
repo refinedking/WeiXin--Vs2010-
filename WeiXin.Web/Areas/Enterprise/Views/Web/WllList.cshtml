@@ -1,0 +1,79 @@
+﻿@model PagerList<WallInfo>
+@using WeiXin.Model;
+@{
+    ViewBag.Title = "建议墙";
+    Layout = "~/Views/Shared/_EnterpriseWap.cshtml";
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/Enterprise/wallList.css")" rel="stylesheet" type="text/css" />
+}
+<!--头部-->
+<header>
+    <span></span>
+</header>
+<div class="bottom_bt">
+    <span class="morebtn "><a href='@Url.Action("SendWall", new { sessionid = ViewData["sessionid"].ToString(), UserID = ViewData["UserID"].ToString() })'>
+        发布留言</a></span>
+</div>
+<ul id="userlist" class="list">
+    ﻿@foreach (var item in Model)
+     {  <li><a>
+         <div class="topinfo">
+             <div class="pro">
+                 <span class="name"></span><span class="area">@item.Content </span>
+             </div>
+         </div>
+         <div class="moreinfo">
+             <span class="simple"><strong>姓名：</strong> @item.Temp1 </span><span class="tags"><strong>
+                 时间：</strong>@item.date</span>
+         </div>
+     </a></li>
+         
+     }
+</ul>
+@Html.Hidden("sid", ViewData["SessionID"].ToString())@*当前页码*@
+@Html.Hidden("page", ViewData["PageIndex"].ToString())@*当前页码*@ <a class="more" id="show_more"
+    href="javascript:void(0);">加载更多</a>
+<div class="clear">
+</div>
+<script type="text/javascript">
+
+    $(function () {
+
+        $('#show_more').click(function () {
+        
+            var sid = $("#sid").val();
+            var _page = $("#page").val();
+            $(this).html('加载中...');
+            $.ajax({
+                type: "POST",
+                data: { 'page': _page, "sessionid": sid },
+                url: "/Web/AjaxGetWall",
+                dataType: "json",
+                success: function (info) {
+                  
+                    if (info.length > 0) {
+                      
+                        _page = _page * 1 + 1;
+                        $("#page").val(_page);
+                        var _tmp_html = '';
+                        $.each(info, function (x, y) {
+
+                            _tmp_html += '  <li><a> <div class="topinfo"><div class="pro"><span class="name"></span><span class="area">' + y.Content + '</span></div></div> <div class="moreinfo">';
+                            _tmp_html += '<span class="simple"><strong>姓名：</strong> ' + y.Temp1 + ' </span><span class="tags"><strong>时间：</strong>' + y.date + '</span> </div> </a></li>';
+                        });
+
+                        $('#userlist').append(_tmp_html);
+                        $("#show_more").html("加载更多");
+                    } else {
+                        $("#show_more").html("已经加载完了...");
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $("#show_more").html("加载出错啦~");
+                }
+            });
+        });
+    });
+</script>

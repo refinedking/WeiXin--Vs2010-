@@ -1,0 +1,91 @@
+﻿@model WeiXin.BO.normal_classContract
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BackUrl = Url.Action("ClassList", new { ccid = ViewData["ccid"] });
+    ViewBag.Title = "AddClass";
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+}
+@section script
+{
+    <script src="@Url.Content("~/Scripts/_Layout_NoFrame_Edit.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.tools.pack.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.tip-r').jtip({ gravity: 'r', fade: false });
+            $.formValidator.initConfig({ onError: function (msg) { alert(msg); } });
+            $("#Title").formValidator({ tipid: "tipTitle", onshow: "请输入栏目名称", onfocus: "建议输入4个汉字" }).InputValidator({ min: 4, max: 8, onerror: "请输入2-4个汉字,请确认" });
+
+        });
+    </script>
+}
+<div id="divMain">
+    <div id="divRightPage">
+        <!--列表标题部分-->
+        <div class="tblTitle" onselectstart='return false;'>
+            <div>
+                @ViewBag.pTitle</div>
+        </div>
+        <div class="divReminders">
+            ★<label style="color: Red;">“栏目名称”</label>只能为汉字哦<br />
+        </div>
+        <div class="divReminders">
+        </div>
+        @using (Html.BeginForm())
+        {
+              
+            <table class="formtable">
+                <tr>
+                    <th>
+                        栏目名称
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(model => model.Title)
+                        <span id="tipTitle" style="width: 200px;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        栏目页模板
+                    </th>
+                    <td>
+                      @Html.DropDownList("TemplateId", (ViewData["ClassTemp"] as SelectList), new { style = "width:185px;" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        内容页模板
+                    </th>
+                    <td>
+                           @Html.DropDownList("ContentTemp", (ViewData["ContentTemp"] as SelectList), new { style = "width:185px;" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        列表默认每页记录
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(model => model.PageSize)
+                        <span id="tipPageSize" style="width: 200px;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        在“当前页位置”导航显示
+                    </th>
+                    <td>
+                        @Html.DropDownList("IsTop", (ViewData["IsTop"] as SelectList), new { style = "width:185px;" })
+                    </td>
+                </tr>
+            </table>
+           
+            <div class="divFormCtrl">
+                <!--页面按钮 如：提交、取消、下一步、关闭-->
+                <input class="divBtn" type="submit" value="提 交" />
+                <a class="divBtn pageLoading" href="@ViewBag.BackUrl">关 闭</a>
+            </div>
+        }
+    </div>
+</div>

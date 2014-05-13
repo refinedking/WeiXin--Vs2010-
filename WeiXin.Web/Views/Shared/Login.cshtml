@@ -1,0 +1,58 @@
+﻿@model WeiXin.BO.UsersContract
+@{
+    ViewBag.Title = "微联盟企业微信公共管理平台登录页面";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section css{
+    <link href="@Url.Content("~/Styles/Shared.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Styles/Login.css")" rel="stylesheet" type="text/css" />
+}
+@section script{
+    <script src="@Url.Content("~/Scripts/Shared/jquery-1.4.1.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Shared.js")" type="text/javascript"></script>
+  @*  <script type="text/javascript">
+        /*初始化页面事件*/
+        $(function () {
+            //IE升级提示
+            var bro = $.browser;
+            //专门为ie6单独设置菜单样式
+            if (bro.msie && bro.version < 8) {
+                $("#sharedMsg").show().html("系统检测到您的IE版本过低，请<a href='../../Scripts/ClientPlugIn/IE8-WindowsXP-x86-CHS.exe'>立即升级</a>");
+            }
+        });
+    </script>*@
+}
+<div id="divLog">
+</div>
+<div id="login_m_bg">
+</div>
+<div id="login_bg" class="disSelect">
+    <div id="sharedMsg">
+    </div>
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr>
+                <td>
+                    账户：
+                </td>
+                <td>
+                  <input type="text" id="UserName" name="UserName" class="txt" value="@Model.UserName" /> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    密码：
+                </td>
+                <td>
+                     @Html.PasswordFor(model => model.Password, new { @Class = "txt" })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" class="btnSubmit" value="" />
+                </td>
+            </tr> 
+        </table>
+    }
+</div>

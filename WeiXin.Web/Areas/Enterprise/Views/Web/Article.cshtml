@@ -1,0 +1,41 @@
+﻿@Html.Raw(ViewData["content"].ToString()) 
+@*
+@model WeiXin.Model.module_article
+@{
+    ViewBag.Title = Model.Title + "_" + Model.normal_class.Title + "-愉生活";
+    Layout = "~/Views/Shared/_EnterpriseWap.cshtml";
+} 
+<!--头部-->
+<header class="ts1">
+    <ul class="topbar fl">
+        <li><a  class="icon_user"  href="@Url.Action("index", new { sessionid = ViewData["SessionID"] })">
+            <i></i>首页 </a></li>
+        @{ 
+            List<WeiXin.Model.normal_class> lists = ViewData["Top3Class"] as List<WeiXin.Model.normal_class>;
+            foreach (var item in lists)
+            {
+            <li><a class="icon_user" href="@Url.Action("ArticleList", new { sessionid = ViewData["SessionID"], id = item.Id, ccid = item.ChannelId })">
+                <i></i>
+                @item.Title
+            </a></li>
+            }
+        }
+    </ul>
+</header>
+<div class="page-bizinfo">
+    <div class="header">
+        <h1 id="activity-name" align="centers">
+            @Model.Title</h1>
+        <p class="activity-info">
+            <span id="post-date" class="activity-meta no-extra">更新时间：@Model.AddDate.ToString("yyyy-MM-dd")
+                &nbsp; &nbsp; <span style="margin-right: 50px;">阅读次数：@Model.ViewNum 次</span></span></p>
+    </div>
+</div>
+<div class="page-content">
+    <div class="media" id="media">
+    </div>
+    <div class="text">
+        @Html.Raw(Model.Content)
+    </div>
+</div>
+*@

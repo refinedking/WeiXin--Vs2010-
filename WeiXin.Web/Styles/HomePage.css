@@ -1,0 +1,237 @@
+﻿html, body
+{
+    font-family: 微软雅黑;
+    background-color: #efefef;
+}
+body
+{
+    background: #efefef url(../Images/index_log_watermark.png) center center no-repeat;
+}
+* html body
+{
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../Images/index_log_watermark.png', sizingMethod='scale');
+    background-color: #efefef;
+}
+/*时事新闻样式开始*/
+#divCurrentNews
+{
+    margin-left: 5px;
+    float: left;
+    width: 300px;
+    height: 350px;
+    overflow: hidden;
+}
+/*时事新闻样式结束*/
+
+/*学院新闻样式开始*/
+#divCollegeNews
+{
+    position: absolute;
+    left: 320px;
+    right: 320px;
+    height: 350px;
+    overflow: hidden;
+}
+/*学院新闻样式结束*/
+
+/*学员动态样式开始*/
+#divStudentsDynamic
+{
+    margin-right: 5px;
+    position: absolute;
+    right: 0px;
+    float: right;
+    width: 300px;
+    height: 350px;
+    overflow: hidden;
+}
+/*学员动态样式结束*/
+
+/*公共样式开始*/
+.top
+{
+    padding: 5px;
+    overflow: hidden;
+}
+.middle
+{
+    clear: both;
+    overflow: hidden;
+}
+.middle table
+{
+    line-height: 25px;
+}
+.module table .curRow
+{
+    font-family: 楷体;
+    cursor: pointer;
+}
+.module
+{
+    cursor: default;
+    font-family: 微软雅黑;
+    font-size: 12px;
+    padding: 5px;
+    background-position: 0px 5px;
+    background: White url(../Images/Shared/tab_cur_bg.gif) top center repeat-x;
+}
+.title
+{
+    background: #fefefe url(../Images/Shared/index_title_bg.gif) no-repeat;
+    float: left;
+    padding: 3px;
+    height: 20px;
+    cursor: default;
+}
+table
+{
+    font-family: 微软雅黑; /*这里设置字体及大小是为了兼容ie6*/
+    font-size: 12px;
+    width: 100%;
+}
+.roll
+{
+    clear: both;
+    overflow: hidden;
+    height: 158px;
+}
+li
+{
+    overflow: hidden;
+    cursor: pointer;
+    width: 100%;
+}
+li:hover
+{
+    font-size:14px;
+    background-color: #B6B6B6;
+}
+.more
+{
+    float: right;
+    cursor: pointer;
+    color: White;
+}
+
+/*公共样式结束*/
+
+/*就业信息样式开始*/
+#EmploymentNews
+{
+    position: absolute;
+    left: 200px;
+    right: 255px;
+}
+#ulEmploymentList td
+{
+    float: left;
+    overflow: hidden;
+    font-size: 12px;
+}
+/*就业信息样式结束*/
+/*公告列表样式开始*/
+#divNotice
+{
+    float: right;
+    overflow: hidden;
+    width: 235px;
+}
+#divNotice li
+{
+    cursor: pointer;
+    margin-top: 7px;
+}
+#divNotice li:hover
+{
+}
+/*公告列表样式结束*/
+
+
+/*生日提醒样式开始*/
+#divBirthInfo
+{
+    float: left;
+    width: 180px;
+}
+
+#divBirthInfo ul
+{
+    clear: both;
+    overflow: hidden;
+}
+#divBirthInfo li
+{
+    margin-left: 5px;
+}
+#divBirthInfo li:hover
+{
+    font-size:12px;
+    background-color: White;
+}
+#divBirthInfo li div:hover
+{
+    color:Red;
+}
+#divBirthInfo li div
+{
+    background-color: #fffaff;
+    float: left;
+    width: 125px;
+}
+
+#divBirthInfo .spanName
+{
+    margin: 0px 3px;
+    float: left;
+    cursor: pointer;
+}
+/*员工头像样式*/
+#divBirthInfo .imgHeadImage
+{
+    margin-top: 6px;
+    margin-right: 5px;
+    border: 1px solid gray;
+    width: 30px;
+    height: 39px;
+    float: left;
+}
+/*送礼物样式*/
+#divBirthInfo .imgGift
+{
+    cursor: pointer;
+    height: 14px;
+    width: 14px;
+    float: left;
+}
+/*礼物数样式*/
+#divBirthInfo .spanGiftCount
+{
+    cursor: default;
+    float: left;
+}
+#divBirthInfo .spanBirthDay
+{
+    clear: both;
+    float: left;
+}
+/*生日提醒样式结束*/
+
+/****A标签样式*****/
+
+a:link
+{
+    color: Black;
+}
+a:visited
+{
+    color: Black;
+}
+a:hover
+{
+    color: blue;
+}
+a:active
+{
+    color: Black;
+}

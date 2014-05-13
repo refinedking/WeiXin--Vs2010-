@@ -1,0 +1,65 @@
+﻿@Html.Raw(ViewData["content"].ToString()) 
+@*
+@model List<module_article>
+@using WeiXin.Model;
+@{
+    ViewBag.Title = "栏目列表";
+    Layout = "~/Views/Shared/_EnterpriseWap.cshtml";
+}
+<!--头部-->
+<header class="ts1"> 
+		<ul class="topbar fl" >
+         <li>
+         <a  class="icon_user"  href="@Url.Action("index", new { sessionid = ViewData["SessionID"] })">
+				  <i></i>
+					首页
+				</a>
+                </li>
+       @{ 
+           List<WeiXin.Model.normal_class> lists = ViewData["Top3Class"] as List<WeiXin.Model.normal_class>;
+           foreach (var item in lists)
+           {
+                 <li>
+				<a class="icon_user" href="@Url.Action("ArticleList", new { sessionid = ViewData["SessionID"],id=item.Id,ccid=item.ChannelId })"> <i></i>
+					@item.Title
+				</a>
+			</li>
+           }
+       }  
+		</ul>
+	</header>
+<section class="i_list">
+		<ul class="i_shop_list" id="i_shop_list">
+        
+             @foreach (var item in Model)
+             {
+                    <li>
+			<a href="@Url.Action("Article", new { id = item.Id, sessionid = ViewData["SessionID"] })">
+            @if (item.IsImg == 0)
+            {
+            	<img alt="@item.Title" src="/FileUpload/no.png" />
+            }
+            else
+            { 
+            	<img alt="@item.Title" src="/FileUpload/@item.Img" />
+            }
+			
+					<h3 style="color:@item.TColor">@item.Title</h3>
+			</a>
+			 @if (item.Summary.Length > 50)
+    {
+       @item.Summary.Substring(0, 50)  
+    }
+    else
+    {	 @item.Summary  
+    }
+		</li>
+             
+             }
+          
+			 
+			</ul>
+	</section>
+<div class="clear">
+</div>
+*@

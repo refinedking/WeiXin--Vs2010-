@@ -1,0 +1,100 @@
+﻿/*分页部分样式开始*/
+.divPager
+{
+    clear: both;
+    height: 25px;
+    line-height: 25px;
+    padding-top: 2px;
+    cursor: default;
+    background-image: url("../../Images/Shared/page-bg.gif");
+    width: 100%;
+}
+.divPager .left
+{
+    margin-left: 5px;
+}
+.divPager span
+{
+    line-height: 25px;
+    padding: 1px 3px;
+    color: #4194CC;
+}
+.divPager .right
+{
+    margin-right: 50px;
+}
+.divPager .right span
+{
+    border: 1px solid #BCC7C3;
+    cursor: pointer;
+}
+.divPager .right span:hover
+{
+    color: rgb(35, 61, 109);
+    background: url(../../Images/Shared/pager_a_bg.gif) repeat-x;
+}
+/*跳转到文本框样式*/
+.divPager .right input
+{
+    width: 40px;
+    height: 14px;
+    line-height: 14px;
+    font-size: 14px;
+}
+/*分页部分样式结束*/
+
+
+/*table数据列表样式开始*/
+.divDataList
+{
+    overflow: auto;
+}
+#tblList
+{
+    position: relative;
+    width: 100%;
+    cursor: default;
+    position: relative;
+    border-collapse: collapse; /*边框宽度统一*/
+}
+#tblList .SerialNumber
+{
+    width:25px;
+    min-width: 25px;
+    max-width: 25px;
+}
+#tblList th, #tblList td
+{
+    border: 1px solid #BBD3EB;
+}
+/*表头行样式*/
+#tblList th
+{
+    line-height: 25px;
+    text-align: center;
+    background: url(../../Images/Shared/tbg.gif) repeat-x;
+}
+/*数据列样式*/
+#tblList td
+{
+    padding-left: 5px;
+}
+/*复选框列样式*/
+#tblList .divCtrlList
+{
+    text-align: center;
+    width: 25px;
+    padding-left: 0px;
+}
+/*列表体行样式*/
+#tblList .tblItem
+{
+    background-color: White;
+    line-height: 32px;
+}
+/*列表体行光棒效果*/
+#tblList .tblItem:hover
+{
+    background-color: #D3DBE0;
+}
+/*table数据列表样式结束*/

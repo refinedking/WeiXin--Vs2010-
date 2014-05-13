@@ -1,0 +1,195 @@
+﻿/*编辑部分表单
+.tblForm
+{
+    padding: 15px;
+}
+.tblForm tr
+{
+    height: 35px;
+}
+.tblForm td
+{
+    vertical-align: text-top;
+}
+.tblForm input
+{
+    height: 18px;
+    line-height: 18px;
+}
+.tblForm select
+{
+    width: 155px;
+}
+.tblForm div
+{
+    background-color: #DFDFDF;
+    padding-left: 5px;
+    height: 20px;
+    line-height: 20px;
+    width: 150px;
+    color: Gray;
+}
+*/
+
+
+
+
+/*编辑部分表单*/
+.tblForm
+{
+}
+.tblForm td
+{
+    vertical-align: middle;
+}
+.tblForm td select
+{
+    padding-left: 3px;
+    height: 26px;
+    line-height: 26px;
+    vertical-align:middle;
+    cursor: pointer;
+    border: 1px solid #D3D2D1;
+}
+.tblForm td select option
+{
+    vertical-align:middle;
+}
+.tblForm td input[type='text']
+{
+    padding-left: 3px;
+    height: 22px;
+    font-size: 12px;
+    border: 1px solid #D3D2D1;
+}
+/*编辑页面文本框，选择框获得焦点的时候改变样式*/
+.tblForm td input[type='text']:hover, .tblForm td select:hover, .tblForm td input[type='text']:focus, .tblForm td select:focus
+{
+    border: 1px solid #A3A2A1;
+}
+/*表单项内容样式（如：只读不可更改）*/
+.tblForm div
+{
+    background-color: #F3F2F1;
+    padding-left: 5px;
+    height: 25px;
+    line-height: 25px;
+}
+/*表单项标题样式*/
+.tblForm .tdTitle
+{
+    white-space:nowrap;
+    cursor:default;
+    vertical-align: top;
+    padding-top: 4px;
+    text-align: right;
+    padding-right: 5px;
+    color: #00AEAE;
+    font-weight: 500;
+}
+/*只读文本框样式*/
+.tblForm .iptReadOnly
+{
+    border: 0px;
+    background-color: #F8F8F7;
+}
+
+
+
+
+
+
+.table2
+{
+}
+.table2 td
+{
+    vertical-align: middle;
+}
+.table2 td select
+{
+    padding-left: 3px;
+    height: 26px;
+    line-height: 26px;
+    vertical-align:middle;
+    cursor: pointer;
+    border: 1px solid #D3D2D1;
+}
+.table2 td select option
+{
+    vertical-align:middle;
+}
+.table2 td input[type='text']
+{
+    padding-left: 3px;
+    height: 22px;
+    font-size: 12px;
+    border: 1px solid #D3D2D1;
+}
+/*编辑页面文本框，选择框获得焦点的时候改变样式*/
+.table2 td input[type='text']:hover, .table2 td select:hover, .table2 td input[type='text']:focus, .table2 td select:focus
+{
+    border: 1px solid #A3A2A1;
+}
+/*表单项内容样式（如：只读不可更改）*/
+.table2 div
+{
+    background-color: #F3F2F1;
+    padding-left: 5px;
+    height: 25px;
+    line-height: 25px;
+}
+/*表单项标题样式*/
+.table2 .td2
+{
+    white-space:nowrap;
+    cursor:default;
+    vertical-align: top;
+    padding-top: 4px;
+    text-align: right;
+    padding-right: 5px;
+    color: #00AEAE;
+    font-weight: 500;
+}
+/*只读文本框样式*/
+.table2 .iptReadOnly
+{
+    border: 0px;
+    background-color: #F8F8F7;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*编辑部分提交按钮样式开始*/
+.divFormCtrl
+{
+    clear:both;
+    margin-top: 10px;
+    padding-left: 60px;
+    text-align: center;
+}
+.divFormCtrl .divBtn,.divFormCtrl .divBtn2
+{
+    float: left;
+}
+/*验证错误样式*/
+.field-validation-error
+{
+    color: Red;
+}
+.input-validation-error
+{
+    border: 1px solid Red;
+}

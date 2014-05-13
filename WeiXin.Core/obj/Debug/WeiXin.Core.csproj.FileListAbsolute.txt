@@ -1,0 +1,16 @@
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Core\bin\Debug\WeiXin.Core.dll
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Core\bin\Debug\WeiXin.Core.pdb
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Core\bin\Debug\Ionic.Zip.dll
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Core\bin\Debug\NPOI.DDF.dll
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Core\bin\Debug\NPOI.dll
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Core\bin\Debug\NPOI.HPSF.dll
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Core\bin\Debug\NPOI.HSSF.dll
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Core\bin\Debug\NPOI.POIFS.dll
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Core\bin\Debug\NPOI.Util.dll
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Core\bin\Debug\WL.NPOI.dll
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Core\obj\Debug\WeiXin.Core.dll
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Core\obj\Debug\WeiXin.Core.pdb
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Core\obj\Debug\WeiXin.Core.csprojResolveAssemblyReference.cache
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.Core\obj\Debug\ResolveAssemblyReference.cache
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.Core\obj\Debug\WeiXin.Core.dll
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.Core\obj\Debug\WeiXin.Core.pdb

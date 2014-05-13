@@ -1,0 +1,461 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 17.25, 73.875" name="WeiXinSystemDB">
+  <DataContextMoniker Name="/WeiXinSystemDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="313aa56c-c107-46ef-b205-15f17d3a7447" absoluteBounds="0.75, 2, 2, 1.9535852050781248">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/Authority" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c443ab88-a7b3-4e3c-88f4-ae4d85a97e91" absoluteBounds="0.765, 2.46, 1.9700000000000002, 1.393585205078125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cf83e92c-f185-4fb8-9257-e381c8216b75" absoluteBounds="6.25, 31, 2, 2.717663981119788">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/WallInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="33bea58e-2e06-4e51-ace4-189427f27b96" absoluteBounds="6.265, 31.46, 1.9700000000000002, 2.1576639811197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f8358234-ec7a-4797-a641-5cd1570e35a1" absoluteBounds="0.75, 27.75, 2, 4.0548018391927059">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/branchInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8679fb0c-1624-4cf5-8a1a-ba3aca3b80cb" absoluteBounds="0.765, 28.21, 1.9700000000000002, 3.494801839192708" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="76128368-53e6-47a4-aee1-b3fd16e3a377" absoluteBounds="3.75, 4.75, 2, 1.1895064290364594">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/City" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bc90f844-6d30-4876-8798-2a07d7b5312c" absoluteBounds="3.765, 5.21, 1.9700000000000002, 0.62950642903645826" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0ada591a-6896-47a2-8c20-a50dbc5928c9" absoluteBounds="3.5, 30.875, 2, 5.582959391276038">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/employeeInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8c1a0442-60c6-4a8c-b5eb-f30a76d95b87" absoluteBounds="3.515, 31.335, 1.9700000000000002, 5.0229593912760411" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4fc74ee7-ac5b-44b4-8c4a-b194b6c2f0b4" absoluteBounds="12, 21.75, 2, 3.8637821451822916">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/loginLogInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f1aaf337-2080-4609-aec0-026a127aacfd" absoluteBounds="12.015, 22.21, 1.9700000000000002, 3.3037821451822915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7a924360-a852-4dbf-95ba-741c1e0ce5fe" absoluteBounds="11.75, 65.375, 2, 5.20092000325522">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/module_article" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0713de88-f66a-4fb1-a30a-e7a940720f1c" absoluteBounds="11.765, 65.835, 1.9700000000000002, 4.640920003255208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="08ef87ce-5b1f-4b80-a125-e08d824c1a81" absoluteBounds="14.75, 65.25, 2, 5.5829593912760345">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/module_product" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1bbc05dc-46f3-4821-9999-bc690b070fc1" absoluteBounds="14.765, 65.71, 1.9700000000000002, 5.0229593912760411" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="df50a554-d448-4d73-9f18-7ff3a3386477" absoluteBounds="3.5, 2.25, 2, 1.3805261230468746">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/ModuleAuthorityList" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f7dc7149-1280-4d0f-b68b-74070da24f63" absoluteBounds="3.515, 2.71, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4ffb474d-e86b-41e3-8561-33df028195bc" absoluteBounds="0.75, 5.5, 2, 2.9086836751302068">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/Modules" />
+      <nestedChildShapes>
+        <elementListCompartment Id="86f0a200-0687-4f00-9ed9-88b9c2862832" absoluteBounds="0.765, 5.96, 1.9700000000000002, 2.348683675130208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c806b18e-cdd8-4849-b1c5-cac03fad0099" absoluteBounds="1.5, 9.875, 2, 2.1446048990885416">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/ModuleType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="875d4ba5-9d87-4a2d-a6bc-1982d6b8ff28" absoluteBounds="1.5150000000000001, 10.335, 1.9700000000000002, 1.5846048990885415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bb65dc9c-40d8-457a-a612-89319b44aad4" absoluteBounds="6.25, 62.5, 2, 5.0099003092447845">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/normal_channel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c6af0499-6866-463a-b33e-6d1c02fc5ec5" absoluteBounds="6.265, 62.96, 1.9700000000000002, 4.4499003092447911" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ba05f38a-e6fd-4fa4-9d51-dd0b4c4e3b08" absoluteBounds="9, 68.375, 2, 5.20092000325522">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/normal_class" />
+      <nestedChildShapes>
+        <elementListCompartment Id="14ac036a-909a-4597-acad-87135c73ea40" absoluteBounds="9.015, 68.835, 1.9700000000000002, 4.640920003255208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f580e835-1bd1-4260-8df2-031bbc51bde6" absoluteBounds="9.25, 32.875, 2, 1.7625655110677059">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/normal_EmpExtends" />
+      <nestedChildShapes>
+        <elementListCompartment Id="710fe7a9-a182-4ce4-8376-25a26e9048b8" absoluteBounds="9.265, 33.335, 1.9700000000000002, 1.2025655110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b8ecca85-d762-4fc9-b846-4c17df16fc44" absoluteBounds="6.5, 40.375, 2, 2.7176639811197845">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/normal_extends" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1fa76e42-c9b4-42ec-80be-7fb8f7ba7f07" absoluteBounds="6.515, 40.835, 1.9700000000000002, 2.1576639811197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="34c23398-595a-4e05-833f-fc97d4f9f13d" absoluteBounds="6.75, 0.75, 2, 2.7176639811197916">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/normal_modules" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bf21b133-91af-4fbe-815b-bad6800f1abb" absoluteBounds="6.765, 1.21, 1.9700000000000002, 2.1576639811197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c63ff110-8bd8-4aeb-abc7-2f87a0687d6f" absoluteBounds="6.25, 23.5, 2, 2.1446048990885416">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/normal_template" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5a523599-137f-4cac-8660-90f2fdd30601" absoluteBounds="6.265, 23.96, 1.9700000000000002, 1.5846048990885415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="219f57e1-16a0-48ec-a79a-c03a71ddde9e" absoluteBounds="3.75, 6.75, 2, 1.7625655110677077">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/normal_thumbs" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aded1c29-23ed-46e3-bc5d-fd0c37bb9c21" absoluteBounds="3.765, 7.21, 1.9700000000000002, 1.2025655110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9494519b-7bb7-4350-b261-81258a686ef7" absoluteBounds="6.75, 4.75, 2, 3.8637821451822916">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/NoticeInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b95496a4-c135-40d0-8ad1-0675647d80f8" absoluteBounds="6.765, 5.21, 1.9700000000000002, 3.3037821451822915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2e247ba9-91a8-48e1-bcdd-f3752d9aa1a0" absoluteBounds="0.75, 32.875, 2, 1.5715458170572845">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/positionInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b9f4b9e6-481c-4a62-9007-d539285dcab1" absoluteBounds="0.765, 33.335, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="461eaeb9-889b-407f-8883-5a951a23ed4c" absoluteBounds="9.25, 13.875, 2, 1.7625655110677094">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/RoleAuthorityList" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fbdad6d1-6314-401f-9822-59ba7d526ceb" absoluteBounds="9.265, 14.335, 1.9700000000000002, 1.2025655110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c55dec8a-52fb-4571-99dd-e219b6e839f8" absoluteBounds="6.5, 27.875, 2, 1.5715458170572916">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/Roles" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a7467324-5f35-4261-8517-cc255545ec7a" absoluteBounds="6.515, 28.335, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7922d25d-1ce5-4d24-abd8-20a999ede204" absoluteBounds="6.25, 57.375, 2, 4.2458215332031273">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/systemLogInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9d91e20b-0b30-4e75-8e83-9908ed22ccd7" absoluteBounds="6.265, 57.835, 1.9700000000000002, 3.685821533203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ec694d06-9ed5-4b16-a89d-3a09c34070da" absoluteBounds="9.25, 29.625, 2, 2.1446048990885416">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/Users" />
+      <nestedChildShapes>
+        <elementListCompartment Id="edb977f7-f9b6-4ff7-8a5e-5c57cd19c982" absoluteBounds="9.265, 30.085, 1.9700000000000002, 1.5846048990885415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b72bf974-e77a-4d1e-86e9-2c2706cb68e0" absoluteBounds="6.25, 34.5, 2, 3.2907230631510345">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/CardConfig" />
+      <nestedChildShapes>
+        <elementListCompartment Id="63ac26f5-b258-4e73-9aaa-4f3f4705cd0d" absoluteBounds="6.265, 34.96, 1.9700000000000002, 2.7307230631510415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ff3fa44d-1041-4d6f-aaaa-692fd8bf8267" absoluteBounds="11.75, 42.375, 2, 3.4817427571614559">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/CardConsume" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d5b2634e-4e9f-4d45-9563-a939a383bc8e" absoluteBounds="11.765, 42.835, 1.9700000000000002, 2.921742757161458" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a41702a1-ec51-4011-8ea0-b55339af2a48" absoluteBounds="6.25, 47.75, 2, 4.0548018391927059">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/employeeData" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d3cf2be2-6c3e-46fc-9ee1-56794102f8eb" absoluteBounds="6.265, 48.21, 1.9700000000000002, 3.494801839192708" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="da61c69f-b2f2-46f1-9a1f-2534ef4880ed" absoluteBounds="9.5, 16.875, 2, 3.6727624511718773">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/Fans" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6489a019-6f77-4797-a93b-7874d6d9778e" absoluteBounds="9.515, 17.335, 1.9700000000000002, 3.112762451171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b14e0945-6c2b-4cae-8992-82eccfa4ab08" absoluteBounds="12.25, 31.75, 2, 3.863782145182288">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/FansInteraction" />
+      <nestedChildShapes>
+        <elementListCompartment Id="87d37dc8-a22e-4993-b2b6-501f3453da32" absoluteBounds="12.265, 32.21, 1.9700000000000002, 3.3037821451822915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e72ac4bd-5596-4279-9e10-b7d05789c923" absoluteBounds="9, 35.25, 2, 3.6727624511718773">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/FansToCard" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ff2b3c5f-cb24-424e-a669-2eefb3564e0e" absoluteBounds="9.015, 35.71, 1.9700000000000002, 3.112762451171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="914b2d43-9d56-49f4-8b0a-7220fd34886a" absoluteBounds="12.25, 36.75, 2, 4.0548018391927059">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/GuanJianZi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f63a1acc-7fc9-44a9-a3ba-cf1b18bb3865" absoluteBounds="12.265, 37.21, 1.9700000000000002, 3.494801839192708" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6d175e7c-97da-4da5-acd4-481ead5b8ca7" absoluteBounds="15, 36.375, 2, 4.6278609212239559">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/GuanJianZiHuiFu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="982678a9-f79e-4260-8661-157bdb2a0f4b" absoluteBounds="15.015, 36.835, 1.9700000000000002, 4.067860921223958" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e3ef792a-3229-414d-8483-88bd7e6f535e" absoluteBounds="12.25, 47.5, 2, 2.5266442871093773">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/GuanJianZiHuiFuType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="be713196-d46d-4295-b15c-1cee5bcc0d59" absoluteBounds="12.265, 47.96, 1.9700000000000002, 1.966644287109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="82e4e47a-53e8-456c-a8fb-7098dd0e62ea" absoluteBounds="9.5, 47.5, 2, 2.3356245930989559">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/GuanJianZiType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8dcbe57b-a105-4425-98cd-c83d32d63b83" absoluteBounds="9.515, 47.96, 1.9700000000000002, 1.7756245930989585" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="36849d47-fd3d-48a2-b3b9-3b8cbba9f514" absoluteBounds="12.25, 26.75, 2, 3.8637821451822916">
+      <DataClassMoniker Name="/WeiXinSystemDBDataContext/UserToEmp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9118d823-0e86-4278-b82b-12d8dfaec0f6" absoluteBounds="12.265, 27.21, 1.9700000000000002, 3.3037821451822915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 32.3588319905599); (6.25 : 32.3588319905599)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/employeeInfo/employeeInfo_WallInfo" />
+      <nodes>
+        <classShapeMoniker Id="0ada591a-6896-47a2-8c20-a50dbc5928c9" />
+        <classShapeMoniker Id="cf83e92c-f185-4fb8-9257-e381c8216b75" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 31.3399009195964); (3.5 : 31.3399009195964)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/branchInfo/branchInfo_employeeInfo" />
+      <nodes>
+        <classShapeMoniker Id="f8358234-ec7a-4797-a641-5cd1570e35a1" />
+        <classShapeMoniker Id="0ada591a-6896-47a2-8c20-a50dbc5928c9" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 2.94026306152344); (3.5 : 2.94026306152344)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/Authority/Authority_ModuleAuthorityList" />
+      <nodes>
+        <classShapeMoniker Id="313aa56c-c107-46ef-b205-15f17d3a7447" />
+        <classShapeMoniker Id="df50a554-d448-4d73-9f18-7ff3a3386477" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.34475321451823); (3.59375 : 6.34475321451823); (3.59375 : 3.63052612304687)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/Modules/Modules_ModuleAuthorityList" />
+      <nodes>
+        <classShapeMoniker Id="4ffb474d-e86b-41e3-8561-33df028195bc" />
+        <classShapeMoniker Id="df50a554-d448-4d73-9f18-7ff3a3386477" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.125 : 9.875); (2.125 : 8.40868367513021)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/ModuleType/ModuleType_Modules" />
+      <nodes>
+        <classShapeMoniker Id="c806b18e-cdd8-4849-b1c5-cac03fad0099" />
+        <classShapeMoniker Id="4ffb474d-e86b-41e3-8561-33df028195bc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 66.4424501546224); (11.75 : 66.4424501546224)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/normal_channel/normal_channel_module_article" />
+      <nodes>
+        <classShapeMoniker Id="bb65dc9c-40d8-457a-a612-89319b44aad4" />
+        <classShapeMoniker Id="7a924360-a852-4dbf-95ba-741c1e0ce5fe" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 65.28125); (14.75 : 65.28125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/normal_channel/normal_channel_module_product" />
+      <nodes>
+        <classShapeMoniker Id="bb65dc9c-40d8-457a-a612-89319b44aad4" />
+        <classShapeMoniker Id="08ef87ce-5b1f-4b80-a125-e08d824c1a81" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 36.457959391276); (4.5 : 65.0049501546224); (6.25 : 65.0049501546224)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/employeeInfo/employeeInfo_normal_channel" />
+      <nodes>
+        <classShapeMoniker Id="0ada591a-6896-47a2-8c20-a50dbc5928c9" />
+        <classShapeMoniker Id="bb65dc9c-40d8-457a-a612-89319b44aad4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 69.4754600016276); (11.75 : 69.4754600016276)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/normal_class/normal_class_module_article" />
+      <nodes>
+        <classShapeMoniker Id="ba05f38a-e6fd-4fa4-9d51-dd0b4c4e3b08" />
+        <classShapeMoniker Id="7a924360-a852-4dbf-95ba-741c1e0ce5fe" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11 : 70.7356896972656); (14.75 : 70.7356896972656)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/normal_class/normal_class_module_product" />
+      <nodes>
+        <classShapeMoniker Id="ba05f38a-e6fd-4fa4-9d51-dd0b4c4e3b08" />
+        <classShapeMoniker Id="08ef87ce-5b1f-4b80-a125-e08d824c1a81" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.25 : 67.5099003092448); (7.25 : 70.9754600016276); (9 : 70.9754600016276)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/normal_channel/normal_channel_normal_class" />
+      <nodes>
+        <classShapeMoniker Id="bb65dc9c-40d8-457a-a612-89319b44aad4" />
+        <classShapeMoniker Id="ba05f38a-e6fd-4fa4-9d51-dd0b4c4e3b08" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 34.1088319905599); (8.91666666666667 : 34.1088319905599 : JumpStart); (9.17708333333333 : 34.1088319905599 : JumpEnd); (9.25 : 34.1088319905599)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/employeeInfo/employeeInfo_normal_EmpExtends" />
+      <nodes>
+        <classShapeMoniker Id="0ada591a-6896-47a2-8c20-a50dbc5928c9" />
+        <classShapeMoniker Id="f580e835-1bd1-4260-8df2-031bbc51bde6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.40625 : 40.375); (8.40625 : 34.3044184952799); (8.91666666666667 : 34.3044184952799 : JumpStart); (9.17708333333333 : 34.3044184952799 : JumpEnd); (9.25 : 34.3044184952799)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/normal_extends/normal_extends_normal_EmpExtends" />
+      <nodes>
+        <classShapeMoniker Id="b8ecca85-d762-4fc9-b846-4c17df16fc44" />
+        <classShapeMoniker Id="f580e835-1bd1-4260-8df2-031bbc51bde6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.5 : 30.875); (4.5 : 24.5723024495443); (6.25 : 24.5723024495443)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/employeeInfo/employeeInfo_normal_template" />
+      <nodes>
+        <classShapeMoniker Id="0ada591a-6896-47a2-8c20-a50dbc5928c9" />
+        <classShapeMoniker Id="c63ff110-8bd8-4aeb-abc7-2f87a0687d6f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 33.6607729085286); (3.5 : 33.6607729085286)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/positionInfo/positionInfo_employeeInfo" />
+      <nodes>
+        <classShapeMoniker Id="2e247ba9-91a8-48e1-bcdd-f3752d9aa1a0" />
+        <classShapeMoniker Id="0ada591a-6896-47a2-8c20-a50dbc5928c9" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 3.8233056640625); (3.51041666666667 : 3.8233056640625 : JumpStart); (3.67708333333333 : 3.8233056640625 : JumpEnd); (10.25 : 3.8233056640625); (10.25 : 13.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/Authority/Authority_RoleAuthorityList" />
+      <nodes>
+        <classShapeMoniker Id="313aa56c-c107-46ef-b205-15f17d3a7447" />
+        <classShapeMoniker Id="461eaeb9-889b-407f-8883-5a951a23ed4c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.09375 : 8.40868367513021); (1.09375 : 14.7562827555339); (9.25 : 14.7562827555339)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/Modules/Modules_RoleAuthorityList" />
+      <nodes>
+        <classShapeMoniker Id="4ffb474d-e86b-41e3-8561-33df028195bc" />
+        <classShapeMoniker Id="461eaeb9-889b-407f-8883-5a951a23ed4c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.40625 : 27.875); (8.40625 : 15.2281766333008); (9.25 : 15.2281766333008)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/Roles/Roles_RoleAuthorityList" />
+      <nodes>
+        <classShapeMoniker Id="c55dec8a-52fb-4571-99dd-e219b6e839f8" />
+        <classShapeMoniker Id="461eaeb9-889b-407f-8883-5a951a23ed4c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.0312525 : 36.457959391276); (5.0312525 : 59.4979107666016); (6.25 : 59.4979107666016)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/employeeInfo/employeeInfo_systemLogInfo" />
+      <nodes>
+        <classShapeMoniker Id="0ada591a-6896-47a2-8c20-a50dbc5928c9" />
+        <classShapeMoniker Id="7922d25d-1ce5-4d24-abd8-20a999ede204" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.25 : 29.625); (10.25 : 23.6818910725911); (11.3229166666667 : 23.6818910725911 : JumpStart); (11.5208358333333 : 23.6818910725911 : JumpEnd); (12 : 23.6818910725911)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/Users/Users_loginLogInfo" />
+      <nodes>
+        <classShapeMoniker Id="ec694d06-9ed5-4b16-a89d-3a09c34070da" />
+        <classShapeMoniker Id="4fc74ee7-ac5b-44b4-8c4a-b194b6c2f0b4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 30.90625); (9.01041666666667 : 30.90625 : JumpStart); (9.17708333333333 : 30.90625 : JumpEnd); (9.25 : 30.90625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/employeeInfo/employeeInfo_Users" />
+      <nodes>
+        <classShapeMoniker Id="0ada591a-6896-47a2-8c20-a50dbc5928c9" />
+        <classShapeMoniker Id="ec694d06-9ed5-4b16-a89d-3a09c34070da" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.5 : 28.6607729085286); (9.01041666666667 : 28.6607729085286 : JumpStart); (9.17708333333333 : 28.6607729085286 : JumpEnd); (9.7187475 : 28.6607729085286); (9.7187475 : 29.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/Roles/Roles_Users" />
+      <nodes>
+        <classShapeMoniker Id="c55dec8a-52fb-4571-99dd-e219b6e839f8" />
+        <classShapeMoniker Id="ec694d06-9ed5-4b16-a89d-3a09c34070da" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 35.478979695638); (6.25 : 35.478979695638)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/employeeInfo/employeeInfo_CardConfig" />
+      <nodes>
+        <classShapeMoniker Id="0ada591a-6896-47a2-8c20-a50dbc5928c9" />
+        <classShapeMoniker Id="b72bf974-e77a-4d1e-86e9-2c2706cb68e0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.9687475 : 36.457959391276); (3.9687475 : 49.7774009195964); (4.41666666666667 : 49.7774009195964 : JumpStart); (4.58333333333333 : 49.7774009195964 : JumpEnd); (4.94791916666667 : 49.7774009195964 : JumpStart); (5.11458583333333 : 49.7774009195964 : JumpEnd); (6.25 : 49.7774009195964)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/employeeInfo/employeeInfo_employeeData" />
+      <nodes>
+        <classShapeMoniker Id="0ada591a-6896-47a2-8c20-a50dbc5928c9" />
+        <classShapeMoniker Id="a41702a1-ec51-4011-8ea0-b55339af2a48" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 33.2338319905599); (6 : 33.2338319905599); (6 : 33.9676639811198); (9 : 33.9676639811198); (9 : 34.8875655110677); (9.01041666666667 : 34.8875655110677 : JumpStart); (9.17708333333333 : 34.8875655110677 : JumpEnd); (12 : 34.8875655110677); (12 : 35.8637821451823); (13.25 : 35.8637821451823); (13.25 : 35.6137821451823)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/employeeInfo/employeeInfo_FansInteraction" />
+      <nodes>
+        <classShapeMoniker Id="0ada591a-6896-47a2-8c20-a50dbc5928c9" />
+        <classShapeMoniker Id="b14e0945-6c2b-4cae-8992-82eccfa4ab08" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.40625 : 20.5477624511719); (11.40625 : 32.3223024495443); (12.25 : 32.3223024495443)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/Fans/Fans_FansInteraction" />
+      <nodes>
+        <classShapeMoniker Id="da61c69f-b2f2-46f1-9a1f-2534ef4880ed" />
+        <classShapeMoniker Id="b14e0945-6c2b-4cae-8992-82eccfa4ab08" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10 : 38.9227624511719); (10 : 44.1158713785807); (11.1979166666667 : 44.1158713785807 : JumpStart); (11.3645833333333 : 44.1158713785807 : JumpEnd); (11.75 : 44.1158713785807)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/FansToCard/FansToCard_CardConsume" />
+      <nodes>
+        <classShapeMoniker Id="e72ac4bd-5596-4279-9e10-b7d05789c923" />
+        <classShapeMoniker Id="ff3fa44d-1041-4d6f-aaaa-692fd8bf8267" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 36.5203615315755); (8.32291666666667 : 36.5203615315755 : JumpStart); (8.48958333333333 : 36.5203615315755 : JumpEnd); (9 : 36.5203615315755)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/CardConfig/CardConfig_FansToCard" />
+      <nodes>
+        <classShapeMoniker Id="b72bf974-e77a-4d1e-86e9-2c2706cb68e0" />
+        <classShapeMoniker Id="e72ac4bd-5596-4279-9e10-b7d05789c923" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.29687875 : 36.457959391276); (5.29687875 : 39.6488812255859); (8.32291666666667 : 39.6488812255859 : JumpStart); (8.48958333333333 : 39.6488812255859 : JumpEnd); (9.91666666666667 : 39.6488812255859 : JumpStart); (10.0833333333333 : 39.6488812255859 : JumpEnd); (12.25 : 39.6488812255859)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/employeeInfo/employeeInfo_GuanJianZi" />
+      <nodes>
+        <classShapeMoniker Id="0ada591a-6896-47a2-8c20-a50dbc5928c9" />
+        <classShapeMoniker Id="914b2d43-9d56-49f4-8b0a-7220fd34886a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14.25 : 38.7774009195964); (15 : 38.7774009195964)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/GuanJianZi/GuanJianZi_GuanJianZiHuiFu" />
+      <nodes>
+        <classShapeMoniker Id="914b2d43-9d56-49f4-8b0a-7220fd34886a" />
+        <classShapeMoniker Id="6d175e7c-97da-4da5-acd4-481ead5b8ca7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(14.25 : 48.7633221435547); (16 : 48.7633221435547); (16 : 41.002860921224)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/GuanJianZiHuiFuType/GuanJianZiHuiFuType_GuanJianZiHuiFu" />
+      <nodes>
+        <classShapeMoniker Id="e3ef792a-3229-414d-8483-88bd7e6f535e" />
+        <classShapeMoniker Id="6d175e7c-97da-4da5-acd4-481ead5b8ca7" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.28125 : 47.5); (11.28125 : 40.2580940323893); (12.25 : 40.2580940323893)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/GuanJianZiType/GuanJianZiType_GuanJianZi" />
+      <nodes>
+        <classShapeMoniker Id="82e4e47a-53e8-456c-a8fb-7098dd0e62ea" />
+        <classShapeMoniker Id="914b2d43-9d56-49f4-8b0a-7220fd34886a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(12.25 : 27.7053864542643); (11.5208358333333 : 27.7053864542643 : JumpStart); (11.3229166666667 : 27.7053864542643 : JumpEnd); (10.3333333333333 : 27.7053864542643 : JumpStart); (10.1666666666667 : 27.7053864542643 : JumpEnd); (9.09375 : 27.7053864542643); (9.09375 : 35.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/UserToEmp/UserToEmp_FansToCard" />
+      <nodes>
+        <classShapeMoniker Id="36849d47-fd3d-48a2-b3b9-3b8cbba9f514" />
+        <classShapeMoniker Id="e72ac4bd-5596-4279-9e10-b7d05789c923" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.0312525 : 30.875); (5.0312525 : 27.1964407271322); (8.32291666666667 : 27.1964407271322 : JumpStart); (8.48958333333333 : 27.1964407271322 : JumpEnd); (10.1666666666667 : 27.1964407271322 : JumpStart); (10.3333333333333 : 27.1964407271322 : JumpEnd); (11.3229166666667 : 27.1964407271322 : JumpStart); (11.5208358333333 : 27.1964407271322 : JumpEnd); (12.25 : 27.1964407271322)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/employeeInfo/employeeInfo_UserToEmp" />
+      <nodes>
+        <classShapeMoniker Id="0ada591a-6896-47a2-8c20-a50dbc5928c9" />
+        <classShapeMoniker Id="36849d47-fd3d-48a2-b3b9-3b8cbba9f514" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.4375025 : 20.5477624511719); (11.4375025 : 29.1116364542643); (12.25 : 29.1116364542643)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/WeiXinSystemDBDataContext/Fans/Fans_UserToEmp" />
+      <nodes>
+        <classShapeMoniker Id="da61c69f-b2f2-46f1-9a1f-2534ef4880ed" />
+        <classShapeMoniker Id="36849d47-fd3d-48a2-b3b9-3b8cbba9f514" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

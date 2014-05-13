@@ -1,0 +1,21 @@
+﻿@model List<branchInfo>
+@using WeiXin.Model
+@{
+    ViewBag.Title = "分类";
+    Layout = "~/Views/Shared/_wap.cshtml";
+} 
+<!--主体-->
+<section class="c_list">
+	<h1>全部分类：</h1> 
+    @foreach (var item in Model)
+    {
+        <dl>
+		<dt>
+			<a href="/wap/weixinInfos/@(item.branchID)?sessionid=@ViewData["sessionid"]">
+				@item.branchName
+				<i></i>
+			</a>
+		</dt>
+	</dl>
+    }
+</section>

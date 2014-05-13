@@ -1,0 +1,85 @@
+﻿body
+{
+    overflow:hidden;
+    background:url() top left repeat-x;
+}
+html,body
+{
+    overflow:hidden;
+}
+#login_bg
+{
+    position:absolute;
+    left:50%;
+    margin-left:-502px;
+    width:1003px;
+    height:613px;
+    top:50%;
+    margin-top:-306px;
+    background: transparent url(../Images/Login/login_bg.png) no-repeat;
+}
+#login_bg table
+{
+    top:310px;
+    left:420px;
+    position:relative;
+}
+.txt
+{
+    width:100px;
+}
+.btnSubmit
+{
+    margin-top:10px;
+    margin-left:26px;
+    background-color:transparent;
+    border:0px;
+    cursor:pointer;
+    width:90px;
+    height:35px;
+}
+#login_bg table tr
+{
+    height:40px;
+}
+* html #login_bg
+{
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='../../Images/Login/login_bg.png', sizingMethod='scale');
+    background: none;
+}
+#login_m_bg
+{
+    position:absolute;
+    height:191px;
+    width:100%;
+    top:50%;
+    margin-top:-40px;
+    background:  url(../Images/Login/login_m_bg.jpg) repeat-x;
+}
+
+#divLog
+{
+    /*说明：   1、当CSS中出现两个同样的属性，无论是否有!important，IE6只识别最后一个属性。（IE6是识别!important的，后面的background-image起干扰作用，呵呵~）   2、在Firefox下，!important被优先执行，FILTER滤镜不起作用。 */
+    background: url(../../Images/index_log.png) no-repeat;
+    position:absolute;
+    height: 50px;
+    width: 134px;
+    margin-left: 10px;
+    margin-top: 10px;
+    float: left;
+}
+* html #divLog
+{
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src='../../Images/index_log.png', sizingMethod='scale');
+    background: none;
+}
+/*系统提示信息*/
+#sharedMsg
+{
+    padding-left:20px;
+    background:url(../../Images/Login/hand_point.ico) no-repeat;
+    display:none;
+    position:absolute;
+    margin:265px 0px 0px 265px;
+    border-bottom:1px solid red;
+}

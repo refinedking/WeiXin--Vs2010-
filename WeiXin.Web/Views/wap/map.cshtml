@@ -1,0 +1,82 @@
+﻿@model employeeInfo
+@using WeiXin.Model
+@{
+    ViewBag.Title = Model.wxName;
+    Layout = "~/Views/Shared/_wap.cshtml";
+}
+<!--主体-->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.4"></script>
+<div class="main">
+    <div class="p_map">
+        <div id="container">
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                var wh = $(window).height();
+                var bh = $('body').height();
+                var mh = $('#container').css('height');
+                mh = mh.replace('px', '');
+                oh = bh - wh;
+                nmh = mh - oh;
+                $('#container').css('height', nmh + 'px');
+                var map = new BMap.Map("container");
+                var zuobiaoz = $("#zuobiao_0").val().split(',');
+                var point = new BMap.Point(zuobiaoz[0], zuobiaoz[1]);
+                map.centerAndZoom(point, 18);
+                // 编写自定义函数,创建标注
+                //                function addMarker(point) {
+                //                    var marker = new BMap.Marker(point);
+                //                    map.addOverlay(marker); 
+                //                    map.enableScrollWheelZoom(true);
+                //                }
+                //------------------------------
+
+                var sContent = function (imgsrc, address, tel) {
+                    return "<h2 style='margin:0 0 7px 0;padding:0 0'>@Model.wxName </h2>" +
+        		"<img style='float:right;margin:0px 0px 0px 4px' id='imgDemo' src='/FileUpload/" + imgsrc + "' width='120' height='80' />" +
+        		"<p style='padding-right:10px'>地址：" + address + "</p>" +
+        		"<p style=''>电话：" + tel + "</p>" +
+        		"<p style='margin-top:10px;'><a style='display:inline-block;padding:3px 5px;background:#ff0000;color:#ffffff' href='http://weixin3.gg.pp.cc/wap/store/info.html?user_id=1284&store_id=@Model.Eid'>进入门店</a></p>" +
+        		"</div>";
+                }
+
+                function addMarker(point, content) {
+                    var marker = new BMap.Marker(point);  // 创建标注
+                    map.addOverlay(marker);
+                    var infoWindow = new BMap.InfoWindow(content); map.enableScrollWheelZoom(true);
+                    marker.addEventListener("click", function () {
+                        this.openInfoWindow(infoWindow);
+                        //图片加载完毕重绘infowindow
+                        document.getElementById('imgDemo').onload = function () {
+                            infoWindow.redraw();
+                        }
+                    });
+                }
+
+
+                //------------------------------
+                // 向地图添加N个标注 
+                for (var i = 0; i < $("#counts").val(); i++) {
+                    var zuobiao = $("#zuobiao_" + i + "").val().split(',');
+                    var point = new BMap.Point(zuobiao[0], zuobiao[1]);
+                    var content = sContent($("#img_" + i + "").val(), $("#add_" + i + "").val(), $("#tel_" + i + "").val());
+
+                    addMarker(point, content);
+                }
+
+            }); </script>
+        @{
+            List<employeeData> list = ViewData["empdata"] as List<employeeData>;
+            foreach (var item in list)
+            {
+              
+            <input type="hidden" id="add_@(list.IndexOf(item))" value="@item.Address" />
+              
+            <input type="hidden" id="zuobiao_@(list.IndexOf(item))" value="@item.zuobiao" />  
+           
+            <input type="hidden" id="img_@(list.IndexOf(item))" value="@item.Photo" />                    <input type="hidden" id="tel_@(list.IndexOf(item) )" value="@item.Tel" />     }
+                                                                                                                                                                                     
+        }
+        <input type="hidden" id="counts" value="@list.Count" />
+    </div>
+</div>

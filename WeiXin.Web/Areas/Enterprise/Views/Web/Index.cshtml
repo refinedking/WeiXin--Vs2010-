@@ -1,0 +1,319 @@
+﻿@*@using WeiXin.Model;
+@{
+    ViewBag.Title = ViewData["Title"].ToString();
+    Layout = "~/Views/Shared/_EnterpriseWap.cshtml";
+}
+@section css
+{
+    <style type="text/css">
+        #ibanner
+        {
+            position: relative;
+            min-height: 150px;
+            height: 100%;
+            overflow: hidden;
+            margin: 0px;
+        }
+        #ibanner img
+        {
+            width: 100%;
+            margin-top: 0px;
+            display: block;
+        }
+        #ibanner_pic a
+        {
+            position: absolute;
+            top: 0;
+            display: block;
+            width: 100%;
+            min-height: 150px;
+            height: 100%;
+            overflow: hidden;
+        }
+        #ibanner_btn
+        {
+            position: absolute;
+            z-index: 9999;
+            right: 5px;
+            bottom: 5px;
+            font-weight: 700;
+            font-family: Arial;
+        }
+        #ibanner_btn span
+        {
+            display: block;
+            float: left;
+            margin-left: 4px;
+            padding: 0 5px;
+            background: #000;
+            cursor: pointer;
+        }
+        #ibanner_btn .normal
+        {
+            height: 10px;
+            margin-top: 8px;
+            border: 1px solid #999;
+            color: #999;
+            font-size: 10px;
+            line-height: 10px;
+        }
+        #ibanner_btn .current
+        {
+            height: 15px;
+            border: 1px solid #FF5300;
+            color: #FF5300;
+            font-size: 12px;
+            line-height: 15px;
+        }
+        
+        .clear
+        {
+            clear: both;
+        }
+    </style>
+}
+@section script
+{
+    <script type="text/javascript">
+        function $(id) { return document.getElementById(id); }
+        function addLoadEvent(func) {
+            var oldonload = window.onload;
+            if (typeof window.onload != 'function') {
+                window.onload = func;
+            } else {
+                window.onload = function () {
+                    oldonload();
+                    func();
+                }
+            }
+        }
+        function addBtn() {
+            if (!$('ibanner') || !$('ibanner_pic')) return;
+            var picList = $('ibanner_pic').getElementsByTagName('a');
+            if (picList.length == 0) return;
+            var btnBox = document.createElement('div');
+            btnBox.setAttribute('id', 'ibanner_btn');
+            var SpanBox = '';
+            for (var i = 1; i <= picList.length; i++) {
+                var spanList = '<span class="normal">' + i + '</span>';
+                SpanBox += spanList;
+            }
+            btnBox.innerHTML = SpanBox;
+            $('ibanner').appendChild(btnBox);
+            $('ibanner_btn').getElementsByTagName('span')[0].className = 'current';
+            for (var m = 0; m < picList.length; m++) {
+                var attributeValue = 'picLi_' + m
+                picList[m].setAttribute('id', attributeValue);
+            }
+        }
+        function moveElement(elementID, final_x, final_y, interval) {
+            if (!document.getElementById) return false;
+            if (!document.getElementById(elementID)) return false;
+            var elem = document.getElementById(elementID);
+            if (elem.movement) {
+                clearTimeout(elem.movement);
+            }
+            if (!elem.style.left) {
+                elem.style.left = "0px";
+            }
+            if (!elem.style.top) {
+                elem.style.top = "0px";
+            }
+            var xpos = parseInt(elem.style.left);
+            var ypos = parseInt(elem.style.top);
+            if (xpos == final_x && ypos == final_y) {
+                moveing = false;
+                return true;
+            }
+            if (xpos < final_x) {
+                var dist = Math.ceil((final_x - xpos) / 10);
+                xpos = xpos + dist;
+            }
+            if (xpos > final_x) {
+                var dist = Math.ceil((xpos - final_x) / 10);
+                xpos = xpos - dist;
+            }
+            if (ypos < final_y) {
+                var dist = Math.ceil((final_y - ypos) / 10);
+                ypos = ypos + dist;
+            }
+            if (ypos > final_y) {
+                var dist = Math.ceil((ypos - final_y) / 10);
+                ypos = ypos - dist;
+            }
+            elem.style.left = xpos + "px";
+            elem.style.top = ypos + "px";
+            var repeat = "moveElement('" + elementID + "'," + final_x + "," + final_y + "," + interval + ")";
+            elem.movement = setTimeout(repeat, interval);
+        }
+        function classNormal() {
+            var btnList = $('ibanner_btn').getElementsByTagName('span');
+            for (var i = 0; i < btnList.length; i++) {
+                btnList[i].className = 'normal';
+            }
+        }
+        function picZ() {
+            var picList = $('ibanner_pic').getElementsByTagName('a');
+            for (var i = 0; i < picList.length; i++) {
+                picList[i].style.zIndex = '1';
+            }
+        }
+        var autoKey = false;
+        function iBanner() {
+            if (!$('ibanner') || !$('ibanner_pic') || !$('ibanner_btn')) return;
+            $('ibanner').onmouseover = function () { autoKey = true };
+            $('ibanner').onmouseout = function () { autoKey = false };
+            var btnList = $('ibanner_btn').getElementsByTagName('span');
+            var picList = $('ibanner_pic').getElementsByTagName('a');
+            if (picList.length == 1) return;
+            picList[0].style.zIndex = '2';
+            for (var m = 0; m < btnList.length; m++) {
+                btnList[m].onmouseover = function () {
+                    for (var n = 0; n < btnList.length; n++) {
+                        if (btnList[n].className == 'current') {
+                            var currentNum = n;
+                        }
+                    }
+                    classNormal();
+                    picZ();
+                    this.className = 'current';
+                    picList[currentNum].style.zIndex = '2';
+                    var z = this.childNodes[0].nodeValue - 1;
+                    picList[z].style.zIndex = '3';
+                    if (currentNum != z) {
+                        picList[z].style.left = '650px';
+                        moveElement('picLi_' + z, 0, 0, 10);
+                    }
+                }
+            }
+        }
+        setInterval('autoBanner()', 5000);
+        function autoBanner() {
+            if (!$('ibanner') || !$('ibanner_pic') || !$('ibanner_btn') || autoKey) return;
+            var btnList = $('ibanner_btn').getElementsByTagName('span');
+            var picList = $('ibanner_pic').getElementsByTagName('a');
+            if (picList.length == 1) return;
+            for (var i = 0; i < btnList.length; i++) {
+                if (btnList[i].className == 'current') {
+                    var currentNum = i;
+                }
+            }
+            if (currentNum == (picList.length - 1)) {
+                classNormal();
+                picZ();
+                btnList[0].className = 'current';
+                picList[currentNum].style.zIndex = '2';
+                picList[0].style.zIndex = '3';
+                picList[0].style.left = '650px';
+                moveElement('picLi_0', 0, 0, 10);
+            } else {
+                classNormal();
+                picZ();
+                var nextNum = currentNum + 1;
+                btnList[nextNum].className = 'current';
+                picList[currentNum].style.zIndex = '2';
+                picList[nextNum].style.zIndex = '3';
+                picList[nextNum].style.left = '650px';
+                moveElement('picLi_' + nextNum, 0, 0, 10);
+            }
+        }
+        addLoadEvent(addBtn);
+        addLoadEvent(iBanner);
+    </script>
+}
+<!--头部-->
+<header class="ts1">
+    <ul class="topbar fl">
+        @{ 
+            List<WeiXin.Model.normal_channel> lists = ViewData["Top4Channel"] as List<WeiXin.Model.normal_channel>;
+            foreach (var item in lists)
+            {
+            <li><a class="icon_user" 
+                href="@Url.Action("" + item.Type + "classList", new { ccid = item.Id, sessionid = ViewData["SessionID"] })">
+                <i></i>
+                @item.Title
+            </a></li>
+            }
+        }
+    </ul>
+</header>
+<div id="ibanner">
+    <div id="ibanner_pic">
+        @{
+            List<module_article> indexImg = ViewData["IndexImg"] as List<module_article>;
+            List<module_product> IndexProImg = ViewData["IndexProImg"] as List<module_product>;
+            foreach (var item in indexImg)
+            {
+            <a href="@Url.Action("Article", new { id = item.Id, sessionid = ViewData["SessionID"] })">
+                <img src="/FileUpload/@item.Img" alt="@item.Title" />
+            </a>
+            }
+            if (IndexProImg!=null&&IndexProImg.Count>0)
+            {
+                foreach (var item in IndexProImg)
+                {
+                    <a href="@Url.Action("Product", new { id = item.Id, sessionid = ViewData["SessionID"] })">
+                <img src="/FileUpload/@item.Img" alt="@item.Title" />
+            </a>
+                }
+            }
+            
+             }
+    </div>
+</div>
+<!--ibanner end-->
+<!--News Top5-->
+<section class="i_list">
+    <ul class="i_shop_list" id="i_shop_list">
+        @{
+            List<module_article> TopNews = ViewData["TopNews"] as List<module_article>;
+            foreach (var item in TopNews)
+            {
+            <li><a href="@Url.Action("Article", new { id = item.Id, sessionid = ViewData["SessionID"] })">
+                <img src="/FileUpload/@item.Img" />
+                <h3 style="color:@item.TColor">@item.Title</h3>
+            </a>
+                @if (item.Summary.Length > 50)
+                {
+                    @item.Summary.Substring(0, 50)  
+                }
+                else
+                {	 @item.Summary  
+                }
+            </li>
+            }
+            List<module_product> TopPro = ViewData["TopPro"] as List<module_product>;
+            if (TopPro != null && TopPro.Count > 0)
+            {
+                foreach (var item in TopPro)
+                {
+                      
+            <li><a href="@Url.Action("Product", new { id = item.Id, sessionid = ViewData["SessionID"] })">
+                @if (item.IsImg == 0)
+                {
+                    <img alt="@item.Title"   src="/FileUpload/no.png" />
+                }
+                else
+                { 
+                    <img   src="/FileUpload/@item.Img" alt="@item.Title" />
+                }
+                <h3>@item.Title</h3>
+                <p class="tui_price ts2">
+                    <strong>@(decimal.Parse(item.Points.ToString()).ToString("C"))</strong> <del>@(decimal.Parse(item.Price0.ToString()).ToString("C"))</del>
+                     
+                </p>
+                <div class="hot">
+                    <strong>热卖</strong>
+                </div>
+            </a></li>
+                }
+            }
+        }
+    </ul>
+</section>
+<div class="clear">
+</div>
+*@
+
+@Html.Raw(ViewData["content"].ToString()) 
+ 

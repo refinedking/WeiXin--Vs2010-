@@ -1,0 +1,111 @@
+﻿@model WeiXin.BO.normal_extendsContract
+@{
+    ViewBag.Title = "添加插件";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+    ViewBag.backUrl = Url.Action("Extends");
+  
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+}
+@section script
+{<script src="@Url.Content("~/Scripts/jquery.tools.pack.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.formValidator.initConfig({ onError: function (msg) { Zuxia.Alert(msg); } });
+            $("#Title").formValidator({ tipid: "tipTitle", onshow: "请输入插件名称", onfocus: "请正确插件名称", defaultvalue: "" }).InputValidator({ min:2, onerror: "插件名称至少2个字" });
+            $("#BaseTable").formValidator({ tipid: "tipBaseTable", onshow: "请输入插件匹配词", onfocus: "请输入插件匹配词" }).InputValidator({ min: 1, max: 4, onerror: "1-4个字符" });
+            $("#Author").formValidator({ tipid: "tipAuthor", onshow: "请输入插件作者", onfocus: "尊重版权，还是把作者写上吧！" }).InputValidator({ min: 1, max: 8, onerror: "请输入插件作者" });
+        });
+    </script>
+    <script type="text/javascript">
+        function chkPost() {
+            if ($.formValidator.PageIsValid('1')) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+}
+<div id="divMain">
+    <div id="divRightPage">
+        <!--列表标题部分-->
+        <div class="tblTitle" onselectstart='return false;'>
+            <div>
+                  @(Model.Id == 0 ? "添加插件" : "修改插件")</div>
+        </div>
+        <div class="divReminders">
+            ★<label style="color: Red;">暂无说明</label><br />
+        </div>
+        <div class="divReminders">
+        </div>
+        @using (Html.BeginForm())
+        {    
+            <table class="formtable">
+                <tr>
+                    <th>
+                        插件名称
+                    </th>
+                    <td>
+                  @Html.TextBoxFor(model => model.Title, new { maxlength = 4, style = "width:177px;" })         
+                        <span id="tipTitle" style="width: 200px;"></span>
+                    </td>
+                </tr>      <tr>
+                    <th>
+                        插件匹配词
+                    </th>
+                    <td>
+                  @Html.TextBoxFor(model => model.BaseTable, new { maxlength = 4, style = "width:177px;" })         
+                        <span id="tipBaseTable" style="width: 200px;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        插件类型
+                    </th>
+                    <td>   @Html.DropDownList("Name", (ViewData["Name"] as SelectList), new { style = "width:185px;" })
+                        <span id="tipName" style="width: 200px;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        插件作者
+                    </th>
+                    <td>   @Html.TextBoxFor(model => model.Author, new { maxlength = 4, style = "width:177px;" })   
+                      
+                        <span id="tipAuthor" style="width: 200px;"></span>
+                    </td>
+                </tr>
+                 <tr>
+                    <th>
+                        自定义帮助信息
+                    </th>
+                    <td> @Html.TextAreaFor(model => model.Info
+                    , new {   style = "width:300px; height:80px" })   
+                        <span id="tipInfo" style="width: 200px;"></span>
+                    </td>
+                </tr>   <tr>
+                    <th>
+                        是否启用
+                    </th>
+                    <td>
+                          @Html.RadioButton("Enabled", 1, Model.Enabled == 1 ? true : false, new { id = "rdEnable" })
+                        <label for="rdEnable">
+                            启用</label>
+                        @Html.RadioButton("Enabled", 0, Model.Enabled == 0 ? true : false, new { id = "rdDisable" })
+                        <label for="rdDisable">
+                            禁用</label>
+                    </td>
+                </tr>
+            </table>
+           
+            <div class="divFormCtrl">
+                <!--页面按钮 如：提交、取消、下一步、关闭-->
+                 <input class="divBtn" type="submit" onclick="javascript:return chkPost()" value="提 交" />
+                <a class="divBtn pageLoading" href="@ViewBag.BackUrl">关 闭</a>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿@model WeiXin.BO.normal_templateContract
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BackUrl = Url.Action("Template");
+   
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+}
+@section script
+{
+}
+<div id="divMain">
+    <div id="divRightPage">
+        <!--列表标题部分-->
+        <div class="tblTitle" onselectstart='return false;'>
+            <div>
+                @(Model.Id == 0 ? "添加模版" : "修改模版")</div>
+        </div>
+        <div class="divReminders">
+            ★<label style="color: Red;">XXXX</label>XXXX<br />
+        </div>
+        <div class="divReminders">
+        </div>
+        @using (Html.BeginForm())
+        {    
+            <table class="formtable">
+                <tr>
+                    <th>
+                        模版名称
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(model => model.Title) 
+                        <span id="tipTitle" style="width: 200px;"></span>
+                    </td>
+                </tr>
+               
+                <tr>
+                    <th>
+                        简介<input type="button" class="tip-r" tip="html代码会被自动过滤，并只保留前200个字符" />
+                    </th>
+                    <td>
+                        @Html.TextAreaFor(model => model.content, new { style = "width:100%;height:300px;" })
+                    </td>
+                </tr>
+            </table>
+           
+            <div class="divFormCtrl">
+                <!--页面按钮 如：提交、取消、下一步、关闭-->
+                <input class="divBtn" type="submit" value="提 交" />
+                <a class="divBtn pageLoading" href="@ViewBag.BackUrl">关 闭</a>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,903 @@
+html
+{
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+}
+body
+{
+    margin: 0px;
+    padding: 0px;
+}
+div
+{
+    margin: 0px;
+    padding: 0px;
+}
+dl
+{
+    margin: 0px;
+    padding: 0px;
+}
+dt
+{
+    margin: 0px;
+    padding: 0px;
+}
+dd
+{
+    margin: 0px;
+    padding: 0px;
+}
+ul
+{
+    margin: 0px;
+    padding: 0px;
+}
+ol
+{
+    margin: 0px;
+    padding: 0px;
+}
+li
+{
+    margin: 0px;
+    padding: 0px;
+}
+h1
+{
+    margin: 0px;
+    padding: 0px;
+}
+h2
+{
+    margin: 0px;
+    padding: 0px;
+}
+h3
+{
+    margin: 0px;
+    padding: 0px;
+}
+h4
+{
+    margin: 0px;
+    padding: 0px;
+}
+h5
+{
+    margin: 0px;
+    padding: 0px;
+}
+h6
+{
+    margin: 0px;
+    padding: 0px;
+}
+pre
+{
+    margin: 0px;
+    padding: 0px;
+}
+code
+{
+    margin: 0px;
+    padding: 0px;
+}
+form
+{
+    margin: 0px;
+    padding: 0px;
+}
+fieldset
+{
+    margin: 0px;
+    padding: 0px;
+}
+legend
+{
+    margin: 0px;
+    padding: 0px;
+}
+input
+{
+    margin: 0px;
+    padding: 0px;
+}
+textarea
+{
+    margin: 0px;
+    padding: 0px;
+}
+p
+{
+    margin: 0px;
+    padding: 0px;
+}
+blockquote
+{
+    margin: 0px;
+    padding: 0px;
+}
+th
+{
+    margin: 0px;
+    padding: 0px;
+}
+td
+{
+    margin: 0px;
+    padding: 0px;
+}
+table
+{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+fieldset
+{
+    border: 0px currentColor;
+}
+img
+{
+    border: 0px currentColor;
+}
+address
+{
+    font-style: normal;
+    font-weight: normal;
+}
+caption
+{
+    font-style: normal;
+    font-weight: normal;
+}
+cite
+{
+    font-style: normal;
+    font-weight: normal;
+}
+code
+{
+    font-style: normal;
+    font-weight: normal;
+}
+dfn
+{
+    font-style: normal;
+    font-weight: normal;
+}
+em
+{
+    font-style: normal;
+    font-weight: normal;
+}
+strong
+{
+    font-style: normal;
+    font-weight: normal;
+}
+th
+{
+    font-style: normal;
+    font-weight: normal;
+}
+var
+{
+    font-style: normal;
+    font-weight: normal;
+}
+b
+{
+    font-style: normal;
+    font-weight: normal;
+}
+i
+{
+    font-style: normal;
+    font-weight: normal;
+}
+s
+{
+    font-style: normal;
+    font-weight: normal;
+}
+li
+{
+    list-style: none;
+}
+caption
+{
+    text-align: left;
+}
+th
+{
+    text-align: left;
+}
+h1
+{
+    font-size: 100%;
+    font-weight: normal;
+}
+h2
+{
+    font-size: 100%;
+    font-weight: normal;
+}
+h3
+{
+    font-size: 100%;
+    font-weight: normal;
+}
+h4
+{
+    font-size: 100%;
+    font-weight: normal;
+}
+h5
+{
+    font-size: 100%;
+    font-weight: normal;
+}
+h6
+{
+    font-size: 100%;
+    font-weight: normal;
+}
+q::before
+{
+    content: "";
+}
+q::after
+{
+    content: "";
+}
+abbr
+{
+    border: 0px currentColor;
+    font-variant: normal;
+}
+acronym
+{
+    border: 0px currentColor;
+    font-variant: normal;
+}
+sup
+{
+    vertical-align: text-top;
+}
+sub
+{
+    vertical-align: text-bottom;
+}
+input
+{
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+textarea
+{
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+select
+{
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+input
+{
+}
+textarea
+{
+}
+select
+{
+}
+legend
+{
+    color: rgb(0, 0, 0);
+}
+input[type=search]
+{
+    -webkit-appearance: none;
+}
+a img
+{
+}
+a span
+{
+}
+a strong
+{
+}
+a s
+{
+}
+body
+{
+    font-family: Tahoma,Verdana;
+    font-size: 12px;
+}
+button
+{
+    font-family: Tahoma,Verdana;
+    font-size: 12px;
+}
+select
+{
+    font-family: Tahoma,Verdana;
+    font-size: 12px;
+}
+textarea
+{
+    font-family: Tahoma,Verdana;
+    font-size: 12px;
+}
+input
+{
+    font-family: Tahoma,Verdana;
+    font-size: 12px;
+}
+body
+{
+    word-wrap: break-word;
+}
+button
+{
+    overflow: visible;
+    white-space: nowrap;
+}
+article
+{
+    display: block;
+}
+aside
+{
+    display: block;
+}
+details
+{
+    display: block;
+}
+figcaption
+{
+    display: block;
+}
+figure
+{
+    display: block;
+}
+footer
+{
+    display: block;
+}
+header
+{
+    display: block;
+}
+hgroup
+{
+    display: block;
+}
+menu
+{
+    display: block;
+}
+nav
+{
+    display: block;
+}
+section
+{
+    display: block;
+}
+body
+{
+    overflow: visible;
+    border-top-color: rgb(46, 50, 56);
+    border-top-width: 2px;
+    border-top-style: solid;
+    min-height: 480px;
+    background-color: rgb(255, 255, 255);
+    _height: 480px;
+}
+a
+{
+    color: rgb(91, 91, 91);
+    text-decoration: none;
+}
+a:visited
+{
+    color: rgb(91, 91, 91);
+    text-decoration: none;
+}
+.link
+{
+    color: rgb(91, 91, 91);
+    cursor: pointer;
+}
+a.link
+{
+    color: rgb(91, 91, 91);
+    cursor: pointer;
+}
+a:hover
+{
+    text-decoration: underline;
+}
+.link:hover
+{
+    text-decoration: underline;
+}
+.login-wrap
+{
+    background: url("img/login/bg-login.png") repeat-x 0px 0px rgb(255, 255, 255);
+    top: 50%;
+    width: 100%;
+    height: 452px;
+    text-align: center;
+    padding-top: 28px;
+    margin-top: -320px;
+    position: absolute;
+}
+.inner
+{
+    margin: 0px auto;
+    text-align: left;
+    width: 965px;
+}
+.none
+{
+    display: none;
+}
+.txt-hidden
+{
+    padding: 0px !important;
+    border: 0px currentColor !important;
+    width: 1px !important;
+    height: 1px !important;
+    line-height: 0 !important;
+    overflow: hidden;
+    position: absolute !important;
+    cliptop: 1px;
+    clipright: 1px;
+    clipbottom: 1px;
+    clipleft: 1px;
+}
+.hd
+{
+    height: 110px;
+}
+.site-title
+{
+    background-position: -235px 0px;
+    top: 50px;
+    width: 180px;
+    height: 98px;
+    position: absolute;
+    background-image: url('sprite/login-v4.png');
+}
+.bd
+{
+    height: 355px;
+}
+    .banner
+{
+    top: 10px;
+    width: 535px;
+    height: 332px;
+    float: left;
+    position: relative;
+    background-image: url("img/login/login-banner.png");
+}
+.main
+{
+    width: 360px;
+    height: 322px;
+    float: right;
+}
+.err-msg
+{
+    padding-bottom: 10px;
+}
+.err-msg strong
+{
+    color: rgb(228, 67, 46);
+}
+.login-form label
+{
+    height: 40px;
+    font-size: 0px;
+    margin-bottom: 14px;
+    display: block;
+    position: relative;
+}
+.textinput
+{
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(194, 194, 194) rgb(217, 217, 217) rgb(217, 217, 217);
+    padding: 7px;
+    width: 283px;
+    height: 24px;
+    color: rgb(160, 160, 160);
+    font-size: 14px;
+    display: inline-block;
+    cursor: text;
+    background-color: rgb(255, 255, 255);
+}
+.mock-text
+{
+    left: 7px;
+    top: 12px;
+    color: rgb(160, 160, 160);
+    font-size: 14px;
+    position: absolute;
+}
+.textinput:focus
+{
+    color: rgb(31, 31, 31);
+}
+input:focus
+{
+    color: rgb(31, 31, 31);
+}
+.captcha-wrap
+{
+    margin-bottom: 10px;
+}
+.captcha-wrap label
+{
+    margin-bottom: 10px;
+}
+.captcha img
+{
+    margin-right: 10px;
+    vertical-align: top;
+    display: inline-block;
+}
+.captcha .reload-captcha
+{
+    line-height: 53px;
+    vertical-align: top;
+    display: inline-block;
+}
+.cmds
+{
+    font-size: 0px;
+}
+.btn-login
+{
+    background-position: -235px -160px;
+    padding: 0px;
+    border: 0px currentColor;
+    width: 146px;
+    height: 42px;
+    overflow: hidden;
+    font-size: 0px;
+    margin-right: 10px;
+    vertical-align: top;
+    display: inline-block;
+    cursor: pointer;
+    background-image: url("sprite/login-v4.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+.btn-login:hover
+{
+    background-position: -235px -203px;
+    background-image: url("sprite/login-v4.png");
+}
+.commonlogin
+{
+    display: block;
+}
+.fastlogin
+{
+    display: none;
+}
+.logintype-switcher
+{
+    margin: 12px 0px 11px;
+    font-size: 12px;
+    vertical-align: top;
+}
+.i-forgetpass
+{
+    background-position: -416px 0px;
+    font: 0px/9999px arial;
+    width: 12px;
+    height: 12px;
+    overflow: hidden;
+    margin-right: 5px;
+    vertical-align: -2px;
+    display: inline-block;
+    font-size-adjust: none;
+    font-stretch: normal;
+    background-image: url("sprite/login-v4.png");
+}
+.i-forgetpass
+{
+    _display: none;
+}
+.ft .inner
+{
+    padding: 10px 0px;
+    text-align: center;
+    line-height: 1.5;
+}
+.ft .entry .ico
+{
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    vertical-align: -4px;
+    display: inline-block;
+}
+.ft .entry .gay-ico-mobile
+{
+    background-position: -235px -246px;
+    background-image: url("sprite/login-v4.png");
+}
+.ft .entry .gay-ico-android
+{
+    background-position: -254px -246px;
+    background-image: url("sprite/login-v4.png");
+}
+.ft .entry .gay-ico-apple
+{
+    background-position: -273px -246px;
+    background-image: url("sprite/login-v4.png");
+}
+.ft .entry .gay-ico-symbian
+{
+    background-position: -292px -246px;
+    background-image: url("sprite/login-v4.png");
+}
+.ft .entry a
+{
+    color: rgb(149, 149, 150);
+}
+.ft .entry a:visited
+{
+    color: rgb(149, 149, 150);
+}
+.ft .sub-entry a
+{
+    color: rgb(149, 149, 150);
+}
+.ft .sub-entry a:visited
+{
+    color: rgb(149, 149, 150);
+}
+.ft .split
+{
+    margin: 0px 8px;
+    color: rgb(228, 233, 234);
+}
+.ft .copyright
+{
+    padding: 10px 0px 0px;
+    color: rgb(190, 192, 192);
+    line-height: 2.2;
+}
+.ft a
+{
+    color: rgb(190, 192, 192);
+}
+.ft .sub-entry
+{
+    padding: 6px 0px;
+}
+.logintype-switcher
+{
+    overflow: hidden;
+}
+.logintype-switcher .link
+{
+    margin-right: 20px;
+    float: left;
+}
+#qrlogin_step1
+{
+    height: 158px;
+}
+.qrlogin
+{
+    margin-bottom: 10px;
+}
+.qrlogin .qrlogin_bg
+{
+    background-position: 0px -159px;
+    width: 234px;
+    height: 123px;
+    margin-bottom: 10px;
+    position: relative;
+    background-image: url("sprite/login-v4.png");
+}
+.qrlogin .qrlogin_bg .qrlogin_img
+{
+    left: 116px;
+    top: 5px;
+    position: absolute;
+}
+.qrlogin .kao
+{
+    width: 234px;
+    height: 158px;
+    background-image: url("sprite/login-v4.png");
+}
+#qrlogin_step3
+{
+    height: 158px;
+    position: relative;
+}
+#qrlogin_step3 .qr_head
+{
+    width: 60px;
+    height: 60px;
+}
+#qrlogin_step3 .qr_nick
+{
+    left: 70px;
+    top: 2px;
+    font-family: "Î¢ÈíÑÅºÚ";
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+}
+#qrlogin_step3 .qr_uin
+{
+    left: 70px;
+    top: 25px;
+    position: absolute;
+}
+#qrlogin_step3 .qr_feeds
+{
+    left: 70px;
+    top: 43px;
+    height: 14px;
+    overflow: hidden;
+    font-weight: bold;
+    position: absolute;
+}
+#qrlogin_step3 .qr_login_tips
+{
+    left: 50px;
+    top: 80px;
+    position: absolute;
+}
+#qrlogin_step3 .qr_login_tips .qr_login_tips_logo
+{
+    display: none;
+}
+.i-pop-close
+{
+    overflow: hidden;
+    display: block;
+}
+.login-nav
+{
+    clear: both;
+}
+.top-tips
+{
+    width: 100%;
+    height: 30px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffff1',endColorstr='#fffbd9',GradientType=0);
+}
+.top-tips .top-tips-inner
+{
+    margin: 0px auto;
+    width: 960px;
+    color: rgb(63, 63, 63);
+    padding-top: 7px;
+    position: relative;
+}
+.top-tips .icon-info
+{
+    background-position: -416px -17px;
+    width: 16px;
+    height: 16px;
+    text-indent: 0px;
+    margin-right: 4px;
+    vertical-align: middle;
+    background-image: url("sprite/login-v4.png");
+}
+.top-tips .icon-close
+{
+    background-position: -416px -34px;
+    font: 0px/0 arial !important;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    right: 0px;
+    color: transparent !important;
+    text-indent: 0px;
+    overflow: hidden;
+    position: absolute;
+    font-size-adjust: none !important;
+    font-stretch: normal !important;
+    background-image: url("sprite/login-v4.png");
+}
+.top-tips .icon-close:hover
+{
+    background-position: -416px -51px;
+    background-image: url("sprite/login-v4.png");
+}
+html
+{
+    background: url("img/login/bg-login.png") repeat-x;
+}
+body
+{
+    background: url("img/login/bg-login.png") repeat-x;
+}
+.login-wrap
+{
+    margin: 0px auto;
+    height: auto;
+    position: static;
+}
+.inner
+{
+    margin: 0px auto;
+    width: 965px;
+    padding-left: 5px;
+}
+.hd
+{
+    height: auto;
+    padding-bottom: 10px;
+}
+.bd
+{
+    height: auto;
+    margin-bottom: 40px;
+}
+.hd .site-title
+{
+    background-position: -235px 0px;
+    top: auto;
+    height: 98px;
+    position: static;
+    background-image: url("sprite/login-v4.png");
+}
+ 
+ 
+ 
+.ft .inner .entry
+{
+    text-align: left;
+    padding-top: 8px;
+}
+.ft .entry a
+{
+    padding: 5px 0px;
+    width: 48%;
+    text-align: left;
+    display: inline-block;
+}
+.ft .entry .split
+{
+    display: none;
+}
+.ft .copyright
+{
+    display: none;
+}
+.ft .inner::after
+{
+    text-align: center;
+    color: rgb(190, 192, 192);
+    padding-top: 10px;
+    display: block;
+    content: "Tencent Inc. All Rights Reserved.";
+}
+#GeneratedByCssGaga178
+{
+    transform: rotate(20120814103654deg);
+}

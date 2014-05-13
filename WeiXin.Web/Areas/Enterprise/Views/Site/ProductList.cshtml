@@ -1,0 +1,263 @@
+﻿@model PagerList<module_product>
+@using WeiXin.Model;
+@using WeiXin.BO;
+@{
+    ViewBag.Title = "商品列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section css
+{<link href="@Url.Content("~/Styles/Enterprise/common.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Styles/Shared.css")" rel="stylesheet" type="text/css" />
+}
+@section script
+{
+    <script src="@Url.Content("~/Scripts/_Layout_NoFrame.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.tools.pack.js")" type="text/javascript"></script>
+}
+@functions{
+    public string formatContentOper(int value, int id, string type)
+    {
+        string ccid = ViewData["ccid"].ToString();
+        var _str = "";
+        switch (type)
+        {
+            case "img":
+                _str = "<img title=\"缩略图\" src=\"/Styles/Enterprise/images/ico_isimg" + value + ".gif\" border=\"0\" />";
+                break;
+            case "top":
+                if (value == 1)
+                    _str = "<a   title=\"取消推荐\" href='/Enterprise/Site/BatchOperProduct/?ids=" + id + "&act=notop&ccid=" + ccid + "'\"><img src=\"/Styles/Enterprise/images/ico_istop" + value + ".gif\" border=\"0\" /></a>";
+                else
+                    _str = "<a  title=\"设为推荐\" href='/Enterprise/Site/BatchOperProduct/?ids=" + id + "&act=top&ccid=" + ccid + "'  \"><img src=\"/Styles/Enterprise/images/ico_istop" + value + ".gif\" border=\"0\" /></a>";
+                break;
+            case "focus":
+                if (value == 1)
+                    _str = "<a href='/Enterprise/Site/BatchOperProduct/?ids=" + id + "&act=nofocus&ccid=" + ccid + "'  title=\"取消焦点\"> <img src=\"/Styles/Enterprise/images/ico_isfocus" + value + ".gif\" border=\"0\" /></a>";
+                else
+                    _str = "<a href='/Enterprise/Site/BatchOperProduct/?ids=" + id + "&act=focus&ccid=" + ccid + "' title=\"设为焦点\" ><img src=\"/Styles/Enterprise/images/ico_isfocus" + value + ".gif\" border=\"0\" /></a>";
+
+                break;
+            case "head":
+                if (value == 1)
+                    _str = "<a href='/Enterprise/Site/BatchOperProduct/?ids=" + id + "&act=nohead&ccid=" + ccid + "' title=\"取消置顶\"  \"><img src=\"/Styles/Enterprise/images/ico_ishead" + value + ".gif\" border=\"0\" /></a>";
+                else
+                    _str = "<a href='/Enterprise/Site/BatchOperProduct/?ids=" + id + "&act=head&ccid=" + ccid + "' title=\"设为置顶\"><img src=\"/Styles/Enterprise/images/ico_ishead" + value + ".gif\" border=\"0\" /></a>";
+
+                break;
+            default:
+                if (value == 1)
+                    _str = "<img alt=\"已发布\" src=\"/Styles/Enterprise/images/ico_ispass" + value + ".gif\" border=\"0\" />";
+                if (value == -1)
+                    _str = "<img alt=\"待审\" src=\"/Styles/Enterprise/images/ico_ispass" + value + ".gif\" border=\"0\" />";
+                if (value == 0)
+                    _str = "<img alt=\"新的\" src=\"/Styles/Enterprise/images/ico_ispass" + value + ".gif\" border=\"0\" />";
+                break;
+        }
+        return _str;
+    }
+}
+@using (Html.BeginForm())
+{ 
+    @Html.Hidden("keyWords","")
+    <div id="divMain">
+        <div id="divRightPage">
+            <!--列表标题部分-->
+            <div class="divPageChildTitle " onselectstart='return false;'>
+                <div class="topnav">
+                    <ul id="topnavbar">
+                        <li class="topmenu"><a href="javascript:void(0);" class="top_link"><span class="down">
+                            批量操作</span></a>
+                            <ul class="sub">
+                                <li><a href="javascript:void(0);" onclick="operater('createhtml')">静态生成</a></li><li>
+                                    <a href="javascript:void(0);" onclick="operater('pass')">审核内容</a></li><li><a href="javascript:void(0);"
+                                        onclick="operater('nopass')">取消审核</a></li><li><a href="javascript:void(0);" onclick="operater('top')">
+                                            设为推荐</a></li><li><a href="javascript:void(0);" onclick="operater('notop')">取消推荐</a></li><li>
+                                                <a href="javascript:void(0);" onclick="operater('focus')">设为焦点</a></li><li><a href="javascript:void(0);"
+                                                    onclick="operater('nofocus')">取消焦点</a></li><li><a href="javascript:void(0);" onclick="operater('head')">
+                                                        设为置顶</a></li><li><a href="javascript:void(0);" onclick="operater('nohead')">取消置顶</a></li><li>
+                                                            <a href="javascript:void(0);" onclick="operater('sdel')">放入回收站</a></li><li><a href="javascript:void(0);"
+                                                                onclick="operater('del')">直接删除</a></li>
+                            </ul>
+                        </li>
+                        <li class="topmenu"><a href="javascript:void(0);" onclick="ajaxSearch();" class="top_link">
+                            <span>过滤检索</span></a></li>
+                        <li class="topmenu"><a  href='@Url.Action("ClassList", new { ccid = ViewData["ccid"] })'
+                            class="top_link"><span>栏目管理</span></a></li>
+                        <li class="topmenu"><a  href='@Url.Action("ProductEdit", new { operateType = "add", id = 0, ccid = ViewData["ccid"] })'
+                            class="top_link"><span>添加内容</span></a></li>
+                    </ul>
+                     <div class="divReminders">
+                <span class="keyPoint">说明：</span> [ <span class="keyPoint">置顶</span> ]且有[ <span class="keyPoint">缩略图</span> ]的文章将会显示在微网首页<br />
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 点击频道进入栏目页，显示频道下的5篇[<span class="keyPoint"> 焦点</span> ]文章<br />
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 焦点 + 置顶+ 缩略图 =  首页Banner
+
+            </div>
+                    <div style="width: 100%; margin: 4px auto;">
+                        <fieldset style="float: left;">
+                            <legend>状态</legend>
+                            <ul>
+                                <li><a id="menu-s" href="javascript:void(0);" onclick="s='';ajaxList(1);FormatFontWeight();">
+                                    全部</a> </li>
+                                <li><a id="menu-s0" href="javascript:void(0);" onclick="s='&s=0';ajaxList(1);FormatFontWeight();">
+                                    待审</a> </li>
+                                <li><a id="menu-s-1" href="javascript:void(0);" onclick="s='&s=-1';ajaxList(1);FormatFontWeight();">
+                                    已删</a> </li>
+                                <li><a id="menu-s1" href="javascript:void(0);" onclick="s='&s=1';ajaxList(1);FormatFontWeight();">
+                                    已审</a></li>
+                            </ul>
+                        </fieldset>
+                        <fieldset style="float: left;">
+                            <legend>缩略图</legend>
+                            <ul>
+                                <li><a id="menu-isimg" href="javascript:void(0);" onclick="isimg='';ajaxList(1);FormatFontWeight();">
+                                    全部</a> </li>
+                                <li><a id="menu-isimg1" href="javascript:void(0);" onclick="isimg='&isimg=1';ajaxList(1);FormatFontWeight();">
+                                    有</a> </li>
+                                <li><a id="menu-isimg-1" href="javascript:void(0);" onclick="isimg='&isimg=-1';ajaxList(1);FormatFontWeight();">
+                                    无</a></li>
+                            </ul>
+                        </fieldset>
+                        <fieldset style="float: left;">
+                            <legend>推荐</legend>
+                            <ul>
+                                <li><a id="menu-istop" href="javascript:void(0);" onclick="istop='';ajaxList(1);FormatFontWeight();">
+                                    全部</a> </li>
+                                <li><a id="menu-istop1" href="javascript:void(0);" onclick="istop='&istop=1';ajaxList(1);FormatFontWeight();">
+                                    是</a> </li>
+                                <li><a id="menu-istop-1" href="javascript:void(0);" onclick="istop='&istop=-1';ajaxList(1);FormatFontWeight();">
+                                    否</a></li>
+                            </ul>
+                        </fieldset>
+                        <fieldset style="float: left;">
+                            <legend>焦点</legend>
+                            <ul>
+                                <li><a id="menu-isfocus" href="javascript:void(0);" onclick="isfocus='';ajaxList(1);FormatFontWeight();">
+                                    全部</a> </li>
+                                <li><a id="menu-isfocus1" href="javascript:void(0);" onclick="isfocus='&isfocus=1';ajaxList(1);FormatFontWeight();">
+                                    是</a> </li>
+                                <li><a id="menu-isfocus-1" href="javascript:void(0);" onclick="isfocus='&isfocus=-1';ajaxList(1);FormatFontWeight();">
+                                    否</a></li>
+                            </ul>
+                        </fieldset>
+                        <fieldset style="float: left;">
+                            <legend>置顶</legend>
+                            <ul>
+                                <li><a id="menu-ishead" href="javascript:void(0);" onclick="ishead='';ajaxList(1);FormatFontWeight();">
+                                    全部</a> </li>
+                                <li><a id="menu-ishead1" href="javascript:void(0);" onclick="ishead='&ishead=1';ajaxList(1);FormatFontWeight();">
+                                    是</a> </li>
+                                <li><a id="menu-ishead-1" href="javascript:void(0);" onclick="ishead='&ishead=-1';ajaxList(1);FormatFontWeight();">
+                                    否</a></li>
+                            </ul>
+                        </fieldset>
+                        <div class="clear">
+                        </div>
+                    </div>
+                </div>
+            </div> <div class="clear">
+                        </div>
+            @if (Model.Count == 0)
+            {
+                <div class="nodata" onselectstart='return false;'>
+                    <!--无数据提示层-->
+                </div>
+            }
+            else
+            {
+                <div class="divDataList">
+                    <!--数据列表-->
+                    <table id="tblList" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th class="SerialNumber">
+                            </th>
+                            <!--复选框列(宽度固定为20px)-->
+                            <th>
+                                <input type="checkbox" class="chkAll" />
+                            </th>
+                            <th style="min-width: 90px;">
+                                标题
+                            </th>
+                            <th style="min-width: 150px;">
+                                所属栏目
+                            </th>
+                            <th style="min-width: 200px;">
+                                发布时间
+                            </th>
+                            <th style="min-width: 40px;">
+                                状态
+                            </th>
+                            <th style="min-width: 200px;">
+                                操作
+                            </th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            
+                            <tr class="tblItem" style="font-size: 14px;">
+                                <td>
+                                    @(Model.IndexOf(item) + 1)
+                                </td>
+                                <td class="divCtrlList">
+                                    <input type="checkbox" class="chkItem" value="@item.Id" />
+                                </td>
+                                <td>
+                                    <a title="点击浏览"  href="@Url.Action("Product", "Web", new { id = item.Id, sessionid = WeiXin.Core.SecurityEncryption.DESEncrypt(item.normal_channel.eid.ToString()) })" target="_blank">@item.Title</a>
+                                </td>
+                                <td>
+                                    @item.normal_class.Title
+                                </td>
+                                <td>
+                                    @item.AddDate
+                                </td>
+                                <td>
+                                    @Html.Raw(formatContentOper(int.Parse(item.IsPass.ToString()), item.Id, "pass"))
+                                    @Html.Raw(formatContentOper(int.Parse(item.IsImg.ToString()), item.Id, "img"))
+                                    @Html.Raw(formatContentOper(int.Parse(item.IsTop.ToString()), item.Id, "top"))
+                                    @Html.Raw(formatContentOper(int.Parse(item.IsFocus.ToString()), item.Id, "focus"))
+                                    @Html.Raw(formatContentOper(int.Parse(item.IsHead.ToString()), item.Id, "head"))
+                                </td>
+                                <td>
+                                    @{  List<AuthorityContract> list_PageAuthority = ViewData["list_PageAuthority"] as List<AuthorityContract>;
+
+                                        foreach (WeiXin.BO.AuthorityContract authority in list_PageAuthority)
+                                        {
+                                            switch (authority.AuthorityTag)
+                                            {
+                                                case "GN_EDIT":
+
+                                        <a  href='@Url.Action("ProductEdit", new { id = item.Id, ccid = ViewData["ccid"], operateType = "edit" })'>
+                                            编 辑</a>
+                                        <a  href='@Url.Action("CopyProduct", new { id = item.Id, ccid = ViewData["ccid"], operateType = "copy" })'>
+                                            克 隆</a>
+                                             break;
+                                                case "GN_DELETE":
+
+                                        <a  cfmMsg="您确定要删除【@(item.Title.ToString().Trim())】信息？"  href='@Url.Action("DeleteProduct", new { id = item.Id, ccid = ViewData["ccid"], operateType = "del" })'>
+                                            删 除</a>
+                                    
+                                             break;
+
+                                            }
+                                        }
+
+                                    }
+                                </td>
+                            </tr>
+                           
+                        }
+                    </table>
+                </div>
+                }
+                   <!--列表分页部分-->
+            <div class='divPager' onselectstart='return false;'>
+                <!--分页层-->
+                @Html.Raw(Model.PagerHtmlA)
+            </div>
+           
+         
+        </div>
+    </div>
+}

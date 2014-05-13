@@ -1,0 +1,159 @@
+﻿@model WeiXin.Core.PageHelper<WeiXin.BO.AuthorityContract>
+@using WeiXin.BO
+@{
+    ViewBag.Title = "功能点列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+}
+@section script
+{
+    <script src="@Url.Content("~/Scripts/_Layout_NoFrame.js")" type="text/javascript"></script>
+}
+@using (Html.BeginForm())
+{
+    <div id="divMain">
+        <div id="divRightPage">
+            <!--列表标题部分-->
+            <div class="divPageChildTitle" onselectstart='return false;'>
+                <div class="divTitleItem">
+                    功能点列表</div>
+                <table id="tblQuery" style="float: left;">
+                    <tr>
+                        <td>
+                            模糊查询：
+                        </td>
+                        <td>
+                            <input type="text" class="txtQuery" name="select_AuthorityName" value='@ViewData["authorityName"]' />
+                        </td>
+                        <td colspan="2">
+                            <input type="submit" class="divBtn" value="查 询" />
+                        </td>
+                    </tr>
+                </table>
+                <div class="divTitleCtrl">
+                    @{
+                                                                                              List<AuthorityContract> list_PageAuthority = ViewData["list_PageAuthority"] as List<AuthorityContract>;
+
+                                                                                              foreach (AuthorityContract authority in list_PageAuthority)
+                                                                                              {
+                                                                                                  switch (authority.AuthorityTag)
+                                                                                                  {
+                                                                                                      case "GN_ADD":
+
+                        <a  eventtype="add" class="divBtn" href='@Url.Action("AddOrUpdateAuthority", "AuthorityManager", new { area = "WeiXin_Authority" })'>
+                            添 加</a>
+                                                            break;
+                                                                                                      case "GN_DELETE":
+                        <a eventtype="del" class="divBtn" cfmMsg="您确定要删除选中的功能点吗？" href='@Url.Action("DeleteAuthority", "AuthorityManager", new { area = "WeiXin_Authority" })'>
+                            删 除</a>
+                                                                                    break;
+
+                                                                                                      default:
+                                                                               break;
+                                                                                                  }
+                                                                                              }
+
+                    }
+                     
+                    <!--页面按钮 如：提交、取消、下一步、关闭-->
+                   <a eventtype="add" class="divBtn" href='@Url.Action("AuthorityList", "AuthorityManager", new { area = "WeiXin_Authority" })'>
+                        刷 新</a> 
+                </div>
+            </div>
+            <div class="divReminders">
+                <span class="keyPoint">模糊查询</span>：按照“功能名称”进行模糊查询<br />
+                <span class="keyPoint">注</span>： 对功能点的启用或禁用操作，将在用户下次登录后生效
+            </div>
+            @if (Model.Count == 0)
+            {
+                <div class="nodata" onselectstart='return false;'>
+                    <!--无数据提示层-->
+                </div>
+            }
+            else
+            {
+                <div class="divDataList">
+                    <!--数据列表-->
+                    <table id="tblList" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th class="SerialNumber">
+                            </th>
+                            <!--复选框列(宽度固定为20px)-->
+                            <th>
+                                <input type="checkbox" class="chkAll" />
+                            </th>
+                            <th style="min-width: 90px;">
+                                名称
+                            </th>
+                            <th style="min-width: 150px;">
+                                标识
+                            </th>
+                            <th style="min-width: 200px;">
+                                备注
+                            </th>
+                            <th style="min-width: 40px;">
+                                状态
+                            </th>
+                            <th style="min-width: 200px;">
+                                操作
+                            </th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="tblItem">
+                                <td>@(Model.IndexOf(item) + 1)
+                                </td>
+                                <td class="divCtrlList">
+                                    <input type="checkbox" class="chkItem" value="@item.AuthorityID" />
+                                </td>
+                                <!--宽度根据情况用行内样式设置-->
+                                <td style="text-align: center;">
+                                    @Html.Encode(item.AuthorityName)
+                                </td>
+                                <td>
+                                    @Html.Encode(item.AuthorityTag)
+                                </td>
+                                <td>
+                                    @Html.Encode(item.AuthorityDescription)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.Raw(item.AuthorityState == 0 ? "正常" : "<font color='red'>禁用</font>")
+                                </td>
+                                <td>
+                                    <a  href='@Url.Action("UpdateAuthorityStatus", "AuthorityManager", new { area = "WeiXin_Authority", id = item.AuthorityID })'>
+                                        启用/禁用</a>
+                                    @foreach (var authority in list_PageAuthority)
+                                    {
+                                        string isEnable = item.AuthorityState == 0 ? "" : "disabled";
+                                        switch (authority.AuthorityTag)
+                                        {
+
+                                            case "GN_EDIT":
+
+                                        <a @isEnable  href='@Url.Action("AddOrUpdateAuthority", "AuthorityManager", new { area = "WeiXin_Authority", id = item.AuthorityID })'>
+                                            修改</a>
+                                                       break;
+
+                                            case "GN_DELETE":
+                                        <a @isEnable cfmMsg="您确定要删除功能点【@item.AuthorityName】吗？" href='@Url.Action("DeleteAuthority", "AuthorityManager", new { area = "WeiXin_Authority", id = item.AuthorityID })'>
+                                            删 除</a>
+                                                                                                break;
+                                        }
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            }
+            <!--列表分页部分-->
+            <div class='divPager' onselectstart='return false;'>
+                <!--分页层-->
+                @Html.Raw(Model.PagerHtmlA)
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,30 @@
+﻿@model List<employeeInfo>
+@using WeiXin.Model
+@{
+    ViewBag.Title = "企业列表";
+    Layout = "~/Views/Shared/_wap.cshtml";
+}
+<!--主体-->
+<section class="i_list">
+		<ul class="i_shop_list" id="i_shop_list">
+        @foreach (var item in Model)
+        {
+            <li>
+			<a href="#">
+				<img src="/FileUpload/@item.temp4" />
+				<h3>@item.wxName (微信号：@item.wxUser)</h3>
+			</a>
+			<p class="i_shop_phone">
+				@item.temp3
+			</p>
+			<p class="i_shop_address"> 
+            	<a href="../map/@(item.Eid)?sessionid=@ViewData["sessionid"]">地址：@item.Address</a>
+			</p>
+            <span class="gt"></span>
+		</li>
+        }
+			 
+			</ul>
+	</section>
+<a class="more" id="show_more" page="2" style="display: none;" href="javascript:void(0);">
+    加载更多</a> 

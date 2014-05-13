@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery Cookie Plugin</title> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script> 
+<script type="text/javascript" src="jquery.cookie.js"></script> 
+<script type="text/javascript">
+$(function(){
+	var cookie_name = 'blog';						//定义名为blog的值
+	var options = {path: '/', expires: 10};			//定义路径和过期时间
+	$('a').eq(2).click(function(){					//点击“写入cookie”
+		$.cookie(cookie_name, "ons.me", options);	//保存cookie_name，值为ons.me
+		return false;
+	});
+	$('a').eq(3).click(function(){					//点击“读取cookie”
+		alert($.cookie(cookie_name));				//输出cookie_name的值
+		return false;
+	});
+	 $('a').eq(4).click(function(){					//点击“删除cookie”
+		$.cookie(cookie_name, null, options);		//清空cookie_name
+		return false;
+	});
+});
+</script> 
+</head>
+<body>
+<h1><a href="http://ons.me/" target="_blank" title="一个热爱网络的年轻人的博客">西门的后花园</a></h1> 
+<h2><a href="http://ons.me/167.html" target="_blank">jQuery cookie保存背景颜色、字体颜色和字体大小</a></h2> 
+<p><a href="#">写入cookie</a></p>
+<p><a href="#">读取cookie</a></p> 
+<p><a href="#">删除cookie</a></p>
+</body>
+</html>

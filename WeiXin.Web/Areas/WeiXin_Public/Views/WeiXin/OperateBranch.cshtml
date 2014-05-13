@@ -1,0 +1,95 @@
+﻿@model WeiXin.BO.BranchInfoContract
+@{
+    ViewBag.Title = "添加行业信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BackUrl = Url.Action("BranchMain");
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+}
+@section script
+{
+    <script src="@Url.Content("~/Scripts/Shared/jquery.validate.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Shared/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/_Layout_NoFrame_Edit.js")" type="text/javascript"></script>
+}
+<div id="divMain">
+    <div id="divRightPage">
+        <!--列表标题部分-->
+        <div class="tblTitle" onselectstart='return false;'>
+            <div>
+                @(Model.BranchID == 0 ? "新增行业信息" : "修改行业信息")</div>
+        </div>
+        <div class="divReminders">
+            ★<label style="color: Red;">“行业名称”</label>只能为汉字哦<br />
+        </div>
+        <div class="divReminders">
+        </div>
+        @using (Html.BeginForm())
+        {
+              
+            <table class="tblForm" id="tblForm">
+                <tr>
+                    <td class="tdTitle">
+                        父行业名称：
+                    </td>
+                    <td>
+                        @Html.DropDownList("PBranchId", (ViewData["FatherBranch"] as SelectList), new { style = "width:177px;" })<br />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        行业名称：
+                    </td>
+                    <td>
+                        @Html.HiddenFor(model => model.BranchID)
+                        @Html.TextBoxFor(model => model.BranchName, new { maxlength = 15 })
+                        @Html.ValidationMessageFor(model => model.BranchName)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        行业负责人：
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.BranchPrincipal, new { maxlength = 15 })
+                        @Html.ValidationMessageFor(model => model.BranchPrincipal)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        负责人电话：
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.BranchPhone, new { maxlength = 20 })
+                        @Html.ValidationMessageFor(model => model.BranchPhone)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        行业负责人传真：
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.BranchFax, new { maxlength = 20 })
+                        @Html.ValidationMessageFor(model => model.BranchFax)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        行业简述：
+                    </td>
+                    <td>
+                        @Html.TextAreaFor(model => model.BranchRemark, new { style = "width:300px;height:50px;" })
+                    </td>
+                </tr>
+            </table>  
+           
+            <div class="divFormCtrl">
+                <!--页面按钮 如：提交、取消、下一步、关闭-->
+                <input class="divBtn" type="submit" value="提 交" />
+                <a class="divBtn pageLoading" href="@ViewBag.BackUrl">关 闭</a>
+            </div>
+        }
+    </div>
+</div>

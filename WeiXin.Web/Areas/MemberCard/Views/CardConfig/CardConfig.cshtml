@@ -1,0 +1,148 @@
+﻿@model WeiXin.BO.CardConfigContract
+@{
+    ViewBag.Title = "会员卡配置";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />   <link href="@Url.Content("~/Scripts/PlugIn/jquery.uploadify-v2.1.0/example/css/default.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Scripts/PlugIn/jquery.uploadify-v2.1.0/uploadify.css")" rel="stylesheet" type="text/css" />
+}
+@section script
+{   <script src="@Url.Content("~/Scripts/jquery.tools.pack.js")" type="text/javascript"></script>
+   <script src="@Url.Content("~/Scripts/PlugIn/jquery.uploadify-v2.1.0/swfobject.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/PlugIn/jquery.uploadify-v2.1.0/jquery.uploadify.v2.1.0.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            
+            $.formValidator.initConfig({ onError: function (msg) { Zuxia.Alert(msg); } });
+            $("#CardName").formValidator({ tipid: "tipTitle", onshow: "请输入会员卡名称", onfocus: "请输入会员卡名称" }).InputValidator({ min: 1, max: 15, onerror: "请输入1-15个汉字,请确认" });
+
+            $("#MinCardID").formValidator({ tipid: "tipMinCardID", onshow: "请输入会员卡最小卡号，只能为数字", onfocus: "请输入会员卡最小卡号，推荐：1000000" }).RegexValidator({ regexp: "^[1-9]\\d*$", onerror: "请输入会员卡最小卡号,只能为数字" });
+            $("#CardAdd").formValidator({ tipid: "tipCardAdd", onshow: "请输入总店地址", onfocus: "请输入总店地址" }).InputValidator({ min: 5, max: 150, onerror: "请输入总店地址" });
+
+            $("#CardTel").formValidator({ tipid: "tipCardTel", onshow: "请输入总店电话", onfocus: "请输入总店电话" }).InputValidator({ min: 7, max: 12, onerror: "请输入总店电话" }); 
+            if ($("#CardImg").val() != "") {
+
+                $("#Simg").attr("src", "/FileUpload/" + $("#CardImg").val() + "");
+            }
+
+          
+            $("#uploadify").uploadify({ 
+                'uploader': '../../../../Scripts/PlugIn/jquery.uploadify-v2.1.0/uploadify.swf',    
+                'script': '/WeiXin/Import',  
+
+                'cancelImg': '../../../../Scripts/PlugIn/jquery.uploadify-v2.1.0/cancel.png',   
+                'folder': 'UploadFile',  
+                'queueID': 'fileQueue',  
+                'auto': false,  
+                'multi': false,   
+                'fileExt': '*.jpg;*.png;*.jpeg',
+                'fileDesc': '请选择JPG，PNG，JPEG为后缀的图片',
+                'sizeLimit': 1024 * 1024 *1, //1M
+                'onComplete': function (event, queueId, fileObj, response, data) {
+                    $("#Simg").attr("src", "/FileUpload/" + response + "");
+                    $("#CardImg").val(response);
+                },
+                'onError': function (event, queueID, fileObj) {
+                    alert("文件:" + fileObj.name + " 上传失败");
+                }
+            });
+        });
+       
+        function CheckFormSubmit() {
+            if ($.formValidator.PageIsValid('1')) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+}
+<div id="divMain">
+    <div id="divRightPage">
+        <!--列表标题部分-->
+        <div class="tblTitle" onselectstart='return false;'>
+            <div>
+                会员卡配置</div>
+        </div>
+        <div class="divReminders">
+            ★<label style="color: Red;">所有内容均为必填项</label><br />
+        </div>
+        <div class="divReminders">
+        </div>
+        @using (Html.BeginForm())
+        {    
+            @Html.HiddenFor(Model=>Model.id)
+            <table class="formtable">
+                <tr>
+                    <th>
+                        会员卡名：
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(Model => Model.CardName, new { maxlength="15"})
+                        <span id="tipTitle" style="width: 200px;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        会员是否需要审核
+                    </th>
+                    <td>
+                        @Html.DropDownList("CardState", (ViewData["CardState"] as SelectList), new { style = "width:157px;" })<br />
+                  <span  style="color:red">      (*设置后，当用户领取的时候，需要后台审核，用户才能够真正使用) </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        最小卡号
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(Model => Model.MinCardID)
+                         <span id="tipMinCardID" style="width: 200px;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        商家地址
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(Model => Model.CardAdd)<span id="tipCardAdd" style="width: 200px;"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        商家电话
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(Model => Model.CardTel)
+                    <span id="tipCardTel" style="width: 200px;"></span>
+                    </td>
+                </tr>
+               
+                   <tr>
+                    <th >
+                        会员卡图片：
+                    </th>
+                    <td>
+                        <img id="Simg" src="/FileUpload/no.png" width="370" height="150" style="margin: 5px; float:left;" />
+                       
+                        <div id="fileQueue">
+                        </div> 上传图片大小请使用<span style=" color:Red;"><b> 370*150</b></span>
+                        <br />
+                 
+                        <input type="file" name="uploadify" id="uploadify" disabled="disabled" style="float:left; "/>
+                    <a href="javascript:$('#uploadify').uploadifyUpload()" class="divBtn2" style="  float:left">开始上传</a>
+                    @Html.HiddenFor(Model=>Model.CardImg)
+                   </td>
+                </tr>
+            </table>
+           
+            <div class="divFormCtrl">
+                <!--页面按钮 如：提交、取消、下一步、关闭-->
+                <input class="divBtn" type="submit" onclick="javascript:return CheckFormSubmit()" value="提 交" />
+                <a class="divBtn pageLoading" href="@ViewBag.BackUrl">关 闭</a>
+            </div>
+        }
+    </div>
+</div>

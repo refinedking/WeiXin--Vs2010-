@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery cookie保存背景颜色、字体颜色和字体大小</title>
+<style type="text/css">
+body{font-size:14px;}
+div{margin:20px;}
+a:link{text-decoration:none;}
+a:visited{text-decoration:none;}
+a:hover{text-decoration:underline;}
+#content{width:500px;}
+#content p{text-indent:2em;}
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.cookie.js"></script>
+<script type="text/javascript">
+var options = {path: '/', expires: 10};			//定义路径，过期时间为10天
+var cookie_backColor = $.cookie("backColor");	//定义背景颜色值
+var cookie_fontColor = $.cookie("fontColor");	//定义字体颜色值
+var cookie_fontSize = $.cookie("fontSize");		//定义字体大小
+
+//如果cookie里有背景颜色、字体颜色、字体大小，就加载相应属性。
+$(function(){
+	if(cookie_backColor){
+		$('body').css('background', cookie_backColor);
+	}
+	if(cookie_fontColor){
+		$('#content').css('color', cookie_fontColor);
+	}
+	if(cookie_fontSize){
+		$('#content').css('font-size', cookie_fontSize + 'px');
+	}
+});
+
+//背景颜色方法
+function backcolor(num){
+	if(num == 1){
+		$("body").css('background','#E6FBEA');		//改变背景颜色
+		$.cookie("backColor", "#E6FBEA", options);	//把背景颜色值传进"backColor"这个cookie里
+	}
+	if(num == 2){
+		$("body").css('background','#D8ECED');
+		$.cookie("backColor", "#D8ECED", options);
+	}
+	if(num == 3){
+		$("body").css('background','#FDFCEA');
+		$.cookie("backColor", "#FDFCEA", options);
+	}
+	if(num == 4){
+		$("body").css('background','#EFEFEF');
+		$.cookie("backColor", "#EFEFEF", options);
+	}
+}
+
+//字体颜色方法
+function fontcolor(num){
+	if(num == 1){
+		$("#content").css('color','#f00');		//改变字体颜色
+		$.cookie("fontColor", "#f00", options);	//把字体颜色值传进"fontColor"这个cookie里
+	}
+	if(num == 2){
+		$("#content").css('color','#ff0');
+		$.cookie("fontColor", "#ff0", options);
+	}
+	if(num == 3){
+		$("#content").css('color','#00f');
+		$.cookie("fontColor", "#00f", options);
+	}
+	if(num == 4){
+		$("#content").css('color','#0f0');
+		$.cookie("fontColor", "#0f0", options);
+	}
+}
+
+//字体大小方法
+function fontsize(num){
+	switch(num){
+		case 1:
+			$("#content").css('font-size','12px');	//改变字体大小
+			$.cookie("fontSize", "12", options);	//把字体大小值传进"fontSize"这个cookie里
+			break;
+		case 2:
+			$("#content").css('font-size','14px');
+			$.cookie("fontSize", "14", options);
+			break;
+		case 3:
+			$("#content").css('font-size','16px');
+			$.cookie("fontSize", "16", options);
+			break;
+		case 4:
+			$("#content").css('font-size','18px');
+			$.cookie("fontSize", "18", options);
+			break;
+	}
+}
+
+//恢复默认方法
+function defaultCL(){
+	$("body").css('background','');			//清空背景颜色
+	$.cookie("backColor", null, options);	//把背景颜色空值传进"backColor"这个cookie里
+	$("#content").css('color','');			//清空字体颜色
+	$.cookie("fontColor", null, options);	//把字体颜色空值传进"fontColor"这个cookie里
+	$("#content").css('font-size','');		//清空字体大小
+	$.cookie("fontSize", null, options);	//把字体大小空值传进"fontSize"这个cookie里
+}
+</script> 
+</head>
+<body>
+<h1><a href="http://ons.me/" target="_blank" title="一个热爱网络的年轻人的博客">西门的后花园</a></h1> 
+<h2><a href="http://ons.me/167.html" target="_blank">jQuery cookie保存背景颜色、字体颜色和字体大小</a></h2> 
+<div class="backColor">
+	背景颜色：
+	<a title="青山不老" onclick="backcolor(1)" href="javascript:void(0);">青</a>、
+	<a title="蓝色回忆" onclick="backcolor(2)" href="javascript:void(0);">蓝</a>、
+	<a title="明黄清俊" onclick="backcolor(3)" href="javascript:void(0);">黄</a>、
+	<a title="灰色世界" onclick="backcolor(4)" href="javascript:void(0);">灰</a>
+</div>
+<div class="fontColor">
+	字体颜色：
+	<a onclick="fontcolor(1)" href="javascript:void(0);">红</a>、
+	<a onclick="fontcolor(2)" href="javascript:void(0);">黄</a>、
+	<a onclick="fontcolor(3)" href="javascript:void(0);">蓝</a>、
+	<a onclick="fontcolor(4)" href="javascript:void(0);">绿</a>
+</div>
+<div class="fontSize">
+	字体大小：
+	<a onclick="fontsize(1)" href="javascript:void(0);">12px</a>、
+	<a onclick="fontsize(2)" href="javascript:void(0);">14px</a>、
+	<a onclick="fontsize(3)" href="javascript:void(0);">16px</a>、
+	<a onclick="fontsize(4)" href="javascript:void(0);">18px</a>
+</div>
+<div class="default">
+	<a onclick="defaultCL()" href="javascript:void(0);">恢复默认</a>
+</div>
+<div id="content">
+<p>“三皇子到！”小太监的叫驾声打断了我们的讨论。</p>
+<p>蓝凌枫？他来干什么？！对这家伙我是一向不怎么欢迎的，一直闹着要退婚要抛弃我的家伙，见他一次我就“受伤”一次！</p>
+<p>“好香的味道！”蓝凌枫很享受的伸长鼻子闻着。</p>
+<p>属狗的么？！鼻子这么灵（小雨：拜托，有可能闻不到么？除了嗅觉有问题的人）！</p>
+<p>“奴才……”正想行礼的三人，被蓝凌枫扬手打断，“你们继续。”</p>
+<p>“谢三皇子！”</p>
+</div>
+</body>
+</html>

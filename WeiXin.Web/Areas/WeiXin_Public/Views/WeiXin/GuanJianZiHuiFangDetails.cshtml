@@ -1,0 +1,121 @@
+﻿@model WeiXin.BO.GuanJianZiHuiFuContract
+@using WeiXin.BO
+@using System.Data
+@using WeiXin.BLL
+@using WeiXin.Core
+@using WeiXin.Model
+@{
+    ViewBag.Title = "关键字回复详细信息";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BackUrl = Url.Action("GuanJianZiHuiFuMain");
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+}
+
+@functions{
+     @*
+      根据关键字编号查询该关键字所属企业
+      *@
+    GuanJianZiService gs = new GuanJianZiService();
+    GuanJianZiHuiFuService gzs = new GuanJianZiHuiFuService();
+
+    //根据关键字编号查询该关键字所属企业
+    public string GetComp(string eId)
+    { 
+        //根据关键字编号查询该关键字所属企业
+        employeeInfo emp = gs.GetEmployeeInfoByEid(gs.GetGuanJianZiByGJZId(int.Parse(eId)).eId);
+        return emp.wxName.ToString();
+    }
+    
+    //根据回复类型编号查询回复类型信息
+    public string GJZType(string typeId)
+    {
+        GuanJianZiHuiFuType ggType= gzs.GetAllGJZTypeByTypeId(typeId);  
+        return ggType.name.ToString();
+    }
+
+    //根据关键字编号查询关键字信息
+    public string GetGJZ(int gjzId)
+    {
+        GuanJianZiContract gjzc= gs.GetGuanJianZiByGJZId(gjzId);
+        return gjzc.name.ToString();
+    }
+   
+}
+<div id="divMain">
+    <div id="divRightPage">
+        <div class="tblTitle" onselectstart='return false;'>
+            <div>
+                @("回复详细信息")</div>
+        </div>
+        <div class="divReminders">
+            关键字回复详细信息
+        </div>
+        <table class="tblForm">
+            <tr>
+                <td class="tdTitle">
+                    所属企业：
+                </td>
+                <td>
+                      @GetComp(@Model.gjzId.ToString())
+                </td>
+            </tr>
+            <tr>
+              <td class="tdTitle">
+                    所属关键字：
+                </td>
+                <td>
+                      @GetGJZ(@Model.gjzId)
+                </td>
+            </tr>
+            <tr>
+                <td class="tdTitle">
+                    关键字回复类型：
+                </td>
+                <td>
+                     @GJZType(@Model.typeId.ToString())
+                </td>
+              
+            </tr>
+            <tr>
+              <td class="tdTitle">
+                    添加时间：
+                </td>
+                <td>
+                    @Model.time
+                </td>
+            </tr>
+            <tr>
+                <td class="tdTitle">
+                    回复内容：
+                </td>
+                <td>
+                    @Html.Raw(@Model.content)
+                </td>
+              
+            </tr>
+            <tr>
+              <td class="tdTitle">
+                    信息状态：
+                </td>
+                    @if (@Model.isDisplay == 1)
+                    {
+                        <td>
+                            @Html.Encode("启用")
+                        </td>
+                    }
+                    else
+                    {
+                        <td style="color: Red">
+                            @Html.Encode("禁用")
+                        </td>
+                    }
+            </tr>
+        </table>
+        <div class="divFormCtrl">
+            <a class="divBtn" href="@ViewBag.BackUrl">关 闭</a>
+        </div>
+    </div>
+</div>

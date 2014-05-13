@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<zuxia_OA>
+  <moduleType id="moduleType_2" name="公众平台系统" ename="WeChat" icon="pingtai" sysId="2">
+    <tree id="6" name="公众平台管理" areas="WeiXin" controller="" action="" parentID="0" icon="" typeID="2">
+      <action id="1" name="浏览" tag="GN_BROWSE" />
+      <tree id="11" name="关键字管理" areas="WeiXin_Public" controller="WeiXin" action="GuanJianZiMain" parentID="6" icon="" typeID="2">
+        <action id="1" name="浏览" tag="GN_BROWSE" />
+        <action id="2" name="新增" tag="GN_ADD" />
+        <action id="3" name="编辑" tag="GN_EDIT" />
+        <action id="4" name="删除" tag="GN_DELETE" />
+      </tree>
+      <tree id="12" name="回复管理" areas="WeiXin_Public" controller="WeiXin" action="GuanJianZiHuiFuMain" parentID="6" icon="" typeID="2">
+        <action id="1" name="浏览" tag="GN_BROWSE" />
+        <action id="2" name="新增" tag="GN_ADD" />
+        <action id="3" name="编辑" tag="GN_EDIT" />
+        <action id="4" name="删除" tag="GN_DELETE" />
+      </tree>
+    </tree>
+    <tree id="13" name="微网管理" areas="Enterprise" controller="" action="" parentID="0" icon="" typeID="2">
+      <action id="1" name="浏览" tag="GN_BROWSE" />
+      <tree id="14" name="频道管理" areas="Enterprise" controller="Site" action="ChannelList" parentID="13" icon="" typeID="2">
+        <action id="1" name="浏览" tag="GN_BROWSE" />
+        <action id="2" name="新增" tag="GN_ADD" />
+        <action id="3" name="编辑" tag="GN_EDIT" />
+        <action id="4" name="删除" tag="GN_DELETE" />
+      </tree>
+      <tree id="15" name="内容管理" areas="Enterprise" controller="Site" action="ArticleIndex" parentID="13" icon="" typeID="2">
+        <action id="1" name="浏览" tag="GN_BROWSE" />
+        <action id="2" name="新增" tag="GN_ADD" />
+        <action id="3" name="编辑" tag="GN_EDIT" />
+        <action id="4" name="删除" tag="GN_DELETE" />
+      </tree>
+      <tree id="20" name="模版管理" areas="Enterprise" controller="Site" action="Template" parentID="13" icon="" typeID="2">
+        <action id="1" name="浏览" tag="GN_BROWSE" />
+        <action id="2" name="新增" tag="GN_ADD" />
+        <action id="3" name="编辑" tag="GN_EDIT" />
+      </tree>
+    </tree>
+    <tree id="16" name="系统管理" areas="Enterprise" controller="" action="" parentID="0" icon="" typeID="2">
+      <action id="1" name="浏览" tag="GN_BROWSE" />
+      <tree id="17" name="修改密码" areas="Enterprise" controller="Site" action="myinfo_password" parentID="16" icon="" typeID="2">
+        <action id="1" name="浏览" tag="GN_BROWSE" />
+        <action id="3" name="编辑" tag="GN_EDIT" />
+      </tree>
+      <tree id="19" name="插件管理" areas="Enterprise" controller="Site" action="Extends" parentID="16" icon="" typeID="2">
+        <action id="1" name="浏览" tag="GN_BROWSE" />
+        <action id="6" name="配置插件" tag="GN_PEIZHI" />
+      </tree>
+    </tree>
+    <tree id="21" name="会员管理" areas="Member" controller="" action="" parentID="0" icon="" typeID="2">
+      <action id="1" name="浏览" tag="GN_BROWSE" />
+      <action id="3" name="编辑" tag="GN_EDIT" />
+      <tree id="22" name="会员卡设置" areas="Member" controller="CardConfig" action="Index" parentID="21" icon="" typeID="2">
+        <action id="1" name="浏览" tag="GN_BROWSE" />
+        <action id="2" name="新增" tag="GN_ADD" />
+        <action id="3" name="编辑" tag="GN_EDIT" />
+        <action id="4" name="删除" tag="GN_DELETE" />
+      </tree>
+    </tree>
+  </moduleType>
+</zuxia_OA>

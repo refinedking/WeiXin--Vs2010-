@@ -1,0 +1,108 @@
+﻿@model WeiXin.BO.AuthorityContract
+@{
+    ViewBag.Title = "功能点变动";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.backUrl = Url.Action("AuthorityList");
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+}
+@section script
+{
+    <script src="@Url.Content("~/Scripts/Shared/jquery.validate.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Shared/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/_Layout_NoFrame_Edit.js")" type="text/javascript"></script>
+}
+<div id="divMain">
+    <div id="divRightPage">
+        <!--列表标题部分-->
+        <div class="tblTitle" onselectstart='return false;'>
+            <div>
+                @(Model.AuthorityID == 0 ? "新增功能点" : "修改功能点")</div>
+        </div>
+        <div class="divReminders">
+            @if (Model.AuthorityID == 0)
+            {
+                <label style="color: Red;">
+                    “添加功能点”功能点编号自动添加</label><br />
+                <label style="color: Red;">
+                    “添加功能点”功能点标记在数据添加成功以后不能进行修改，录入时注意标识的命名规范</label><br />
+            }
+        </div>
+        <div class="divReminders">
+        </div>
+        @using (Html.BeginForm())
+        {
+            //功能点编号
+            if (Model.AuthorityID != 0)
+            {
+            @Html.HiddenFor(model => model.AuthorityID)
+            }
+            <table class="tblForm" cellspacing="10">
+                <!--table类名，不能更改-->
+                <tr>
+                    <td class="tdTitle">
+                        功能点名称:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.AuthorityName)
+                        @Html.ValidationMessageFor(model => model.AuthorityName)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        功能点标记:
+                    </td>
+                    <td>
+                        @if (Model.AuthorityID == 0)
+                        {
+                            @Html.TextBoxFor(model => model.AuthorityTag);
+                        }
+                        else
+                        {
+                            <div class="keyPoint">@Model.AuthorityTag</div>
+                            @Html.HiddenFor(model => model.AuthorityTag);
+                        }
+                        @Html.ValidationMessageFor(model => model.AuthorityTag)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        功能点排序:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.AuthorityOrder)
+                        @Html.ValidationMessageFor(model => model.AuthorityOrder)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        功能点状态:
+                    </td>
+                    <td>
+                        @Html.RadioButton("AuthorityState", 0, Model.AuthorityState == 0 ? true : false, new { id = "rdEnable" })
+                        <label for="rdEnable">
+                            启用</label>
+                        @Html.RadioButton("AuthorityState", 1, Model.AuthorityState == 1 ? true : false, new { id = "rdDisable" })
+                        <label for="rdDisable">
+                            禁用</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        功能点描述:
+                    </td>
+                    <td>
+                        @Html.TextAreaFor(model => model.AuthorityDescription, new { style = "width:300px;height:100px;" })
+                    </td>
+                </tr>
+            </table>
+            <div class="divFormCtrl">
+                <!--页面按钮 如：提交、取消、下一步、关闭-->
+                <input class="divBtn" type="submit" value="提 交" />
+                <a class="divBtn pageLoading" href="@ViewBag.BackUrl">关 闭</a>
+            </div>
+        }
+    </div>
+</div>

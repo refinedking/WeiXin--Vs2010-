@@ -1,0 +1,163 @@
+﻿@model WeiXin.Model.PagerList<WeiXin.Model.employeeInfo>
+@using WeiXin.BLL
+@using System.Data
+@{
+    ViewBag.Title = "公众微信企业列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+}
+@section script
+{
+    <script src="@Url.Content("~/Scripts/_Layout_NoFrame.js")" type="text/javascript"></script>
+}
+@using (Html.BeginForm())
+{
+    <div id="divMain">
+        <div id="divRightPage">
+            <!--列表标题部分-->
+            <div class="divPageChildTitle" onselectstart='return false;'>
+                <div class="divTitleItem">
+                    公众微信企业列表</div>
+                <table id="tblQuery" style="flweixint: left;">
+                    <tr>
+                        <td>
+                            条件：
+                        </td>
+                        <td>
+                            <input  class="txtQuery" type="text" title="可以根据员工编号、姓名、职位、部门、电话、身份证、入职时间查询" name="keyWords" value='@ViewData["empKeyWords"]' />
+                        </td>
+                        <td colspan="2">
+                            <input type="submit" class="divBtn" value="查询" title="可以根据员工编号、姓名、职位、部门、电话、身份证、入职时间查询" />
+                        </td>
+                    </tr>
+                </table>
+                <div class="divTitleCtrl">
+                    @{
+    List<WeiXin.BO.AuthorityContract> list_PageAuthority = ViewData["list_PageAuthority"] as List<WeiXin.BO.AuthorityContract>;
+
+    foreach (WeiXin.BO.AuthorityContract authority in list_PageAuthority)
+    {
+        switch (authority.AuthorityTag)
+        {
+            case "GN_ADD":  <!--页面按钮 如：提交、取消、下一步、关闭-->
+                        <a  eventtype="add" class="divBtn" href='@Url.Action("OperateEmployee", "WeiXin", new { area = "WeiXin_Public", tag = "add", operate = "" })'>
+                            添 加</a>   break;
+        }
+    }
+
+                    }
+                    <a eventtype="add"  class="divBtn pageLWeiXinding" href='@Url.Action("EmployeeMain", "WeiXin")'>
+                        刷新</a>
+                </div>
+            </div>
+            <div class="divReminders">
+                <span class="keyPoint">模糊查询</span>：可以根据员工编号、姓名、职位、部门、电话、身份证、入职时间模糊查询<br />
+                <span class="keyPoint">注</span>： 这个是公司的所有员工信息
+            </div>
+            @if (Model.Count == 0)
+            {
+                <div class="nodata" onselectstart='return false;'>
+                    <!--无数据提示层-->
+                </div>
+            }
+            else
+            {
+                <!--列表表体部分-->
+                <div class="divDataList">
+                    <!--数据列表-->
+                    <table id="tblList" cellpadding="0" cellspacing="0">
+                        <tr class="tblHead">
+                            <th class="SerialNumber">
+                            </th>
+                            <!--复选框列(宽度固定为20px)-->
+                            <th>
+                                <input type="checkbox" class="chkAll" />
+                            </th>
+                            <th>
+                                微信名称
+                            </th>
+                            <th>
+                                微信帐号
+                            </th>
+                            <th>
+                                Token
+                            </th>
+                            <th>
+                                企业名称
+                            </th>
+                            <th>
+                                行业
+                            </th>
+                            <th>
+                                电话
+                            </th>
+                            <th>
+                                用户组
+                            </th>
+                            <th>
+                                操作
+                            </th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            
+                            <tr class="tblItem">
+                                <td>
+                                    @(Model.IndexOf(item) + 1)
+                                </td>
+                                <td class="divCtrlList">
+                                    <input type="checkbox" class="chkItem" value="@item.Eid" />
+                                </td> 
+                                <td>
+                                    @item.wxName
+                                </td>
+                                <td>
+                                    @item.wxUser
+                                </td>
+                                <td>
+                                    @item.ToKen
+                                </td>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>
+                                    @item.branchInfo.branchName
+                                </td>
+                                <td>
+                                    @item.TEL / @item.phone
+                                </td>
+                                <td>
+                                    @item.positionInfo.positionName
+                                </td>
+                                <td>
+                                    @{foreach (WeiXin.BO.AuthorityContract authority in list_PageAuthority)
+                                      {
+                                          switch (authority.AuthorityTag)
+                                          {
+                                              case "GN_ADD":
+
+                                        <a  href='@Url.Action("OperateEmployee", "WeiXin", new { id = item.Eid, operate = "" })'>
+                                            编 辑</a>
+                                             break;
+
+                                          }
+                                      }
+
+                                    }
+                                </td>
+                            </tr>
+                           
+                        }
+                    </table>
+                </div>
+            }
+            <!--列表分页部分-->
+            <div class="divPager" onselectstart='return false;'>
+                @Html.Raw(Model.PagerHtmlA)
+            </div>
+        </div>
+    </div>
+}

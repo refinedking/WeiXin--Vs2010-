@@ -1,0 +1,102 @@
+﻿@Html.Raw(ViewData["content"].ToString()) 
+@*@model PagerList<module_product>
+@using WeiXin.Model;
+@{
+    ViewBag.Title = ViewData["title"];
+    Layout = "~/Views/Shared/_EnterpriseWap.cshtml";
+}
+<!--头部-->
+<header class="ts1">
+    <ul class="topbar fl">
+        <li><a  class="icon_user"  href="@Url.Action("index", new { sessionid = ViewData["SessionID"] })">
+            <i></i>首页 </a></li>
+        @{ 
+            List<WeiXin.Model.normal_class> lists = ViewData["Top3Class"] as List<WeiXin.Model.normal_class>;
+            foreach (var item in lists)
+            {
+            <li><a class="icon_user" href="@Url.Action("ProductList", new { sessionid = ViewData["SessionID"], id = item.Id, ccid = item.ChannelId })">
+                <i></i>
+                @item.Title
+            </a></li>
+            }
+        }
+    </ul>
+</header>
+<section class="i_list">
+    <ul id="i_list_other">
+        @foreach (var item in Model)
+        {
+            <li><a href="@Url.Action("Product", new { sessionid = ViewData["SessionID"], id = item.Id })">
+                @if (item.IsImg == 0)
+                {
+                    <img alt="@item.Title"   src="/FileUpload/no.png" />
+                }
+                else
+                { 
+                    <img   src="/FileUpload/@item.Img" alt="@item.Title" />
+                }
+                <h3>@item.Title</h3>
+                <p class="tui_price ts2">
+                    <strong>@(decimal.Parse(item.Points.ToString()).ToString("C"))</strong> <del>@(decimal.Parse(item.Price0.ToString()).ToString("C"))</del>
+                    <span><cite>0</cite> 人购买 </span>
+                </p>
+                <div class="hot">
+                    <strong>热卖</strong>
+                </div>
+            </a></li>
+        }
+    </ul>
+</section>
+@Html.Hidden("sid", ViewData["SessionID"].ToString())当前页码
+@Html.Hidden("page", ViewData["PageIndex"].ToString())当前页码
+@Html.Hidden("ccid", ViewData["ccid"].ToString())//频道
+@Html.Hidden("classid", ViewData["classid"].ToString())栏目<a class="more" id="show_more"
+    href="javascript:void(0);">加载更多</a>
+<div class="clear">
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("#show_more").click(function () {
+            var classid = $("#classid").val();
+            var ccid = $("#ccid").val();
+            var _page = $("#page").val();
+            $(this).html('加载中...');
+            $.ajax({
+                type: "POST",
+                data: { "page": _page, "classid": classid, "ccid": ccid },
+                url: "/Web/AjaxLoadProductMore2",
+                dataType: "json",
+                success: function (info) {
+                    if (info.length > 0) {
+                        _page = _page * 1 + 1;
+                        $("#page").val(_page);
+                        var _tmp_html = '';
+                        $.each(info, function (x, y) {
+
+                            _tmp_html += '<li><a href="#">';
+                            if (y.IsImg == 0) {
+                                _tmp_html += '<img alt="' + y.Title + '"   src="/FileUpload/no.png" />';
+                            }
+                            else {
+                                _tmp_html += ' <img src="/FileUpload/' + y.Img + '" alt="' + y.Title + '" />';
+                            }
+
+                            _tmp_html += '<h3>' + y.Title + '</h3><p class="tui_price ts2"><strong>¥' + y.Points.toFixed(2) + '</strong><del>¥' + y.Price0.toFixed(2) + '</del>';
+                            _tmp_html += '<span><cite>0</cite>人购买</span></p><div class="hot"><strong>热卖</strong></div></a></li>';
+
+                        });
+
+                        $('#i_list_other').append(_tmp_html);
+                        $("#show_more").html("加载更多");
+                    } else {
+                        $("#show_more").html("已经加载完了...");
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Error"); alert(errorThrown);
+                }
+            });
+        });
+    });
+</script>
+*@

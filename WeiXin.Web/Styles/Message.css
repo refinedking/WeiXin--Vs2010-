@@ -1,0 +1,89 @@
+﻿.alert
+{
+    background-color: #f1f1f1;
+    width: 495px;
+    margin: 50px auto;
+    font-size: 12px;
+    line-height: 24px;
+}
+.alert .alert_body
+{
+    border: 1px solid #cbcbcb;
+    background-color: #fff;
+    width: 475px;
+    height: 143px;
+    position: relative;
+    top: -5px;
+    left: -5px;
+    padding: 10px;
+}
+.alert .alert_body h3
+{
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+.alert .alert_body .alertcontError
+{
+    background: url(../../Images/Shared/m_alert.png) left 30px no-repeat;
+    float: left;
+    margin: 0px 0px 5px 45px;
+    padding: 5px 60px;
+    height:70px;
+    color: #666;
+    min-height: 30px;
+    _height: 30px;
+}
+.alert .alert_body .alertcontSuccess
+{
+    background: url(../../Images/Shared/m_acc.png) left center no-repeat;
+    float: left;
+    margin: 0px 0px 5px 45px;
+    padding: 5px 60px;
+    height:70px;
+    color: #666;
+    min-height: 30px;
+    _height: 30px;
+}
+.message
+{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 30%;
+    left: 50%; /*FF IE7*/
+    top: 50%; /*FF IE7*/
+    margin-left: -240px !important; /*FF IE7 该值为本身宽的一半 */
+    margin-top: -70px !important; /*FF IE7 该值为本身高的一半*/
+    margin-top: 0;
+    position: fixed !important; /*FF IE7*/
+    position: absolute; /*IE6*/
+    _top: expression(eval(document.compatMode &&             document.compatMode=='CSS1Compat') ? documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 : /*IE6*/ document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2); /*IE5 IE5.5*/
+}
+.message .alert_body
+{
+    padding: 0;
+    height: 163px;
+    width: 495px;
+    border: 1px solid #cae3eb;
+}
+.message .alert_body h3
+{
+    background-color: #e9f4f7;
+    padding: 3px 15px;
+}
+.msgCont
+{
+    position:relative;
+    margin:0px auto;
+    width: 350px;
+    float: left;
+    color: Red;
+    font-size: 16px;
+}
+.msgJump
+{
+    margin: 0px 0px 0px 110px;
+    font-size: 16px;
+    clear: both;
+}

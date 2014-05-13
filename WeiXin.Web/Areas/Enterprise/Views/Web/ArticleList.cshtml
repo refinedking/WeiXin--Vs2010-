@@ -1,0 +1,113 @@
+﻿@*@model PagerList<module_article>
+@using WeiXin.Model;
+@{
+    ViewBag.Title = ViewData["title"];
+    Layout = "~/Views/Shared/_EnterpriseWap.cshtml";
+}
+<!--头部-->
+<header class="ts1"> 
+		<ul class="topbar fl" >
+         <li>
+         <a  class="icon_user"  href="@Url.Action("index", new { sessionid = ViewData["SessionID"] })">
+				  <i></i>
+					首页
+				</a>
+                </li>
+       @{ 
+           List<WeiXin.Model.normal_class> lists = ViewData["Top3Class"] as List<WeiXin.Model.normal_class>;
+           foreach (var item in lists)
+           {
+                 <li>
+					<a class="icon_user" href="@Url.Action("ArticleList", new { sessionid = ViewData["SessionID"], id = item.Id, ccid = item.ChannelId })">  <i></i>
+					@item.Title
+				</a>
+			</li>
+           }
+       }  
+		</ul>
+	</header>
+<section class="i_list">
+		<ul class="i_shop_list" id="i_shop_list">
+        
+             @foreach (var item in Model)
+             {
+                    <li>
+			<a id="@item.Id" href="@Url.Action("Article", new { id = item.Id, sessionid = ViewData["SessionID"] })">
+            @if (item.IsImg == 0)
+            {
+            	<img alt="@item.Title" src="/FileUpload/no.png" />
+            }
+            else
+            { 
+            	<img alt="@item.Title" src="/FileUpload/@item.Img" />
+            }
+			
+					<h3 style="color:@item.TColor">@item.Title</h3>
+			</a>
+			 @if (item.Summary.Length > 50)
+    {
+       @item.Summary.Substring(0, 50)  
+    }
+    else
+    {	 @item.Summary  
+    }
+		</li>
+             
+             }
+          
+			 
+			</ul>
+	</section>
+@Html.Hidden("sid", ViewData["SessionID"].ToString())当前页码
+@Html.Hidden("page", ViewData["PageIndex"].ToString())@*当前页码
+@Html.Hidden("classid", ViewData["id"].ToString()) @*栏目ID
+@Html.Hidden("ccid", ViewData["ccid"].ToString())//频道<a class="more" id="show_more"
+    href="javascript:void(0);">加载更多</a>
+<div class="clear">
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#show_more').click(function () {
+            var ccid = $("#ccid").val();
+            var sid = $("#sid").val();
+            var _page = $("#page").val();
+            var id = $("#classid").val();
+
+            $(this).html('加载中...');
+            $.ajax({
+                type: "POST",
+                data: { 'page': _page, 'id': id, "ccid": ccid },
+                url: "/Web/AjaxLoadArticleMore",
+                dataType: "json",
+                success: function (info) {
+                    if (info.length > 0) {
+                        _page = _page * 1 + 1;
+                        $("#page").val(_page);
+                        var _tmp_html = '';
+                        $.each(info, function (x, y) {
+                            _tmp_html += '<li><a  href="/Enterprise/Web/Article/' + y.Id + '?sessionid=' + sid + '">';
+                            if (y.IsImg == 0) {
+                                _tmp_html += '  <img alt="' + y.Title + '" src="/FileUpload/no.png" />';
+                            } else {
+                                _tmp_html += '  <img alt="' + y.Title + '" src="/FileUpload/' + y.Img + '" />';
+                            }
+
+                            _tmp_html += '<h3 style="color:' + y.TColor + '">' + y.Title + '</h3></a>' + y.Summary + '</li>';
+                        });
+
+                        $('#i_shop_list').append(_tmp_html);
+                        $("#show_more").html("加载更多");
+                    } else {
+                        $("#show_more").html("已经加载完了...");
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    Zuxia.Alert(errorThrown);
+                }
+            });
+        });
+    });
+</script>
+*@
+
+@Html.Raw(ViewData["content"].ToString()) 

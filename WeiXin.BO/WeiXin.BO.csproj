@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3928A77B-C571-45F9-B6BE-F67287DF6E40}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WeiXin.BO</RootNamespace>
+    <AssemblyName>WeiXin.BO</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enterprise\module_articleContract.cs" />
+    <Compile Include="Enterprise\module_productContract.cs" />
+    <Compile Include="Enterprise\normal_channelContract.cs" />
+    <Compile Include="Enterprise\normal_classContract.cs" />
+    <Compile Include="Enterprise\normal_EmpExtendsContract.cs" />
+    <Compile Include="Enterprise\normal_extendsContract.cs" />
+    <Compile Include="Enterprise\normal_templateContract.cs" />
+    <Compile Include="GuanJianZiTypeContract.cs" />
+    <Compile Include="WeiXin_Fans\CardConfigContract.cs" />
+    <Compile Include="WeiXin_HR\GuanJianZiHuiFuContract.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeiXin_Authority\AuthorityContract.cs" />
+    <Compile Include="WeiXin_Authority\loginLogInfoContract.cs" />
+    <Compile Include="WeiXin_Authority\ModuleAuthorityListContract.cs" />
+    <Compile Include="WeiXin_Authority\ModulesContract.cs" />
+    <Compile Include="WeiXin_Authority\ModuleTypeContract.cs" />
+    <Compile Include="WeiXin_Authority\RoleAuthorityListContract.cs" />
+    <Compile Include="WeiXin_Authority\RolesContract.cs" />
+    <Compile Include="WeiXin_Authority\UsersContract.cs" />
+    <Compile Include="WeiXin_Fans\FansContract.cs" />
+    <Compile Include="WeiXin_Fans\UserToEmpContract.cs" />
+    <Compile Include="WeiXin_HR\BranchInfoContract.cs" />
+    <Compile Include="WeiXin_HR\EmployeeInfoContract.cs" />
+    <Compile Include="WeiXin_HR\GuanJianZiContract.cs" />
+    <Compile Include="WeiXin_HR\GuanJianZiHuiFuTypeContract.cs" />
+    <Compile Include="WeiXin_HR\PositionInfoContract.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WeiXin.Core\WeiXin.Core.csproj">
+      <Project>{ECF7C4E4-2806-4CC8-BC4A-9FDBA0A88B21}</Project>
+      <Name>WeiXin.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,83 @@
+﻿@model WeiXin.BO.RolesContract
+@{
+    ViewBag.Title = "角色变动";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BackUrl = Url.Action("RolesList");
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+}
+@section script
+{
+    <script src="@Url.Content("~/Scripts/Shared/jquery.validate.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Shared/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/_Layout_NoFrame_Edit.js")" type="text/javascript"></script>
+}
+<div id="divMain">
+    <div id="divRightPage">
+        <!--列表标题部分-->
+        <div class="tblTitle" onselectstart='return false;'>
+            <div>
+                @(Model.RoleID == 0 ? "新增角色" : "修改角色")</div>
+        </div>
+        <div class="divReminders">
+            温馨提示：添加角色信息时,角色名称只能为汉字，您可以选择授权按钮,在点击提交按钮后可以为当前角色授予相应的权限
+        </div>
+        @using (Html.BeginForm())
+        {
+            <table class="tblForm" cellspacing="10">
+                <tr>
+                    <td class="tdTitle">
+                        角色编号:
+                    </td>
+                    <td>
+                        @if (Model.RoleID == 0)
+                        {
+                            <font color="red">自动添加</font>
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(model => model.RoleID, new { Style = "border:0px; ", @readonly = "readonly" })
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        角色名称:
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.RoleName, new { style = "width:130px;" })
+                        @Html.ValidationMessageFor(model => model.RoleName)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        角色说明:
+                    </td>
+                    <td>
+                        @Html.TextAreaFor(model => model.RoleDescription, new { style = "width:450px; height:70px;" })
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdTitle">
+                        是否授权:
+                    </td>
+                    <td>
+                        @Html.RadioButton("IsMenu", "0", true, new { id = "rdEnable" })
+                        <label for="rdEnable">
+                            授权</label>
+                        @Html.RadioButton("IsMenu", "1", false, new { id = "rdDisable" })
+                        <label for="rdDisable">
+                            不授权</label>
+                    </td>
+                </tr>
+            </table>
+            <div class="divFormCtrl">
+                <!--页面按钮 如：提交、取消、下一步、关闭-->
+                <input class="divBtn" type="submit" value="提 交" />
+                <a class="divBtn pageLoading" href="@ViewBag.BackUrl">关 闭</a>
+            </div>
+        }
+    </div>
+</div>

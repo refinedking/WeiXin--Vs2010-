@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "系统提示";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/Message.css")" rel="stylesheet" type="text/css" />
+}
+@section script{
+    <script type="text/javascript">
+        /*定义一个时间变量，用于表示几秒后返回*/
+        var sec = 2;
+        /*数秒*/
+        function RunTime() {
+            if (sec > 0) {
+                document.getElementById("spanTime").innerHTML = sec;
+                sec--;
+                setTimeout(RunTime, 1000);
+            }
+            else {
+                Jump();
+            }
+        }
+        function Jump() {
+            var obj = document.getElementById("hidUrl");
+            if (obj.value == "") {
+                window.history.back();
+            }
+            else {
+                window.location.href = obj.value;
+            }
+        }
+        //页面加载时运行脚本
+        $(function () {
+            RunTime();
+        });
+    </script>
+}
+<input type="hidden" id="hidUrl" value="@((ViewData["url"] == null ? "" : ViewData["url"].ToString()) + (ViewData["backUrl"] == null ? "" : "?backUrl=" + ViewData["backUrl"].ToString()))" />
+<div class="alert message">
+    <div class="alert_body">
+        <h3>
+            系统提示</h3>
+        <div class="alertcontError">
+            <span class="msgCont">@(ViewData["msg"].ToString())<br />
+               @* 若再次看到此信息请联系软件部<br />*@</span>
+        </div>
+        <p class="msgJump">
+            系统会在<span id="spanTime" style="color: Red"></span>秒内自动跳转，点击<a href="javascript:Jump();">这里</a>立即跳转</p>
+    </div>
+</div>

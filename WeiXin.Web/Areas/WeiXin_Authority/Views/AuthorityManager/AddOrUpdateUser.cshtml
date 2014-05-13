@@ -1,0 +1,148 @@
+﻿@model WeiXin.BO.UsersContract
+          
+@{
+    ViewBag.Title = "AddOrUpdateUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BackUrl = Url.Action("UsersList");
+}
+@section css
+{
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+}
+@section script
+{
+    <script src="@Url.Content("~/Scripts/Shared/jquery.validate.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Shared/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/_Layout_NoFrame_Edit.js")" type="text/javascript"></script>
+    <script src="../../../../Scripts/PlugIn/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Branch").change(function () {
+                var BranchId = $(this).select().val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetEmployeeByBIdExistsUsers")',
+                    data: { branchId: BranchId },
+                    dataType: "JSON",
+                    success: function (data) {
+                        $("#EmployeeID option").remove();
+                        $("#EmployeeID").append("<option value=''>--请选择员工--</option>")
+                        $.each(eval(data), function (index, item) {
+                            $("#EmployeeID").append("<option value=" + item.EId + ">" + item.EmpName + "</option>");
+                        });
+                    }
+                });
+            });
+            if(@Model.UserID==0)
+            {
+                 $("#Branch").trigger("change");
+            }
+        })
+    </script>
+}
+<div id="divMain">
+    <div id="divRightPage">
+        <!--列表标题部分-->
+        <div class="tblTitle" onselectstart='return false;'>
+            <div>
+                @(Model.UserID == 0 ? "新增用户" : "修改用户")</div>
+        </div>
+        <div class="divReminders">
+            @if (Model.UserID == 0)
+            {
+                <label style="color: Red;">
+                    “添加用户帐户”已经拥有帐户的员工在添加用户帐户时候</label><br />
+                <label style="color: Red;">
+                    “添加功能点”功能点标记在数据添加成功以后不能进行修改，录入时注意标识的命名规范</label><br />
+            }
+        </div>
+        @using (Html.BeginForm())
+        {
+            string isEnable = Model.UserID == 0 ? "false" : "true";
+            string isReadonly = Model.UserID == 0 ? "" : "readOnly";
+            <div>
+                <table class="tblForm" cellspacing="10">
+                    <tr>
+                        <td>
+                            用户编号:
+                        </td>
+                        <td>
+                            @if (Model.UserID == 0)
+                            {
+                                <font color="red">自动添加</font>
+                            }
+                            else
+                            {
+                                @Html.TextBoxFor(model => model.UserID, new { Style = "border:0px; ", @readOnly = isReadonly })
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            员工部门:
+                        </td>
+                        <td>
+                            @if (Model.UserID == 0)
+                            {
+                                @Html.DropDownList("Branch", ViewData["Branch"] as SelectList, new { style = "width: 130px;" })
+                            }
+                            else
+                            {
+                                @Html.DropDownList("Branch", ViewData["Branch"] as SelectList, new { style = "width: 130px;", disabled = isEnable })
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            员工姓名:
+                        </td>
+                        <td>
+                            @if (Model.UserID == 0)
+                            {
+                                <select id="EmployeeID" name="EmployeeID" style="width: 130px;">
+                                </select>
+                            }
+                            else
+                            {
+                                @Html.DropDownList("EmployeeID", ViewData["empInfo"] as SelectList, "--请选择角色--", new { style = "width: 130px;", disabled = isEnable })
+                            }
+                            @Html.ValidationMessageFor(model => model.EmployeeID)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            员工角色:
+                        </td>
+                        <td>
+                            @Html.DropDownList("RoleID", ViewData["role"] as SelectList, "--请选择角色--", new { style = "width: 130px;" })
+                            @Html.ValidationMessageFor(model => model.RoleID)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            员工帐户:
+                        </td>
+                        <td>
+                            @if (Model.UserID == 0)
+                            {
+                                @Html.TextBoxFor(model => model.UserName)
+                            }
+                            else
+                            {
+                                <div class="keyPoint">@Model.UserName</div>
+                                @Html.HiddenFor(model => model.UserName);
+                            }
+                            @Html.ValidationMessageFor(model => model.UserName)
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="divFormCtrl">
+                <!--页面按钮 如：提交、取消、下一步、关闭-->
+                <input class="divBtn" type="submit" value="提 交" />
+                <a class="divBtn pageLWeiXinding" href="@ViewBag.BackUrl">关 闭</a>
+            </div>
+        }
+    </div>
+</div>
+ 

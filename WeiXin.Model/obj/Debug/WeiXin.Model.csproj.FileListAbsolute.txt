@@ -1,0 +1,16 @@
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Model\bin\Debug\WeiXin.Model.dll.config
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Model\bin\Debug\WeiXin.Model.dll
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Model\bin\Debug\WeiXin.Model.pdb
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Model\bin\Debug\WeiXin.Core.dll
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Model\bin\Debug\WeiXin.Core.pdb
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Model\obj\Debug\WeiXin.Model.csprojResolveAssemblyReference.cache
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Model\obj\Debug\WeiXin.Model.dll
+D:\4-1、资源库\WeiXin (Vs2010)\WeiXin.Model\obj\Debug\WeiXin.Model.pdb
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.Model\bin\Debug\WeiXin.Model.dll.config
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.Model\bin\Debug\WeiXin.Model.dll
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.Model\bin\Debug\WeiXin.Model.pdb
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.Model\bin\Debug\WeiXin.Core.dll
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.Model\bin\Debug\WeiXin.Core.pdb
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.Model\obj\Debug\ResolveAssemblyReference.cache
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.Model\obj\Debug\WeiXin.Model.dll
+D:\Code\WeiXin (Vs2010) -Beta V2.0\WeiXin.Model\obj\Debug\WeiXin.Model.pdb

@@ -1,0 +1,654 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="zuxia_weixin" Class="WeiXinSystemDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=sql.w83.vhostgo.com;Initial Catalog=zuxia_weixin;Persist Security Info=True;User ID=zuxia_weixin" SettingsObjectName="WeiXin.Model.Properties.Settings" SettingsPropertyName="zuxia_weixinConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Authority" Member="Authority">
+    <Type Name="Authority">
+      <Column Name="AuthorityID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AuthorityName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorityTag" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorityDescription" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AuthorityOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AuthorityState" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Authority_ModuleAuthorityList" Member="ModuleAuthorityList" ThisKey="AuthorityID" OtherKey="AuthorityID" Type="ModuleAuthorityList" />
+      <Association Name="Authority_RoleAuthorityList" Member="RoleAuthorityList" ThisKey="AuthorityID" OtherKey="AuthorityID" Type="RoleAuthorityList" />
+    </Type>
+  </Table>
+  <Table Name="zuxia_weixin.WallInfo" Member="WallInfo">
+    <Type Name="WallInfo">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FansOpenId" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmpId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Content" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="date" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Temp1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="employeeInfo_WallInfo" Member="employeeInfo" ThisKey="EmpId" OtherKey="Eid" Type="employeeInfo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.branchInfo" Member="branchInfo">
+    <Type Name="branchInfo">
+      <Column Name="branchID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="branchName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="pBranchId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="branchPrincipal" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="branchPhone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="branchFax" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="branchRemark" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="temp1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp6" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp7" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp8" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp9" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp10" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="branchInfo_employeeInfo" Member="employeeInfo" ThisKey="branchID" OtherKey="BranchID" Type="employeeInfo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.City" Member="City">
+    <Type Name="City">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.employeeInfo" Member="employeeInfo">
+    <Type Name="employeeInfo">
+      <Column Name="Eid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="wxName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="wxUser" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="wxOldUser" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ToKen" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AddTime" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="MaxTime" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="BranchID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="positionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="TEL" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="LxrName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="isDisplay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="temp1" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="temp2" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="temp3" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="temp4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp6" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp7" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp8" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp9" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp10" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="employeeInfo_WallInfo" Member="WallInfo" ThisKey="Eid" OtherKey="EmpId" Type="WallInfo" />
+      <Association Name="employeeInfo_normal_channel" Member="normal_channel" ThisKey="Eid" OtherKey="eid" Type="normal_channel" />
+      <Association Name="employeeInfo_normal_EmpExtends" Member="normal_EmpExtends" ThisKey="Eid" OtherKey="eid" Type="normal_EmpExtends" />
+      <Association Name="employeeInfo_normal_template" Member="normal_template" ThisKey="Eid" OtherKey="eid" Type="normal_template" />
+      <Association Name="employeeInfo_systemLogInfo" Member="systemLogInfo" ThisKey="Eid" OtherKey="eId" Type="systemLogInfo" />
+      <Association Name="employeeInfo_Users" Member="Users" ThisKey="Eid" OtherKey="EmployeeID" Type="Users" />
+      <Association Name="employeeInfo_CardConfig" Member="CardConfig" ThisKey="Eid" OtherKey="Eid" Type="CardConfig" />
+      <Association Name="employeeInfo_employeeData" Member="employeeData" ThisKey="Eid" OtherKey="eid" Type="employeeData" />
+      <Association Name="employeeInfo_FansInteraction" Member="FansInteraction" ThisKey="Eid" OtherKey="EmpId" Type="FansInteraction" />
+      <Association Name="employeeInfo_GuanJianZi" Member="GuanJianZi" ThisKey="Eid" OtherKey="eId" Type="GuanJianZi" />
+      <Association Name="employeeInfo_UserToEmp" Member="UserToEmp" ThisKey="Eid" OtherKey="EmpID" Type="UserToEmp" />
+      <Association Name="branchInfo_employeeInfo" Member="branchInfo" ThisKey="BranchID" OtherKey="branchID" Type="branchInfo" IsForeignKey="true" />
+      <Association Name="positionInfo_employeeInfo" Member="positionInfo" ThisKey="positionId" OtherKey="positionId" Type="positionInfo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.loginLogInfo" Member="loginLogInfo">
+    <Type Name="loginLogInfo">
+      <Column Name="lId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lTime" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="lIP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="lState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lRemark" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="temp1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp6" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp7" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp8" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp9" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp10" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="Users_loginLogInfo" Member="Users" ThisKey="userId" OtherKey="UserID" Type="Users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.module_article" Member="module_article">
+    <Type Name="module_article">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ChannelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClassId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="TColor" Type="System.String" DbType="NVarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="AddDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Summary" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Editor" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Author" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Tags" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="ViewNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsPass" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsImg" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Img" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="IsTop" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsFocus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsHead" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ReadGroup" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SourceFrom" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Content" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="FirstPage" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="AliasPage" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Association Name="normal_channel_module_article" Member="normal_channel" ThisKey="ChannelId" OtherKey="Id" Type="normal_channel" IsForeignKey="true" />
+      <Association Name="normal_class_module_article" Member="normal_class" ThisKey="ClassId" OtherKey="Id" Type="normal_class" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.module_product" Member="module_product">
+    <Type Name="module_product">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ChannelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ClassId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="TColor" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="AddDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Summary" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Editor" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Author" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Tags" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="ViewNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsPass" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsImg" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Img" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="IsTop" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsFocus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsHead" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReadGroup" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SourceFrom" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Content" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FirstPage" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="AliasPage" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Price0" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Points" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="normal_channel_module_product" Member="normal_channel" ThisKey="ChannelId" OtherKey="Id" Type="normal_channel" IsForeignKey="true" />
+      <Association Name="normal_class_module_product" Member="normal_class" ThisKey="ClassId" OtherKey="Id" Type="normal_class" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModuleAuthorityList" Member="ModuleAuthorityList">
+    <Type Name="ModuleAuthorityList">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModuleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AuthorityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Authority_ModuleAuthorityList" Member="Authority" ThisKey="AuthorityID" OtherKey="AuthorityID" Type="Authority" IsForeignKey="true" />
+      <Association Name="Modules_ModuleAuthorityList" Member="Modules" ThisKey="ModuleID" OtherKey="ModuleID" Type="Modules" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Modules" Member="Modules">
+    <Type Name="Modules">
+      <Column Name="ModuleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModuleParentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModuleName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleAreas" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ModuleController" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ModuleAction" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ModuleIcon" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ModuleDescription" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IsMenu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Modules_ModuleAuthorityList" Member="ModuleAuthorityList" ThisKey="ModuleID" OtherKey="ModuleID" Type="ModuleAuthorityList" />
+      <Association Name="Modules_RoleAuthorityList" Member="RoleAuthorityList" ThisKey="ModuleID" OtherKey="ModuleID" Type="RoleAuthorityList" />
+      <Association Name="ModuleType_Modules" Member="ModuleType" ThisKey="ModuleTypeID" OtherKey="ModuleTypeID" Type="ModuleType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ModuleType" Member="ModuleType">
+    <Type Name="ModuleType">
+      <Column Name="ModuleTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModuleTypeName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleTypeEName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleTypeImg" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleTypeOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModuleTypeDescription" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ModuleTypeStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ModuleType_Modules" Member="Modules" ThisKey="ModuleTypeID" OtherKey="ModuleTypeID" Type="Modules" />
+    </Type>
+  </Table>
+  <Table Name="dbo.normal_channel" Member="normal_channel">
+    <Type Name="normal_channel">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="eid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Info" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Dir" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemUnit" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="TemplateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Enabled" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DefaultThumbs" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsPaging" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PageSize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsPost" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsNav" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsHtml" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsTop" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContentTemp" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UploadPath" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="UploadType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UploadSize" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="LanguageCode" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="normal_channel_module_article" Member="module_article" ThisKey="Id" OtherKey="ChannelId" Type="module_article" />
+      <Association Name="normal_channel_module_product" Member="module_product" ThisKey="Id" OtherKey="ChannelId" Type="module_product" />
+      <Association Name="normal_channel_normal_class" Member="normal_class" ThisKey="Id" OtherKey="ChannelId" Type="normal_class" />
+      <Association Name="employeeInfo_normal_channel" Member="employeeInfo" ThisKey="eid" OtherKey="Eid" Type="employeeInfo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.normal_class" Member="normal_class">
+    <Type Name="normal_class">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ChannelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ParentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="Info" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Keywords" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Img" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Content" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="SortRank" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Folder" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FilePath" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="IsPost" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsTop" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TopicNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TemplateId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ContentTemp" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsPaging" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PageSize" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsOut" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FirstPage" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="AliasPage" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="ReadGroup" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="normal_class_module_article" Member="module_article" ThisKey="Id" OtherKey="ClassId" Type="module_article" />
+      <Association Name="normal_class_module_product" Member="module_product" ThisKey="Id" OtherKey="ClassId" Type="module_product" />
+      <Association Name="normal_channel_normal_class" Member="normal_channel" ThisKey="ChannelId" OtherKey="Id" Type="normal_channel" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.normal_EmpExtends" Member="normal_EmpExtends">
+    <Type Name="normal_EmpExtends">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="eid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="extendID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Info" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Enabled" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="employeeInfo_normal_EmpExtends" Member="employeeInfo" ThisKey="eid" OtherKey="Eid" Type="employeeInfo" IsForeignKey="true" />
+      <Association Name="normal_extends_normal_EmpExtends" Member="normal_extends" ThisKey="extendID" OtherKey="Id" Type="normal_extends" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.normal_extends" Member="normal_extends">
+    <Type Name="normal_extends">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Author" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Info" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="pId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BaseTable" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Enabled" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Locked" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="normal_extends_normal_EmpExtends" Member="normal_EmpExtends" ThisKey="Id" OtherKey="extendID" Type="normal_EmpExtends" />
+    </Type>
+  </Table>
+  <Table Name="dbo.normal_modules" Member="normal_modules">
+    <Type Name="normal_modules">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemName" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="ItemUnit" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="PId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Enabled" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Locked" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SearchFieldValues" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="SearchFieldTexts" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.normal_template" Member="normal_template">
+    <Type Name="normal_template">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="eid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IsDefault" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="employeeInfo_normal_template" Member="employeeInfo" ThisKey="eid" OtherKey="Eid" Type="employeeInfo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.normal_thumbs" Member="normal_thumbs">
+    <Type Name="normal_thumbs">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ChannelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="iWidth" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="iHeight" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NoticeInfo" Member="NoticeInfo">
+    <Type Name="NoticeInfo">
+      <Column Name="nId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nTitle" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="nCountent" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="nTime" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="eId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nDisplay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="temp1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp6" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp7" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp8" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp9" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp10" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.positionInfo" Member="positionInfo">
+    <Type Name="positionInfo">
+      <Column Name="positionId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="positionName" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="isDisplay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="positionRemark" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="positionInfo_employeeInfo" Member="employeeInfo" ThisKey="positionId" OtherKey="positionId" Type="employeeInfo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RoleAuthorityList" Member="RoleAuthorityList">
+    <Type Name="RoleAuthorityList">
+      <Column Name="Role_AuthorityID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModuleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AuthorityID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Authority_RoleAuthorityList" Member="Authority" ThisKey="AuthorityID" OtherKey="AuthorityID" Type="Authority" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Modules_RoleAuthorityList" Member="Modules" ThisKey="ModuleID" OtherKey="ModuleID" Type="Modules" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Roles_RoleAuthorityList" Member="Roles" ThisKey="RoleID" OtherKey="RoleID" Type="Roles" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Roles" Member="Roles">
+    <Type Name="Roles">
+      <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="RoleDescription" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Roles_RoleAuthorityList" Member="RoleAuthorityList" ThisKey="RoleID" OtherKey="RoleID" Type="RoleAuthorityList" />
+      <Association Name="Roles_Users" Member="Users" ThisKey="RoleID" OtherKey="RoleID" Type="Users" />
+    </Type>
+  </Table>
+  <Table Name="dbo.systemLogInfo" Member="systemLogInfo">
+    <Type Name="systemLogInfo">
+      <Column Name="slId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="eId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="slTime" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="slOldContent" Type="System.String" DbType="VarChar(3000)" CanBeNull="true" />
+      <Column Name="slNewContent" Type="System.String" DbType="VarChar(3000)" CanBeNull="true" />
+      <Column Name="slExceptionInfo" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="slType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="slRemark" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="temp1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp6" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp7" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp8" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp9" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp10" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="employeeInfo_systemLogInfo" Member="employeeInfo" ThisKey="eId" OtherKey="Eid" Type="employeeInfo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="Users">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EmployeeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Users_loginLogInfo" Member="loginLogInfo" ThisKey="UserID" OtherKey="userId" Type="loginLogInfo" />
+      <Association Name="employeeInfo_Users" Member="employeeInfo" ThisKey="EmployeeID" OtherKey="Eid" Type="employeeInfo" IsForeignKey="true" />
+      <Association Name="Roles_Users" Member="Roles" ThisKey="RoleID" OtherKey="RoleID" Type="Roles" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="zuxia_weixin.CardConfig" Member="CardConfig">
+    <Type Name="CardConfig">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Eid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CardName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CardAdd" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CardTel" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="CardState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MinCardID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CardImg" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="CardConfig_FansToCard" Member="FansToCard" ThisKey="id" OtherKey="CardConfigID" Type="FansToCard" />
+      <Association Name="employeeInfo_CardConfig" Member="employeeInfo" ThisKey="Eid" OtherKey="Eid" Type="employeeInfo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="zuxia_weixin.CardConsume" Member="CardConsume">
+    <Type Name="CardConsume">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FansToCardId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Integral" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Money" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ConsumeType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="State" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="remark" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="FansToCard_CardConsume" Member="FansToCard" ThisKey="FansToCardId" OtherKey="id" Type="FansToCard" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="zuxia_weixin.employeeData" Member="employeeData">
+    <Type Name="employeeData">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="eid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="zuobiao" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Photo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Tel" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="temp1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp6" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp7" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp8" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp9" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp10" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="employeeInfo_employeeData" Member="employeeInfo" ThisKey="eid" OtherKey="Eid" Type="employeeInfo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="zuxia_weixin.Fans" Member="Fans">
+    <Type Name="Fans">
+      <Column Name="FromUserName" Type="System.String" DbType="VarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="TrueName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="UserPhone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="UserBr" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Temp1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp6" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp7" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp8" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp9" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp10" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="Fans_FansInteraction" Member="FansInteraction" ThisKey="FromUserName" OtherKey="FansOpenId" Type="FansInteraction" />
+      <Association Name="Fans_UserToEmp" Member="UserToEmp" ThisKey="FromUserName" OtherKey="UserID" Type="UserToEmp" />
+    </Type>
+  </Table>
+  <Table Name="zuxia_weixin.FansInteraction" Member="FansInteraction">
+    <Type Name="FansInteraction">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FansOpenId" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SendContent" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="EmpId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ReturnContent" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Date" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Temp1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp6" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp7" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp8" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp9" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp10" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="employeeInfo_FansInteraction" Member="employeeInfo" ThisKey="EmpId" OtherKey="Eid" Type="employeeInfo" IsForeignKey="true" />
+      <Association Name="Fans_FansInteraction" Member="Fans" ThisKey="FansOpenId" OtherKey="FromUserName" Type="Fans" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="zuxia_weixin.FansToCard" Member="FansToCard">
+    <Type Name="FansToCard">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Cardid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FansID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CardConfigID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CardState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GetDate" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ExpirationDate" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Integral" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Money" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="CardPass" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Temp1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="FansToCard_CardConsume" Member="CardConsume" ThisKey="id" OtherKey="FansToCardId" Type="CardConsume" />
+      <Association Name="CardConfig_FansToCard" Member="CardConfig" ThisKey="CardConfigID" OtherKey="id" Type="CardConfig" IsForeignKey="true" />
+      <Association Name="UserToEmp_FansToCard" Member="UserToEmp" ThisKey="FansID" OtherKey="id" Type="UserToEmp" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="zuxia_weixin.GuanJianZi" Member="GuanJianZi">
+    <Type Name="GuanJianZi">
+      <Column Name="gjzId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="eId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="typeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="time" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="isDisplay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="remark" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="temp1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp6" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp7" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp8" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp9" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp10" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="GuanJianZi_GuanJianZiHuiFu" Member="GuanJianZiHuiFu" ThisKey="gjzId" OtherKey="gjzId" Type="GuanJianZiHuiFu" />
+      <Association Name="employeeInfo_GuanJianZi" Member="employeeInfo" ThisKey="eId" OtherKey="Eid" Type="employeeInfo" IsForeignKey="true" />
+      <Association Name="GuanJianZiType_GuanJianZi" Member="GuanJianZiType" ThisKey="typeId" OtherKey="Id" Type="GuanJianZiType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="zuxia_weixin.GuanJianZiHuiFu" Member="GuanJianZiHuiFu">
+    <Type Name="GuanJianZiHuiFu">
+      <Column Name="hfId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="typeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="gjzId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="time" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="isDisplay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="remark" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="title" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="img" Type="System.String" DbType="VarChar(3000)" CanBeNull="true" />
+      <Column Name="hfCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="temp1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp6" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp7" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp8" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp9" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp10" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="GuanJianZi_GuanJianZiHuiFu" Member="GuanJianZi" ThisKey="gjzId" OtherKey="gjzId" Type="GuanJianZi" IsForeignKey="true" />
+      <Association Name="GuanJianZiHuiFuType_GuanJianZiHuiFu" Member="GuanJianZiHuiFuType" ThisKey="typeId" OtherKey="Id" Type="GuanJianZiHuiFuType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="zuxia_weixin.GuanJianZiHuiFuType" Member="GuanJianZiHuiFuType">
+    <Type Name="GuanJianZiHuiFuType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="trueId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="remark" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="temp1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="GuanJianZiHuiFuType_GuanJianZiHuiFu" Member="GuanJianZiHuiFu" ThisKey="Id" OtherKey="typeId" Type="GuanJianZiHuiFu" />
+    </Type>
+  </Table>
+  <Table Name="zuxia_weixin.GuanJianZiType" Member="GuanJianZiType">
+    <Type Name="GuanJianZiType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="remark" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="temp1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="temp5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="GuanJianZiType_GuanJianZi" Member="GuanJianZi" ThisKey="Id" OtherKey="typeId" Type="GuanJianZi" />
+    </Type>
+  </Table>
+  <Table Name="zuxia_weixin.UserToEmp" Member="UserToEmp">
+    <Type Name="UserToEmp">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EmpID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubscribeState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubscribeDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UnsubscribeDate" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Temp1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp4" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp5" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp6" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp7" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp8" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp9" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Temp10" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="UserToEmp_FansToCard" Member="FansToCard" ThisKey="id" OtherKey="FansID" Type="FansToCard" />
+      <Association Name="employeeInfo_UserToEmp" Member="employeeInfo" ThisKey="EmpID" OtherKey="Eid" Type="employeeInfo" IsForeignKey="true" />
+      <Association Name="Fans_UserToEmp" Member="Fans" ThisKey="UserID" OtherKey="FromUserName" Type="Fans" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,93 @@
+﻿body
+{
+    background-color: #F8F8F8;
+}
+/*总边框样式*/
+#divMain
+{
+    border: 0px solid #F3F3F3;
+    background-color: White;
+    padding: 1px;
+    position: fixed;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    overflow: auto;
+}
+
+/********************页面【左边】区域样式开始*****************/
+/*页面左边区域样式*/
+#divLeftPage
+{
+    /*overflow:auto;*/
+    overflow: auto;
+    cursor: default;
+    margin: 1px 0px 0px 1px;
+    width: 220px;
+    float: left;
+    position: fixed;
+}
+#divLeftPage span
+{
+    white-space: nowrap;
+}
+#ulModule
+{
+    /* background-color: #F6F5F4;*/
+    height: 100%;
+    background-color: White;
+}
+#ulModule li
+{
+    /*background-color:White;*/
+    background-color: #F6F5F4;
+    padding: 10px 5px;
+    margin-bottom: 2px; /*模块分割*/
+    font-weight: 900;
+    color: #0095B7;
+}
+/*模拟树样式开始*/
+#ulModule .tree li
+{
+    background: url(../Images/Shared/treeItem.gif) no-repeat 0px 2px;
+    padding: 0px; /*覆盖父级li内边距样式*/
+    line-height: 20px; /*li高度*/
+    cursor: pointer;
+}
+#ulModule .tree ul
+{
+    margin-top: 5px;
+    padding-left: 15px;
+}
+#ulModule .tree .cur
+{
+    background:#fefefe url(../Images/Shared/treeItem.gif) no-repeat 0px 2px;
+    font-weight: 900;
+}
+#ulModule li li div
+{
+    padding-left: 18px;
+    font-weight: 100;
+    color: Black;
+}
+
+/*模拟树样式结束*/
+
+
+/********************页面【左边】区域样式结束*****************/
+
+/********************页面【右边】区域样式开始*****************/
+#divRightPage
+{
+    float: right;
+    margin: 2px;
+    overflow: hidden;
+    z-index: 0;
+}
+#divRightPage iframe
+{
+    width: 100%;
+    min-height: 526px;
+}
+/********************页面【右边】区域样式开始*****************/

@@ -1,0 +1,200 @@
+﻿@model PagerList<normal_extends>
+@using WeiXin.Model;
+@using WeiXin.BLL;
+@using WeiXin.BO;
+@{
+    ViewBag.Title = "插件列表";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section css
+{<link href="@Url.Content("~/Styles/Enterprise/common.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Styles/_Layout_NoFrame.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Styles/Shared.css")" rel="stylesheet" type="text/css" />
+}
+@section script
+{
+    <script src="@Url.Content("~/Scripts/_Layout_NoFrame.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.tools.pack.js")" type="text/javascript"></script>
+}
+@functions{
+
+    //判断企业的插件是否启用
+    public string GetState(int exid)
+    {
+        normal_EmpExtendsService EmpExtendsBll = new normal_EmpExtendsService();//企业使用的插件
+
+        int eid = (Session["user"] as UsersContract).EId;
+        //根据eid,exid 查询插件的启用状态
+        normal_EmpExtends nee = EmpExtendsBll.GetEmpExtendsByExtendsID2(exid, eid);
+        if (nee == null)
+        {
+            return "未启用";
+
+        }
+        else if (nee.Enabled == 1)
+        {
+            return "启用";
+        }
+        else
+        {
+            return "未启用";
+        }
+    }
+
+}
+@using (Html.BeginForm())
+{ 
+    <div id="divMain">
+        <div id="divRightPage">
+            <!--列表标题部分-->
+            <div class="divPageChildTitle" onselectstart='return false;'>
+                <div class="divTitleItem">
+                    插件列表</div>
+                <table id="tblQuery" style="float: left;">
+                    <tr>
+                        <td>
+                            模糊查询：
+                        </td>
+                        <td>
+                            <input type="text" class="keyWords" name="keyWords" value='@ViewData["keyWords"]' />
+                        </td>
+                        <td colspan="2">
+                            <input type="submit" class="divBtn" value="查 询" />
+                        </td>
+                    </tr>
+                </table>
+                <div class="divTitleCtrl">
+                    @{
+    List<AuthorityContract> list_PageAuthority = ViewData["list_PageAuthority"] as List<AuthorityContract>;
+
+    foreach (AuthorityContract authority in list_PageAuthority)
+    {
+        switch (authority.AuthorityTag)
+        {
+            case "GN_ADD":
+
+                        <a  eventtype="add" class="divBtn" href='@Url.Action("ExtendsEdit", new { id = 0, operateType = "add" })'>
+                            添 加</a>
+                                                            break;
+
+            default:
+                                                            break;
+        }
+    }
+
+                    }
+                    <!--页面按钮 如：提交、取消、下一步、关闭-->
+                    <a eventtype="add" class="divBtn" href='@Url.Action("Extends")'>刷 新</a>
+                </div>
+            </div>
+            <div class="divReminders">
+                <span class="keyPoint">模糊查询</span>：按照“插件名称、插件类型”进行模糊查询<br />
+            </div>
+            <div class="clear">
+            </div>
+            @if (Model.Count == 0)
+            {
+                <div class="nodata" onselectstart='return false;'>
+                    <!--无数据提示层-->
+                </div>
+            }
+            else
+            {
+                <div class="divDataList">
+                    <!--数据列表-->
+                    <table id="tblList" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <th class="SerialNumber">
+                            </th>
+                            <!--复选框列(宽度固定为20px)-->
+                            <th>
+                                <input type="checkbox" class="chkAll" />
+                            </th>
+                            <th style="min-width: 90px;">
+                                插件名称
+                            </th>
+                            <th style="min-width: 150px;">
+                                插件类型
+                            </th>
+                            <th style="min-width: 200px;">
+                                插件作者
+                            </th>
+                            <th style="min-width: 40px;">
+                                插件状态
+                            </th>
+                            <th style="min-width: 40px;">
+                                是否使用
+                            </th>
+                            <th style="min-width: 100px;">
+                                操作
+                            </th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            
+                            <tr class="tblItem" style="font-size: 14px;">
+                                <td>
+                                    @(Model.IndexOf(item) + 1)
+                                </td>
+                                <td class="divCtrlList">
+                                    <input type="checkbox" class="chkItem" value="@item.Id" />
+                                </td>
+                                <td>
+                                    @item.Title
+                                </td>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>@item.Author
+                                </td>
+                                <td>
+                                    @(item.Enabled == 1 ? "正常" : "禁用")
+                                </td>
+                                <td style="color:Red; ">
+                                    @GetState(item.Id)
+                                </td>
+                                <td>
+                                    @{   
+
+                            foreach (AuthorityContract authority in list_PageAuthority)
+                            {
+                                switch (authority.AuthorityTag)
+                                {
+                                    case "GN_EDIT":
+
+                                        <a  href='@Url.Action("ExtendsEdit", new { id = item.Id, operateType = "edit" })'>编
+                                            辑</a>
+                                      
+                                             break;
+                                    case "GN_PEIZHI":
+
+                                        <a  href='@Url.Action("PeiZhiExtends", new { extid = item.Id, operateType = "peizhi" })'>
+                                            配置接口</a>
+                                      
+                                             break;
+                                    case "GN_DELETE":
+
+                                        <a  href='@Url.Action("DeleteExtends", new { id = item.Id, operateType = "del" })'>删
+                                            除</a>
+                                    
+                                             break;
+
+                                }
+                            }
+
+                                    }
+                                </td>
+                            </tr>
+                           
+                        }
+                    </table>
+                </div>
+            }
+            <!--列表分页部分-->
+            <div class='divPager' onselectstart='return false;'>
+                <!--分页层-->
+                @Html.Raw(Model.PagerHtmlA)
+            </div>
+        </div>
+    </div>
+}

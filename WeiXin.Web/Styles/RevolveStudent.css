@@ -1,0 +1,20 @@
+﻿td
+{
+    padding: 15px;
+}
+.divList
+{
+    border: 1px solid #f1f1f1;
+    margin-top: 10px;
+    height: 300px;
+    overflow:auto;
+    min-width: 300px;
+}
+.divList div
+{
+    cursor: pointer;
+}
+.divList div:hover
+{
+    background-color:#ededed;
+}
